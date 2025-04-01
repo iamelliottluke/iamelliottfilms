@@ -56,13 +56,20 @@
     .spacer {
       height: 100vh;
     }
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .contact-section, .footer-section {
       background: rgba(255, 255, 255, 0.2);
       color: black;
       padding: 6rem 2rem 4rem 2rem;
       text-align: center;
-      transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
-      opacity: 1;
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
     }
@@ -143,7 +150,7 @@
 
   <div class="spacer"></div>
 
-  <section class="contact-section">
+  <section class="contact-section fade-section">
     <h2>HIRE ME</h2>
     <p class="description">if you like the vibes hmu, let's make something...</p>
     <form action="https://formspree.io/f/xqapyzld" method="POST">
@@ -156,8 +163,8 @@
 
   <div class="section-gap"></div>
 
-  <section class="footer-section">
-    <p><strong style="font-size: 3.14rem; font-weight: bold;">ELLIOTT LUKE</strong><br><br><span style="font-size: 1.94rem; font-weight: normal;">I'm a filmmaker and photographer based in Adelaide, SA. I create short films and photography with dark narratives, vintage textures, bold contrast, and uniquely styled shoots.</span> Let’s make something different.</p>
+  <section class="footer-section fade-section">
+    <p><strong style="font-size: 3.14rem; font-weight: bold;">ELLIOTT LUKE</strong><br><br><span style="font-size: 1.94rem; font-weight: normal;">I'm a filmmaker and photographer based in Adelaide, SA. I create short films and photography with dark narratives, vintage textures, bold contrast, and uniquely styled shoots. Let’s make something different.</span></p>
 
     <div class="social-links">
       <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
@@ -165,5 +172,19 @@
       <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
     </div>
   </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
