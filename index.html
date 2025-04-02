@@ -14,9 +14,13 @@
       font-family: Arial, sans-serif;
       scroll-behavior: smooth;
     }
-    body, html {
+    html, body {
       height: 100%;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+    body > section, .spacer {
+      scroll-snap-align: start;
     }
     header {
       position: fixed;
@@ -48,13 +52,27 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       z-index: -1;
     }
     .spacer {
       height: 100vh;
+      position: relative;
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: white;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
     }
     .fade-section {
       opacity: 0;
@@ -137,6 +155,11 @@
       text-decoration: none;
       font-weight: bold;
     }
+    @media screen and (max-width: 768px) {
+      .footer-section p {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -150,7 +173,9 @@
     Your browser does not support the video tag.
   </video>
 
-  <div class="spacer"></div>
+  <div class="spacer">
+    <div class="scroll-indicator">↓</div>
+  </div>
 
   <section class="contact-section fade-section">
     <h2>HIRE ME</h2>
