@@ -15,6 +15,7 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
       scroll-behavior: smooth;
+      scroll-padding-top: 10vh;
     }
     html, body {
       height: 100%;
@@ -22,7 +23,10 @@
       scroll-snap-type: y mandatory;
     }
     body > section, .spacer {
-      scroll-snap-align: start;
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     header {
       position: fixed;
@@ -64,14 +68,15 @@
       position: relative;
     }
     .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: white;
-      animation: bounce 2s infinite;
-    }
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  animation: bounce 2s infinite;
+  z-index: 11;
+}
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(10px); }
