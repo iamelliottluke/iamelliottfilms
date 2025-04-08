@@ -22,10 +22,11 @@
     html, body {
       height: 100%;
       overflow-x: hidden;
-      scroll-snap-type: y proximity;
+      scroll-snap-type: y mandatory;
     }
     body > section, .spacer {
       scroll-snap-align: center;
+  scroll-margin-top: 15vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -74,17 +75,14 @@
   bottom: 2vh;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.25rem;
+  font-size: 2.5rem;
   color: white;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.4rem 0.7rem;
-  border-radius: 50px;
-  font-weight: bold;
-  letter-spacing: 1px;
   opacity: 0.6;
-  animation: bounce 2.5s infinite;
+  font-weight: bold;
   z-index: 11;
   transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+  user-select: none;
 }
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -190,7 +188,7 @@
   </video>
 
   <div class="spacer">
-    <div class="scroll-indicator">↓</div>
+    <div class="scroll-indicator">&#x25BC;</div>
   </div>
 
   <section class="contact-section fade-section">
