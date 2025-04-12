@@ -1,28 +1,261 @@
-<script>
-  const fadeSections = document.querySelectorAll('.fade-section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Elliott Luke | Filmmaker & Photographer (aspiring) Moody short films, vintage-styled shoots. Based in Adelaide. If you like bold visuals and weird vibes — let’s make something cool.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iamelliottfilms</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+
+    body > section, .spacer {
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 5vh 0;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: white;
+      font-family: Impact, sans-serif;
+    }
+
+    header h1, header a.button {
+      font-size: 0.94rem;
+      text-transform: uppercase;
+      color: white;
+      font-weight: bold;
+    }
+
+    header a.button {
+      text-decoration: none;
+      background: none;
+      padding: 0;
+      border: none;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .scroll-indicator {
+      position: fixed;
+      bottom: 3vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      color: white;
+      font-weight: bold;
+      opacity: 0.6;
+      z-index: 11;
+      pointer-events: none;
+      user-select: none;
+      font-family: sans-serif;
+      animation: pulse 2s infinite;
+      transition: opacity 0.6s ease;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact-section, .footer-section {
+      background: rgba(255, 255, 255, 0.15);
+      color: black;
+      padding: 6rem 2rem 4rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-radius: 30px;
+      box-shadow: 0 0 80px rgba(0,0,0,0.2);
+    }
+
+    .contact-section h2 {
+      font-size: 22vw;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-family: Impact, sans-serif;
+      line-height: 1;
+      white-space: nowrap;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p.description {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      background: transparent;
+      color: black;
+      border: none;
+      border-bottom: 2px solid black;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    input[type="submit"] {
+      background: transparent;
+      color: black;
+      border: 2px solid black;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.75rem;
+      transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-section p {
+      font-size: 2.42rem;
+      line-height: 1.5;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer-section strong {
+      font-family: Impact, sans-serif;
+      font-size: 3.14rem;
+    }
+
+    .social-links {
+      margin: 1rem 0 2rem;
+    }
+
+    .social-links a {
+      color: black;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer-section p {
+        font-size: 1.5rem;
       }
-    });
-  }, { threshold: 0.1 });
-  fadeSections.forEach(section => observer.observe(section));
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>iamelliottfilms</h1>
+    <a class="button" href="https://instagram.com/iamelliottfilms" target="_blank">GET IN TOUCH</a>
+  </header>
 
-  const scrollIndicator = document.querySelector('.scroll-indicator');
+  <video autoplay muted loop class="video-bg">
+    <source src="SITE BACKGROUND.mov" type="video/mp4">
+  </video>
 
-  function updateIndicator() {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
+  <div class="scroll-indicator">⌄</div>
 
-    const atBottom = scrollTop + windowHeight >= docHeight - 5;
-    scrollIndicator.style.opacity = atBottom ? '0' : '0.6';
-  }
+  <div class="spacer"></div>
 
-  window.addEventListener('scroll', updateIndicator);
-  window.addEventListener('resize', updateIndicator);
-  window.addEventListener('load', updateIndicator);
-</script>
+  <section class="contact-section fade-section">
+    <h2>HIRE ME</h2>
+    <p class="description">if you like the vibes hmu, let's make something...</p>
+    <form action="https://formspree.io/f/xqapyzld" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <section class="footer-section fade-section">
+    <p>
+      <strong>ELLIOTT LUKE</strong><br><br>
+      <span style="font-size: 1.36rem;">I'm a filmmaker and photographer based in Adelaide, SA. I create short films and photography with dark narratives, vintage textures, bold contrast, and uniquely styled shoots. Let’s make something different.</span>
+    </p>
+    <div class="social-links">
+      <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
+      <a href="https://www.youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
+      <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+    </div>
+  </section>
+
+  <script>
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeSections.forEach(section => observer.observe(section));
+
+    function updateIndicator() {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const atBottom = scrollTop + windowHeight >= docHeight - 10;
+      scrollIndicator.style.opacity = atBottom ? '0' : '0.6';
+    }
+
+    window.addEventListener('scroll', updateIndicator);
+    window.addEventListener('resize', updateIndicator);
+    window.addEventListener('load', updateIndicator);
+  </script>
+</body>
+</html>
