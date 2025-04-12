@@ -8,32 +8,31 @@
   <title>iamelliottfilms</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Impact&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       scroll-behavior: smooth;
-      transition: scroll-behavior 0.3s ease-in-out;
-      scroll-padding-top: 10vh;
     }
+
     html, body {
       height: 100%;
       overflow-x: hidden;
       scroll-snap-type: y mandatory;
     }
+
     body > section, .spacer {
-  scroll-snap-align: center;
-  scroll-margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 5vh 0;
-}
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 5vh 0;
+    }
+
     header {
       position: fixed;
       top: 0;
@@ -47,19 +46,21 @@
       color: white;
       font-family: Impact, sans-serif;
     }
+
     header h1, header a.button {
       font-size: 0.94rem;
-      font-family: Impact, sans-serif;
       text-transform: uppercase;
       color: white;
       font-weight: bold;
     }
+
     header a.button {
       text-decoration: none;
       background: none;
       padding: 0;
       border: none;
     }
+
     .video-bg {
       position: fixed;
       top: 0;
@@ -69,42 +70,40 @@
       object-fit: cover;
       z-index: -1;
     }
-    .spacer {
-      height: 100vh;
-      position: relative;
-    }
+
     .scroll-indicator {
-  position: fixed;
-  bottom: 3vh;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 3rem;
-  color: white;
-  opacity: 0;
-  font-weight: bold;
-  z-index: 11;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-  user-select: none;
-  font-family: sans-serif;
-  animation: pulse 2s infinite;
-}
-    @keyframes pulse {
-  0% { transform: translateX(-50%) scale(1); }
-  50% { transform: translateX(-50%) scale(1.1); }
-  100% { transform: translateX(-50%) scale(1); }
-}
-      50% { transform: translateX(-50%) translateY(10px); }
+      position: fixed;
+      bottom: 3vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      color: white;
+      font-weight: bold;
+      opacity: 0.6;
+      z-index: 11;
+      pointer-events: none;
+      user-select: none;
+      font-family: sans-serif;
+      animation: pulse 2s infinite;
+      transition: opacity 0.6s ease;
     }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
     .fade-section {
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 1.5s ease, transform 1.5s ease;
     }
+
     .fade-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     .contact-section, .footer-section {
       background: rgba(255, 255, 255, 0.15);
       color: black;
@@ -115,23 +114,23 @@
       border-radius: 30px;
       box-shadow: 0 0 80px rgba(0,0,0,0.2);
     }
+
     .contact-section h2 {
       font-size: 22vw;
       font-weight: 900;
-      margin-bottom: 1rem;
-      letter-spacing: 0;
       text-transform: uppercase;
+      font-family: Impact, sans-serif;
       line-height: 1;
       white-space: nowrap;
       text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin-bottom: 1rem;
     }
+
     .contact-section p.description {
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
+
     form {
       max-width: 600px;
       margin: 0 auto;
@@ -139,6 +138,7 @@
       flex-direction: column;
       gap: 1rem;
     }
+
     input, textarea {
       background: transparent;
       color: black;
@@ -147,6 +147,7 @@
       padding: 1rem;
       font-size: 1rem;
     }
+
     input[type="submit"] {
       background: transparent;
       color: black;
@@ -156,27 +157,34 @@
       padding: 0.75rem;
       transition: background 0.3s;
     }
+
     input[type="submit"]:hover {
       background: rgba(0, 0, 0, 0.1);
     }
-    .section-gap {
-      height: 36rem;
-    }
+
     .footer-section p {
       font-size: 2.42rem;
       line-height: 1.5;
       max-width: 700px;
       margin: 0 auto 2rem;
     }
+
+    .footer-section strong {
+      font-family: Impact, sans-serif;
+      font-size: 3.14rem;
+    }
+
     .social-links {
       margin: 1rem 0 2rem;
     }
+
     .social-links a {
       color: black;
       margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
     }
+
     @media screen and (max-width: 768px) {
       .footer-section p {
         font-size: 1.5rem;
@@ -192,15 +200,14 @@
 
   <video autoplay muted loop class="video-bg">
     <source src="SITE BACKGROUND.mov" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 
-  <div class="spacer">
-    <div class="scroll-indicator">⌄</div>
-  </div>
+  <div class="scroll-indicator">⌄</div>
+
+  <div class="spacer"></div>
 
   <section class="contact-section fade-section">
-    <h2 style="font-family: Impact, sans-serif;">HIRE ME</h2>
+    <h2>HIRE ME</h2>
     <p class="description">if you like the vibes hmu, let's make something...</p>
     <form action="https://formspree.io/f/xqapyzld" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
@@ -213,8 +220,10 @@
   <div class="section-gap"></div>
 
   <section class="footer-section fade-section">
-    <p><strong style="font-size: 3.14rem; font-weight: bold; font-family: Impact, sans-serif;">ELLIOTT LUKE</strong><br><br><span style="font-size: 1.36rem; font-weight: normal; line-height: 1.7; letter-spacing: 0.3px;">I'm a filmmaker and photographer based in Adelaide, SA. I create short films and photography with dark narratives, vintage textures, bold contrast, and uniquely styled shoots. Let’s make something different.</span></p>
-
+    <p>
+      <strong>ELLIOTT LUKE</strong><br><br>
+      <span style="font-size: 1.36rem;">I'm a filmmaker and photographer based in Adelaide, SA. I create short films and photography with dark narratives, vintage textures, bold contrast, and uniquely styled shoots. Let’s make something different.</span>
+    </p>
     <div class="social-links">
       <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
       <a href="https://www.youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
@@ -223,6 +232,7 @@
   </section>
 
   <script>
+    const fadeSections = document.querySelectorAll('.fade-section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -232,24 +242,20 @@
         }
       });
     }, { threshold: 0.1 });
+    fadeSections.forEach(section => observer.observe(section));
 
-    document.querySelectorAll('.fade-section').forEach(section => {
-      observer.observe(section);
-    });
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    function updateIndicator() {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const hasScrollRoom = docHeight > windowHeight + 100;
+      const bottomReached = scrollTop + windowHeight >= docHeight - 10;
+      scrollIndicator.style.opacity = (hasScrollRoom && scrollTop < 10) ? '0.6' : '0';
+    }
+    window.addEventListener('scroll', updateIndicator);
+    window.addEventListener('resize', updateIndicator);
+    window.addEventListener('load', updateIndicator);
   </script>
-<script>
-  const scrollIndicator = document.querySelector('.scroll-indicator');
-  function updateIndicator() {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.documentElement.scrollHeight;
-    const hasScrollRoom = docHeight > windowHeight + 100;
-    const bottomReached = scrollTop + windowHeight >= docHeight - 10;
-    scrollIndicator.style.opacity = (hasScrollRoom && scrollTop < 10) ? '0.6' : '0';
-  }
-  window.addEventListener('scroll', updateIndicator);
-  window.addEventListener('resize', updateIndicator);
-  window.addEventListener('load', updateIndicator);
-</script>
 </body>
 </html>
