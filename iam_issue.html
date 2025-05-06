@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="IAM_ISSUE by Elliott Luke – a visual zine exploring personality, texture, and expression.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IAM_ISSUE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Impact&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+      scroll-behavior: smooth;
+    }
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+    body > section {
+      scroll-snap-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5vh 2rem;
+      text-align: center;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: white;
+      font-family: 'Impact', sans-serif;
+    }
+    header h1, header a.button {
+      font-size: 0.94rem;
+      text-transform: uppercase;
+      color: white;
+      font-weight: bold;
+    }
+    header a.button {
+      text-decoration: none;
+    }
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .section-content {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      padding: 4rem 2rem;
+      border-radius: 30px;
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+    }
+    .section-content h2 {
+      font-family: 'Impact', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .section-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    iframe {
+      width: 100%;
+      max-width: 700px;
+      height: 500px;
+      margin-bottom: 2rem;
+      border: none;
+    }
+    .purchase-links a {
+      display: inline-block;
+      margin: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid black;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    form {
+      max-width: 600px;
+      margin: 2rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea {
+      background: transparent;
+      color: black;
+      border: none;
+      border-bottom: 2px solid black;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    input[type="submit"] {
+      background: transparent;
+      color: black;
+      border: 2px solid black;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.75rem;
+      transition: background 0.3s;
+    }
+    input[type="submit"]:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html" style="color: white; text-decoration: none;">iamelliottfilms</a></h1>
+    <a class="button" href="iam_issue.html">IAM_ISSUE</a>
+  </header>
+
+  <video autoplay muted loop class="video-bg">
+    <source src="SITE BACKGROUND.mov" type="video/mp4">
+  </video>
+
+  <section class="section-content">
+    <h2>IAM_ISSUE</h2>
+    <p>This is a visual zine by Elliott Luke — an experiment in styling, mood, and personality through film photography and words. Each issue is different, imperfect, and personal.</p>
+
+    <!-- Placeholder Flipbook -->
+    <iframe src="https://example.com/embed/your-zine" title="IAM_ISSUE Flipbook"></iframe>
+
+    <div class="purchase-links">
+      <a href="#">Buy Digital</a>
+      <a href="#">Buy Physical</a>
+    </div>
+  </section>
+
+  <section class="section-content">
+    <h2>HIRE ME</h2>
+    <p>if you like the vibes hmu, let's make something...</p>
+    <form action="https://formspree.io/f/xqapyzld" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+</body>
+</html>
