@@ -29,7 +29,6 @@
       align-items: center;
       padding: 4rem 1rem;
       scroll-snap-align: center;
-      background: transparent;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1.2s ease, transform 1.2s ease;
@@ -85,7 +84,7 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
       text-align: center;
       color: black;
-      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      font-family: 'Playfair Display', serif;
     }
 
     .card h2 {
@@ -150,25 +149,6 @@
       font-weight: bold;
     }
 
-    .scroll-indicator {
-      position: fixed;
-      bottom: 3vh;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: white;
-      opacity: 0.6;
-      z-index: 11;
-      animation: subtlePulse 2s infinite;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-
-    @keyframes subtlePulse {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
-
     @media (max-width: 600px) {
       .card {
         padding: 2rem 1rem;
@@ -190,8 +170,6 @@
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-
-  <div class="scroll-indicator" id="scrollHint">⌄</div>
 
   <section></section>
 
@@ -221,7 +199,6 @@
   </section>
 
   <script>
-    const scrollHint = document.getElementById('scrollHint');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -232,21 +209,6 @@
 
     document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    function updateScrollHint() {
-      const scrollTop = window.scrollY;
-      const winHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      scrollHint.style.opacity = (scrollTop + winHeight >= docHeight - 10) ? '0' : '0.6';
-    }
-
-    window.addEventListener('scroll', updateScrollHint);
-    window.addEventListener('resize', updateScrollHint);
-    window.addEventListener('load', () => {
-      updateScrollHint();
-      document.querySelectorAll('section')[0].classList.add('visible');
-    });
-
-    // Parallax scroll
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.3;
       document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
