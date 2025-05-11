@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iamelliottfilms</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Impact&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Impact&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -18,8 +18,26 @@
     html, body {
       height: 100%;
       font-family: 'Playfair Display', serif;
-      background: transparent;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 1rem;
+      scroll-snap-align: center;
+      background: transparent;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     header {
@@ -57,27 +75,9 @@
       transition: transform 0.1s ease-out;
     }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 1rem;
-      position: relative;
-      scroll-snap-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     .card {
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(40px);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(30px);
       border-radius: 1rem;
       padding: 3rem 2rem;
       width: 100%;
@@ -95,7 +95,7 @@
     }
 
     .card p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 2rem;
     }
 
@@ -135,8 +135,8 @@
     }
 
     .footer p {
-      font-size: 1.2rem;
-      line-height: 1.5;
+      font-size: 1.15rem;
+      line-height: 1.6;
     }
 
     .social-links {
@@ -172,6 +172,10 @@
     @media (max-width: 600px) {
       .card {
         padding: 2rem 1rem;
+      }
+
+      .card p, .footer p {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -242,7 +246,7 @@
       document.querySelectorAll('section')[0].classList.add('visible');
     });
 
-    // Parallax effect
+    // Parallax scroll
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.3;
       document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
