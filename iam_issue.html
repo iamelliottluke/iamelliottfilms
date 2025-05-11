@@ -6,6 +6,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IAM_ISSUE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -49,19 +50,17 @@
       background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       color: white;
-      font-family: 'Anton', sans-serif;
+      font-family: 'Playfair Display', serif;
       z-index: 10;
     }
 
     header h1, header a.button {
-  font-size: clamp(0.8rem, 2.5vw, 1rem);
-  text-transform: uppercase;
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-  font-family: 'Anton', sans-serif;
-  letter-spacing: 0.5px;
-}
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
     .parallax-bg {
       position: fixed;
@@ -89,7 +88,6 @@
     }
 
     .card h2 {
-      font-family: 'Impact', sans-serif;
       font-size: clamp(2rem, 8vw, 5rem);
       margin-bottom: 1rem;
     }
@@ -100,31 +98,39 @@
     }
 
     .flipbook-container {
-      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flipbook {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      position: relative;
+      overflow: hidden;
+      touch-action: pan-y;
     }
 
     .flipbook img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  display: none;
-}
-
-.flipbook img.active {
-  display: block;
-}
-    }
-
-    .flip-page {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      object-fit: contain;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .flip-page.active {
-      display: block;
+    .flipbook img.active {
+      opacity: 1;
+      z-index: 1;
     }
 
     .flip-controls {
@@ -138,7 +144,7 @@
       padding: 0.5rem 1rem;
       margin: 0 1rem;
       cursor: pointer;
-      font-family: 'Impact', sans-serif;
+      font-family: 'Playfair Display', serif;
     }
 
     .flip-controls button:hover {
@@ -159,7 +165,7 @@
       color: black;
       text-decoration: none;
       font-weight: bold;
-      font-family: 'Impact', sans-serif;
+      font-family: 'Playfair Display', serif;
       transition: background 0.3s;
     }
 
@@ -232,13 +238,10 @@
       <p>A visual zine by Elliott Luke — a digital archive of identity, energy and creative style. Still evolving. Still experimenting.</p>
 
       <div class="flipbook-container">
-        <div class="flipbook">
-          
-         <img src="joah1.jpg" loading="lazy" class="flip-page active" alt="Page 1" />
-<img src="joah2.jpg" loading="lazy" class="flip-page" alt="Page 2" />
-<img src="joah3.jpg" loading="lazy" class="flip-page" alt="Page 3" />
-
-          
+        <div class="flipbook" id="flipbook">
+          <img src="joah1.jpg" class="flip-page active" loading="lazy" alt="Page 1" />
+          <img src="joah2.jpg" class="flip-page" loading="lazy" alt="Page 2" />
+          <img src="joah3.jpg" class="flip-page" loading="lazy" alt="Page 3" />
         </div>
         <div class="flip-controls">
           <button onclick="flipPrev()">←</button>
@@ -292,11 +295,35 @@
 
     showPage(currentPage);
 
+    // Mobile swipe detection
+    let startX = 0;
+    let endX = 0;
+
+    const flipbook = document.getElementById('flipbook');
+
+    flipbook.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    flipbook.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const delta = endX - startX;
+      const threshold = 50;
+      if (delta > threshold) flipPrev();
+      else if (delta < -threshold) flipNext();
+    }
+
+    // Parallax scroll
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.3;
       document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
     });
 
+    // Fade in on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
