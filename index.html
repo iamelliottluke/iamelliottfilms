@@ -20,11 +20,25 @@
       font-family: 'Playfair Display', serif;
       background: transparent;
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
     }
 
-    body {
-      position: relative;
-      z-index: 0;
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 1rem;
+      scroll-snap-align: center;
+      background: transparent;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     header {
@@ -35,7 +49,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       color: white;
       font-family: 'Impact', sans-serif;
@@ -58,21 +72,17 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
+      animation: zoomIn 20s ease-in-out forwards;
     }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 1rem;
-      scroll-snap-align: center;
-      background: transparent;
+    @keyframes zoomIn {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
     }
 
     .card {
       background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(30px);
+      backdrop-filter: blur(40px);
       border-radius: 1rem;
       padding: 3rem 2rem;
       width: 100%;
@@ -80,6 +90,7 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
       text-align: center;
       color: black;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
     }
 
     .card h2 {
@@ -118,7 +129,7 @@
     }
 
     input[type="submit"]:hover {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.1);
     }
 
     .footer strong {
@@ -146,21 +157,21 @@
 
     .scroll-indicator {
       position: fixed;
-      bottom: 2vh;
+      bottom: 3vh;
       left: 50%;
       transform: translateX(-50%);
       font-size: 2rem;
       color: white;
       opacity: 0.6;
       z-index: 11;
-      animation: pulse 2s infinite;
-      transition: opacity 0.6s ease;
+      animation: subtlePulse 2s infinite;
+      transition: opacity 0.4s ease;
       pointer-events: none;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.1); }
+    @keyframes subtlePulse {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
     }
 
     @media (max-width: 600px) {
@@ -181,12 +192,12 @@
     Your browser does not support the video tag.
   </video>
 
-  <div class="scroll-indicator">⌄</div>
+  <div class="scroll-indicator" id="scrollHint">⌄</div>
 
-  <!-- Blank intro section for video only -->
+  <!-- Empty intro space -->
   <section></section>
 
-  <!-- Elliott Luke section -->
+  <!-- ELLIOTT LUKE -->
   <section>
     <div class="card footer">
       <strong>ELLIOTT LUKE</strong>
@@ -194,7 +205,7 @@
     </div>
   </section>
 
-  <!-- Hire Me section -->
+  <!-- HIRE ME -->
   <section>
     <div class="card">
       <h2>HIRE ME</h2>
@@ -214,17 +225,30 @@
   </section>
 
   <script>
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    function updateIndicator() {
+    const scrollHint = document.getElementById('scrollHint');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+    function updateScrollHint() {
       const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
+      const winHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
-      const atBottom = scrollTop + windowHeight >= docHeight - 10;
-      scrollIndicator.style.opacity = atBottom ? '0' : '0.6';
+      scrollHint.style.opacity = (scrollTop + winHeight >= docHeight - 10) ? '0' : '0.6';
     }
-    window.addEventListener('scroll', updateIndicator);
-    window.addEventListener('resize', updateIndicator);
-    window.addEventListener('load', updateIndicator);
+
+    window.addEventListener('scroll', updateScrollHint);
+    window.addEventListener('resize', updateScrollHint);
+    window.addEventListener('load', () => {
+      updateScrollHint();
+      document.querySelectorAll('section')[0].classList.add('visible');
+    });
   </script>
 </body>
 </html>
