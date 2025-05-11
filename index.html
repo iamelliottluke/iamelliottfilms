@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="description" content="Elliott Luke | Filmmaker & Photographer (aspiring) Moody short films, vintage-styled shoots. Based in Adelaide. If you like bold visuals and weird vibes — let’s make something cool.">
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iamelliottfilms</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Impact&display=swap" rel="stylesheet">
   <style>
@@ -18,9 +18,13 @@
     html, body {
       height: 100%;
       font-family: 'Playfair Display', serif;
-      background-color: black;
-      color: black;
+      background: transparent;
       overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+      z-index: 0;
     }
 
     header {
@@ -47,13 +51,13 @@
     }
 
     .video-bg {
-      position: fixed; /* Keeps the video fixed while scrolling */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensures it covers the full background without distortion */
-      z-index: -1; /* Keeps it behind other content */
+      object-fit: cover;
+      z-index: -1;
     }
 
     section {
@@ -63,17 +67,19 @@
       align-items: center;
       padding: 4rem 1rem;
       scroll-snap-align: center;
+      background: transparent;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(40px);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px);
       border-radius: 1rem;
       padding: 3rem 2rem;
       width: 100%;
       max-width: 700px;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
       text-align: center;
+      color: black;
     }
 
     .card h2 {
@@ -99,6 +105,7 @@
       border-bottom: 2px solid black;
       background: transparent;
       font-size: 1rem;
+      color: black;
     }
 
     input[type="submit"] {
@@ -107,6 +114,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.3s;
+      color: black;
     }
 
     input[type="submit"]:hover {
@@ -168,7 +176,6 @@
     <a class="button" href="iam_issue.html">IAM_ISSUE</a>
   </header>
 
-  <!-- Fixed background video that stays in place while scrolling -->
   <video autoplay muted loop playsinline class="video-bg">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -176,10 +183,10 @@
 
   <div class="scroll-indicator">⌄</div>
 
-  <!-- Empty video background section -->
-  <section><div></div></section>
+  <!-- Blank intro section for video only -->
+  <section></section>
 
-  <!-- First visible section: ELLIOTT LUKE -->
+  <!-- Elliott Luke section -->
   <section>
     <div class="card footer">
       <strong>ELLIOTT LUKE</strong>
@@ -187,7 +194,7 @@
     </div>
   </section>
 
-  <!-- Then the HIRE ME form and social links -->
+  <!-- Hire Me section -->
   <section>
     <div class="card">
       <h2>HIRE ME</h2>
