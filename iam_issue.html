@@ -108,55 +108,17 @@
       margin-bottom: 1rem;
     }
 
-  .flipbook-controls button {
-      font-size: 2rem;
+    .arrow-btn {
       background: none;
       border: none;
-      padding: 0;
-      margin: 0 0.5rem;
+      padding: 0.3rem;
       cursor: pointer;
-      color: black;
-      font-weight: bold;
-      transition: transform 0.2s ease;
+      opacity: 0.4;
+      transition: opacity 0.2s ease;
     }
 
-  @media (max-width: 600px) {
-  .flipbook-controls button {
-      display: none;
-    }
-
-  .purchase-links {
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 0 1rem;
-    }
-
-  .purchase-links a {
-      width: 100%;
-      text-align: center;
-    }
-
-    .flipbook-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .flipbook-controls button {
-      font-size: 2rem;
-      background: none;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      color: black;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    .flipbook-controls button:hover {
-      transform: scale(1.2);
+    .arrow-btn:hover {
+      opacity: 0.7;
     }
 
     .flipbook {
@@ -276,6 +238,8 @@
 
       .purchase-links {
         flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1rem;
       }
 
       .purchase-links a {
@@ -283,8 +247,8 @@
         text-align: center;
       }
 
-      .flipbook-controls {
-        flex-direction: column;
+      .arrow-btn {
+        display: none;
       }
     }
   </style>
@@ -306,13 +270,23 @@
       <p>IAM_ISSUE — a photo zine series that puts regular people in the spotlight. No pro models, no big production — just real people... An evolving archive.</p>
 
       <div class="flipbook-controls">
-        <button onclick="flipPrev()">←</button>
+        <button class="arrow-btn" onclick="flipPrev()" aria-label="Previous page">
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
         <div class="flipbook" id="flipbook">
           <img src="joah1.jpg" class="flip-page active" loading="lazy" alt="Page 1" />
           <img src="joah2.jpg" class="flip-page" loading="lazy" alt="Page 2" />
           <img src="joah3.jpg" class="flip-page" loading="lazy" alt="Page 3" />
         </div>
-        <button onclick="flipNext()">→</button>
+
+        <button class="arrow-btn" onclick="flipNext()" aria-label="Next page">
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
       </div>
 
       <div class="purchase-links">
