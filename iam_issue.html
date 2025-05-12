@@ -1,1 +1,343 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="description" content="IAM_ISSUE zine by Elliott Luke — a digital archive of identity, energy and creative style. Still evolving. Still experimenting."><link rel="icon" type="image/png" href="favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>IAM_ISSUE</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/><style>*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}html,body{height:100%;font-family:'Playfair Display',serif;overflow-x:hidden;scroll-snap-type:y mandatory}section{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:4rem 1rem;scroll-snap-align:center;opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.2s ease}section.visible{opacity:1;transform:translateY(0)}header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);color:white;font-family:'Playfair Display',serif;z-index:10}header h1,header a.button{font-size:1rem;text-transform:uppercase;color:white;text-decoration:none;font-weight:bold}.parallax-bg{position:fixed;top:0;left:0;width:100vw;height:150vh;object-fit:cover;z-index:-2;transform:translateY(0);transition:transform 0.1s ease-out}.card{background:rgba(255,255,255,0.4);backdrop-filter:blur(30px);border-radius:1rem;padding:3rem 2rem;width:100%;max-width:700px;box-shadow:0 0 40px rgba(0,0,0,0.3);text-align:center;color:black;font-family:'Playfair Display',serif}.card h2{font-size:clamp(2rem,8vw,5rem);margin-bottom:1rem}.card p{font-size:1.15rem;margin-bottom:2rem}.flipbook-container{width:100%;max-width:900px;margin:0 auto 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center}.flipbook{width:100%;max-height:80vh;aspect-ratio:3/4;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;touch-action:pan-y}.flipbook img{position:absolute;max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,0.2);opacity:0;transition:opacity 0.3s ease}.flipbook img.active{opacity:1;z-index:1}.flip-controls{margin-top:1rem}.flip-controls button{font-size:1.5rem;background:none;border:2px solid black;padding:0.5rem 1rem;margin:0 1rem;cursor:pointer;font-family:'Playfair Display',serif}.flip-controls button:hover{background:rgba(0,0,0,0.1)}.purchase-links{margin-top:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}.purchase-links a{padding:0.75rem 1.5rem;border:2px solid black;color:black;text-decoration:none;font-weight:bold;font-family:'Playfair Display',serif;transition:background 0.3s}.purchase-links a:hover{background:rgba(0,0,0,0.1)}form{display:flex;flex-direction:column;gap:1rem}input,textarea{padding:0.75rem;border:none;border-bottom:2px solid black;background:transparent;font-size:1rem;color:black}input[type="submit"]{border:2px solid black;background:transparent;font-weight:bold;cursor:pointer;transition:background 0.3s;color:black}input[type="submit"]:hover{background:rgba(0,0,0,0.1)}@media(max-width:600px){.card{padding:2rem 1rem}.card p{font-size:1.1rem}.purchase-links{flex-direction:column}.purchase-links a{width:100%;text-align:center}}</style></head><body><header><h1><a href="index.html" style="color:white;text-decoration:none;">iamelliottfilms</a></h1><a class="button" href="iam_issue.html">IAM_ISSUE</a></header><video autoplay muted loop playsinline class="parallax-bg" id="parallaxVideo"><source src="SITE_BACKGROUND.mp4" type="video/mp4"/>Your browser does not support the video tag.</video><section><div class="card"><h2>IAM_ISSUE</h2><p>A visual zine by Elliott Luke — a digital archive of identity, energy and creative style. Still evolving. Still experimenting.</p><div class="flipbook-container"><div class="flipbook" id="flipbook"><img src="joah1.jpg" class="flip-page active" loading="lazy" alt="Page 1"/><img src="joah2.jpg" class="flip-page" loading="lazy" alt="Page 2"/><img src="joah3.jpg" class="flip-page" loading="lazy" alt="Page 3"/></div><div class="flip-controls"><button onclick="flipPrev()">←</button><button onclick="flipNext()">→</button></div></div><div class="purchase-links"><a href="#">Buy Digital</a><a href="#">Buy Physical</a></div></div></section><section><div class="card"><h2>HIRE ME</h2><p>Got a look? A mood? A story? Let’s make it real.</p><form action="https://formspree.io/f/xqapyzld" method="POST"><input type="text" name="name" placeholder="Your Name" required><input type="email" name="email" placeholder="Your Email" required><textarea name="message" placeholder="Your Message" rows="5" required></textarea><input type="submit" value="Send Message"/></form></div></section><script>let currentPage=0;const pages=document.querySelectorAll(".flip-page");function showPage(e){pages.forEach((t,a)=>{t.classList.toggle("active",a===e)})}function flipNext(){currentPage<pages.length-1&&(currentPage++,showPage(currentPage))}function flipPrev(){currentPage>0&&(currentPage--,showPage(currentPage))}showPage(currentPage);let startX=0,endX=0;const flipbook=document.getElementById("flipbook");function handleSwipe(){const e=endX-startX;50<e?flipPrev():e<-50&&flipNext()}flipbook.addEventListener("touchstart",e=>{startX=e.touches[0].clientX}),flipbook.addEventListener("touchend",e=>{endX=e.changedTouches[0].clientX,handleSwipe()}),window.addEventListener("scroll",()=>{const e=.3*window.scrollY;document.getElementById("parallaxVideo").style.transform=`translateY(${e}px)`});const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add("visible")})},{threshold:.1});document.querySelectorAll("section").forEach(e=>observer.observe(e));</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="IAM_ISSUE zine by Elliott Luke — a digital archive of identity, energy and creative style. Still evolving. Still experimenting.">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IAM_ISSUE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 1rem;
+      scroll-snap-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      color: white;
+      font-family: 'Anton', sans-serif;
+      z-index: 10;
+    }
+
+    header h1, header a.button {
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 150vh;
+      object-fit: cover;
+      z-index: -2;
+      transform: translateY(0);
+      transition: transform 0.1s ease-out;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(30px);
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: black;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card h2 {
+      font-size: clamp(2rem, 8vw, 5rem);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+   .flipbook-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flipbook {
+  width: 100%;
+  max-height: 80vh;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+    }
+
+   .flipbook img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+    }
+
+    .flipbook img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .flip-controls {
+      margin-top: 1rem;
+    }
+
+    .flip-controls button {
+      font-size: 1.5rem;
+      background: none;
+      border: 2px solid black;
+      padding: 0.5rem 1rem;
+      margin: 0 1rem;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .flip-controls button:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .purchase-links {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .purchase-links a {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid black;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+      transition: background 0.3s;
+    }
+
+    .purchase-links a:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      border: none;
+      border-bottom: 2px solid black;
+      background: transparent;
+      font-size: 1rem;
+      color: black;
+    }
+
+    input[type="submit"] {
+      border: 2px solid black;
+      background: transparent;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: black;
+    }
+
+    input[type="submit"]:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1rem;
+      }
+
+      .card p {
+        font-size: 1.1rem;
+      }
+
+      .purchase-links {
+        flex-direction: column;
+      }
+
+      .purchase-links a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html" style="color:white; text-decoration:none;">iamelliottfilms</a></h1>
+    <a class="button" href="iam_issue.html">IAM_ISSUE</a>
+  </header>
+
+  <video autoplay muted loop playsinline class="parallax-bg" id="parallaxVideo">
+    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <section>
+    <div class="card">
+      <h2>IAM_ISSUE</h2>
+      <p>IAM_ISSUE — a photo zine series that puts regular people in the spotlight. No pro models, no big production — just real people...An Evolving Archive</p>
+
+      <div class="flipbook-container">
+        <div class="flipbook" id="flipbook">
+          <img src="joah1.jpg" class="flip-page active" loading="lazy" alt="Page 1" />
+          <img src="joah2.jpg" class="flip-page" loading="lazy" alt="Page 2" />
+          <img src="joah3.jpg" class="flip-page" loading="lazy" alt="Page 3" />
+        </div>
+        <div class="flip-controls">
+          <button onclick="flipPrev()">←</button>
+          <button onclick="flipNext()">→</button>
+        </div>
+      </div>
+
+      <div class="purchase-links">
+        <a href="#">Buy Digital Edition</a>
+        <a href="#">Buy Physical Edition</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>HIRE ME</h2>
+      <p>Look. Mood. Story. Let’s make it happen.</p>
+      <form action="https://formspree.io/f/xqapyzld" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <input type="submit" value="Send Message" />
+      </form>
+    </div>
+  </section>
+
+  <script>
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.flip-page');
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.toggle('active', i === index);
+      });
+    }
+
+    function flipNext() {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    function flipPrev() {
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    }
+
+    showPage(currentPage);
+
+    // Mobile swipe detection
+    let startX = 0;
+    let endX = 0;
+
+    const flipbook = document.getElementById('flipbook');
+
+    flipbook.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    flipbook.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const delta = endX - startX;
+      const threshold = 50;
+      if (delta > threshold) flipPrev();
+      else if (delta < -threshold) flipNext();
+    }
+
+    // Parallax scroll
+    window.addEventListener('scroll', () => {
+      const offset = window.scrollY * 0.3;
+      document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
+    });
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
