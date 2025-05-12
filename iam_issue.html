@@ -23,16 +23,17 @@
     }
 
     section {
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 4rem 1rem;
       scroll-snap-align: center;
+      padding: 0;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1.2s ease, transform 1.2s ease;
     }
+
 
     section.visible {
       opacity: 1;
@@ -78,14 +79,19 @@
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(30px);
       border-radius: 1rem;
-      padding: 3rem 2rem;
+      padding: 2rem;
       width: 100%;
-      max-width: 700px;
+      max-width: 800px;
+      max-height: 90vh;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
       text-align: center;
       color: black;
-      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
 
     .card h2 {
       font-size: clamp(2rem, 8vw, 5rem);
@@ -109,16 +115,17 @@
 
   .flipbook {
       width: 100%;
+      height: auto;
       aspect-ratio: 3 / 4;
-      max-height: 80vh;
+      max-height: 60vh;
       position: relative;
-      overflow: hidden;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      overflow: hidden;
       touch-action: pan-y;
     }
-
+    
   .flipbook img {
       position: absolute;
       width: 100%;
