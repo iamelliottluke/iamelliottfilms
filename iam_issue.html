@@ -22,9 +22,9 @@
       scroll-snap-type: y mandatory;
     }
 
-  section {
+    section {
       min-height: 100vh;
-      padding-top: 6rem; /* adjust if your header is taller */
+      padding-top: 6rem;
       box-sizing: border-box;
       display: flex;
       justify-content: center;
@@ -34,7 +34,6 @@
       transform: translateY(30px);
       transition: opacity 1.2s ease, transform 1.2s ease;
     }
-
 
     section.visible {
       opacity: 1;
@@ -77,10 +76,19 @@
     }
 
     .card {
-      max-height: none;
-      overflow: visible;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(30px);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 800px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-
 
     .card h2 {
       font-size: clamp(2rem, 8vw, 5rem);
@@ -92,9 +100,9 @@
       margin-bottom: 2rem;
     }
 
-   .flipbook-container {
+    .flipbook-container {
       width: 100%;
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 auto 2rem;
       display: flex;
       flex-direction: column;
@@ -102,7 +110,7 @@
       justify-content: center;
     }
 
-  .flipbook {
+    .flipbook {
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 4;
@@ -114,14 +122,14 @@
       overflow: hidden;
       touch-action: pan-y;
     }
-    
-  .flipbook img {
+
+    .flipbook img {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: contain;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -293,10 +301,8 @@
 
     showPage(currentPage);
 
-    // Mobile swipe detection
     let startX = 0;
     let endX = 0;
-
     const flipbook = document.getElementById('flipbook');
 
     flipbook.addEventListener('touchstart', (e) => {
@@ -315,13 +321,11 @@
       else if (delta < -threshold) flipNext();
     }
 
-    // Parallax scroll
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.3;
       document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
     });
 
-    // Fade in on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
