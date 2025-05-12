@@ -22,13 +22,14 @@
       scroll-snap-type: y mandatory;
     }
 
-    section {
-      height: 100vh;
+  section {
+      min-height: 100vh;
+      padding-top: 6rem; /* adjust if your header is taller */
+      box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
       scroll-snap-align: center;
-      padding: 0;
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 1.2s ease, transform 1.2s ease;
@@ -76,20 +77,8 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(30px);
-      border-radius: 1rem;
-      padding: 2rem;
-      width: 100%;
-      max-width: 800px;
-      max-height: 90vh;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      text-align: center;
-      color: black;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      max-height: none;
+      overflow: visible;
     }
 
 
