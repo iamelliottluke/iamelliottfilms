@@ -75,7 +75,7 @@
     }
 
     .card {
-      height: calc(97vh - 6rem);
+      height: calc(99vh - 6rem);
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(30px);
       border-radius: 1rem;
@@ -100,12 +100,27 @@
       margin-bottom: 1rem;
     }
 
-    .flipbook-container {
+    .flipbook-controls {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-grow: 1;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .flipbook-controls button {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+
+    .flipbook-controls button:hover {
+      transform: scale(1.2);
     }
 
     .flipbook {
@@ -136,30 +151,11 @@
       z-index: 1;
     }
 
-    .flip-controls {
-      margin-top: 0.5rem;
-    }
-
-    .flip-controls button {
-      font-size: 1.2rem;
-      background: none;
-      border: 2px solid black;
-      padding: 0.4rem 1rem;
-      margin: 0 0.5rem;
-      cursor: pointer;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .flip-controls button:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
     .purchase-links {
-      margin-top: 1rem;
       display: flex;
-      flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
-      gap: 0.75rem;
+      margin-top: 0.5rem;
     }
 
     .purchase-links a {
@@ -176,19 +172,20 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
-    /* HIRE ME section override */
     .card.hire {
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(30px);
       border-radius: 1rem;
-      padding: 3rem 2rem;
+      padding: 2rem;
       width: 100%;
       max-width: 700px;
-      height: 100%;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
       text-align: center;
       color: black;
-      font-family: 'Playfair Display', serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
     }
 
     .card.hire h2 {
@@ -249,6 +246,10 @@
         width: 100%;
         text-align: center;
       }
+
+      .flipbook-controls {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -266,18 +267,16 @@
   <section>
     <div class="card">
       <h2>IAM_ISSUE</h2>
-      <p>IAM_ISSUE — a photo zine series that puts regular people in the spotlight. No pro models, no big production — just real people...An Evolving Archive</p>
+      <p>IAM_ISSUE — a photo zine series that puts regular people in the spotlight. No pro models, no big production — just real people... An evolving archive.</p>
 
-      <div class="flipbook-container">
+      <div class="flipbook-controls">
+        <button onclick="flipPrev()">←</button>
         <div class="flipbook" id="flipbook">
           <img src="joah1.jpg" class="flip-page active" loading="lazy" alt="Page 1" />
           <img src="joah2.jpg" class="flip-page" loading="lazy" alt="Page 2" />
           <img src="joah3.jpg" class="flip-page" loading="lazy" alt="Page 3" />
         </div>
-        <div class="flip-controls">
-          <button onclick="flipPrev()">←</button>
-          <button onclick="flipNext()">→</button>
-        </div>
+        <button onclick="flipNext()">→</button>
       </div>
 
       <div class="purchase-links">
