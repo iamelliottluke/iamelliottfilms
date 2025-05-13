@@ -17,7 +17,7 @@
 
     html, body {
       font-family: 'Playfair Display', serif;
-      background: #f9f9f9;
+      background: #000;
       scroll-snap-type: y mandatory;
       overflow-x: hidden;
     }
@@ -30,19 +30,18 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
+      background: transparent;
       color: white;
       z-index: 10;
       font-family: Impact, sans-serif;
     }
 
     header h1, header a.button {
-      font-size: 1rem;
+      font-size: 0.94rem;
       text-transform: uppercase;
       color: white;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
     .parallax-bg {
@@ -50,7 +49,7 @@
       top: 0;
       left: 0;
       width: 100vw;
-      height: 150vh;
+      height: 100vh;
       object-fit: cover;
       z-index: -2;
     }
@@ -86,17 +85,16 @@
     }
 
     .flipbook-container {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
       margin-bottom: 1rem;
     }
 
     .flipbook {
       display: flex;
       gap: 1rem;
-      width: 100%;
       max-width: 700px;
       justify-content: center;
     }
@@ -106,6 +104,31 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       object-fit: contain;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    .arrow-btn svg {
+      width: 30px;
+      height: 30px;
+      stroke: black;
+    }
+
+    .arrow-left {
+      left: -40px;
+    }
+
+    .arrow-right {
+      right: -40px;
     }
 
     .purchase-links {
@@ -123,69 +146,6 @@
       color: black;
     }
 
-    .hire-section {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(30px);
-      border-radius: 1rem;
-      padding: 3rem 2rem;
-      box-shadow: 0 0 40px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-
-    .hire-section h2 {
-      font-family: Impact, sans-serif;
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hire-section .description {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 600px;
-      margin: 0 auto;
-      gap: 1rem;
-    }
-
-    input, textarea {
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid black;
-      padding: 0.8rem;
-      font-size: 1rem;
-    }
-
-    input[type="submit"] {
-      border: 2px solid black;
-      background: transparent;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    input[type="submit"]:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .footer-socials {
-      margin-top: 2rem;
-      font-size: 1rem;
-    }
-
-    .footer-socials a {
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-      color: black;
-    }
-
     @media (max-width: 768px) {
       .flipbook {
         flex-direction: column;
@@ -196,8 +156,8 @@
         width: 100%;
       }
 
-      .hire-section h2 {
-        font-size: 2.5rem;
+      .arrow-btn {
+        display: none;
       }
     }
   </style>
@@ -218,9 +178,15 @@
       <p>IAM_ISSUE — a photo zine series that puts regular people in the spotlight. No pro models, no big production — just real people... An evolving archive.</p>
 
       <div class="flipbook-container">
-        <div class="flipbook" id="flipbook">
-          <!-- Initial pages will load via JS -->
-        </div>
+        <button class="arrow-btn arrow-left" onclick="flipPrev()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div class="flipbook" id="flipbook"></div>
+
+        <button class="arrow-btn arrow-right" onclick="flipNext()">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
 
       <div class="purchase-links">
@@ -229,67 +195,3 @@
       </div>
     </div>
   </section>
-
-  <section>
-    <div class="hire-section">
-      <h2>HIRE ME</h2>
-      <p class="description">if you like the vibes hmu, let's make something...</p>
-      <form action="https://formspree.io/f/xqapyzld" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <input type="submit" value="Send Message">
-      </form>
-      <div class="footer-socials">
-        <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
-        <a href="https://www.youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
-        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const pages = [
-      ['joah1.jpg', 'joah2.jpg'],
-      ['joah3.jpg', 'joah1.jpg']
-    ];
-
-    let currentSpread = 0;
-
-    function updateFlipbook() {
-      const flipbook = document.getElementById('flipbook');
-      flipbook.innerHTML = `
-        <img src="${pages[currentSpread][0]}" class="spread-page" alt="Page ${currentSpread * 2 + 1}" />
-        <img src="${pages[currentSpread][1]}" class="spread-page" alt="Page ${currentSpread * 2 + 2}" />
-      `;
-    }
-
-    function flipNext() {
-      currentSpread = (currentSpread + 1) % pages.length;
-      updateFlipbook();
-    }
-
-    function flipPrev() {
-      currentSpread = (currentSpread - 1 + pages.length) % pages.length;
-      updateFlipbook();
-    }
-
-    // Enable swipe
-    let startX = 0;
-    let endX = 0;
-    const flipContainer = document.getElementById('flipbook');
-    flipContainer.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    });
-    flipContainer.addEventListener('touchend', (e) => {
-      endX = e.changedTouches[0].clientX;
-      const delta = endX - startX;
-      if (delta > 50) flipPrev();
-      else if (delta < -50) flipNext();
-    });
-
-    // Set initial view
-    updateFlipbook();
-  </script>
-</body>
-</html>
