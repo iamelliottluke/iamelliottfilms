@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IAM_ISSUE</title>
+  <title>iamelliottfilms</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Reset & basic styles */
+    /* Base Styling */
     body, html {
       margin: 0;
       padding: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      color: white;
       background-color: black;
+      color: white;
       overflow-x: hidden;
     }
 
     header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 1rem 2rem;
       background: rgba(0, 0, 0, 0.7);
       position: relative;
@@ -47,62 +48,23 @@
     }
 
     .section {
-      padding: 4rem 2rem;
+      padding: 6rem 2rem 4rem;
       text-align: center;
     }
 
-    .flipbook-wrapper {
-      position: relative;
-      max-width: 1000px;
-      margin: 2rem auto;
-    }
-
-    .arrow-icon {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      opacity: 0.3;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .arrow-icon:hover {
-      opacity: 0.6;
-    }
-
-    .arrow-left {
-      left: 0;
-    }
-
-    .arrow-right {
-      right: 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      .arrow-icon {
-        display: none !important;
-      }
-
-      .section {
-        padding: 2rem 1rem;
-      }
-    }
-
-    /* Gumroad button */
-    .gumroad-button {
-      display: inline-block;
-      background: white;
-      color: black;
+    .title {
+      font-size: 3rem;
       font-weight: bold;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      margin: 2rem auto;
-      font-size: 1rem;
+      margin-bottom: 2rem;
     }
 
-    /* HIRE ME section */
+    .description {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
     .hire-me {
       background-color: #1c1c1c;
       padding: 4rem 2rem;
@@ -155,15 +117,28 @@
       cursor: pointer;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    @media screen and (max-width: 768px) {
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .hire-me-card {
+        padding: 1.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Video -->
+  <!-- Video Background -->
   <video autoplay muted loop playsinline id="SITE_BACKGROUND.mp4">
     <source src="your-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -172,32 +147,16 @@
   <!-- Header -->
   <header>
     <h1>iamelliottfilms</h1>
-    <a href="/">IAMELLIOTTFILMS</a>
+    <a href="/IAM_ISSUE.html">IAM_ISSUE</a>
   </header>
 
-  <!-- Flipbook Section -->
+  <!-- Main Section -->
   <section class="section">
-    <h2>IAM_ISSUE ZINE</h2>
-    <div class="flipbook-wrapper">
-      <div class="arrow-icon arrow-left">&#10094;</div>
-      <!-- Replace with actual flipbook embed code -->
-      <iframe
-        style="width: 100%; height: 600px; border: none;"
-        allowfullscreen
-        src="https://heyzine.com/flip-book/sample"
-        loading="lazy">
-      </iframe>
-      <div class="arrow-icon arrow-right">&#10095;</div>
-    </div>
-
-    <!-- Gumroad Buy Button -->
-    <div>
-      <a class="gumroad-button" href="https://gumroad.com/l/YOUR_PRODUCT_ID">Buy the Zine</a>
-      <script async src="https://gumroad.com/js/gumroad.js"></script>
-    </div>
+    <div class="title">HIRE ME</div>
+    <p class="description">I'm Elliott, a moody director & photographer with vintage vibes. Get in touch to collaborate on films, shoots, or events.</p>
   </section>
 
-  <!-- HIRE ME Section -->
+  <!-- HIRE ME Section (Card) -->
   <section class="hire-me">
     <div class="hire-me-card">
       <h2>HIRE ME</h2>
