@@ -2,99 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Elliott Luke | Filmmaker & Photographer (aspiring) Moody short films, vintage-styled shoots. Based in Adelaide. If you like bold visuals and weird vibes — let’s make something cool.">
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iamelliottfilms</title>
+  <title>IAM_ISSUE</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    * {
+    /* Reset & basic styles */
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: white;
+      background-color: black;
       overflow-x: hidden;
-      scroll-snap-type: y mandatory;
     }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 1rem;
-      scroll-snap-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-   header {
-      position: fixed;
-      top: 0;
-      width: 100%;
+    header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      color: white;
-      font-family: 'Anton', sans-serif;
+      background: rgba(0, 0, 0, 0.7);
+      position: relative;
       z-index: 10;
     }
 
-    header h1, header a.button {
-      font-size: 1rem;
-      text-transform: uppercase;
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    header a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-}
+    }
 
-    .parallax-bg {
+    #background-video {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
-      height: 150vh;
+      height: 100vh;
       object-fit: cover;
-      z-index: -2;
-      transform: translateY(0);
-      transition: transform 0.1s ease-out;
+      z-index: -1;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(30px);
-      border-radius: 1rem;
-      padding: 3rem 2rem;
-      width: 100%;
-      max-width: 700px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    .section {
+      padding: 4rem 2rem;
       text-align: center;
+    }
+
+    .flipbook-wrapper {
+      position: relative;
+      max-width: 1000px;
+      margin: 2rem auto;
+    }
+
+    .arrow-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      opacity: 0.3;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .arrow-icon:hover {
+      opacity: 0.6;
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .arrow-icon {
+        display: none !important;
+      }
+
+      .section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Gumroad button */
+    .gumroad-button {
+      display: inline-block;
+      background: white;
       color: black;
-      font-family: 'Playfair Display', serif;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      margin: 2rem auto;
+      font-size: 1rem;
     }
 
-    .card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 8vw, 5rem);
-      margin-bottom: 1rem;
+    /* HIRE ME section */
+    .hire-me {
+      background-color: #1c1c1c;
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    .card p {
-      font-size: 1.15rem;
+    .hire-me-card {
+      max-width: 600px;
+      margin: auto;
+      background: #2b2b2b;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+
+    .hire-me-card h2 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+
+    .hire-me-card p {
       margin-bottom: 2rem;
+      color: #ccc;
+    }
+
+    .social-links a {
+      margin: 0 0.5rem;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
     }
 
     form {
@@ -103,115 +141,80 @@
       gap: 1rem;
     }
 
-    input, textarea {
-      padding: 0.75rem;
+    input, textarea, button {
+      padding: 0.8rem;
       border: none;
-      border-bottom: 2px solid black;
-      background: transparent;
+      border-radius: 6px;
       font-size: 1rem;
-      color: black;
     }
 
-    input[type="submit"] {
-      border: 2px solid black;
-      background: transparent;
+    button {
+      background: white;
+      color: black;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s;
-      color: black;
     }
 
-    input[type="submit"]:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .footer strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-    }
-
-    .social-links {
-      margin-top: 1.5rem;
-    }
-
-    .social-links a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        padding: 2rem 1rem;
-      }
-
-      .card p, .footer p {
-        font-size: 1.1rem;
-      }
+    img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>iamelliottfilms</h1>
-    <a class="button" href="iam_issue.html">IAM_ISSUE</a>
-  </header>
 
-  <video autoplay muted loop playsinline class="parallax-bg" id="parallaxVideo">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="SITE_BACKGROUND.mp4">
+    <source src="your-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
-  <section></section>
+  <!-- Header -->
+  <header>
+    <h1>iamelliottfilms</h1>
+    <a href="/">IAMELLIOTTFILMS</a>
+  </header>
 
-  <section>
-    <div class="card footer">
-      <strong>ELLIOTT LUKE</strong>
-      <p>I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing — but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
+  <!-- Flipbook Section -->
+  <section class="section">
+    <h2>IAM_ISSUE ZINE</h2>
+    <div class="flipbook-wrapper">
+      <div class="arrow-icon arrow-left">&#10094;</div>
+      <!-- Replace with actual flipbook embed code -->
+      <iframe
+        style="width: 100%; height: 600px; border: none;"
+        allowfullscreen
+        src="https://heyzine.com/flip-book/sample"
+        loading="lazy">
+      </iframe>
+      <div class="arrow-icon arrow-right">&#10095;</div>
+    </div>
+
+    <!-- Gumroad Buy Button -->
+    <div>
+      <a class="gumroad-button" href="https://gumroad.com/l/YOUR_PRODUCT_ID">Buy the Zine</a>
+      <script async src="https://gumroad.com/js/gumroad.js"></script>
     </div>
   </section>
 
-  <section>
-    <div class="card">
+  <!-- HIRE ME Section -->
+  <section class="hire-me">
+    <div class="hire-me-card">
       <h2>HIRE ME</h2>
-      <p>Look. Mood. Story. Let’s make it happen.</p>
-      <form action="https://formspree.io/f/xqapyzld" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <input type="submit" value="Send Message">
+      <p>I'm Elliott, a moody director & photographer with vintage vibes. Get in touch to collaborate on films, shoots, or events.</p>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send</button>
       </form>
-      <div class="social-links">
-        <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
-        <a href="https://www.youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
-        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+      <div class="social-links" style="margin-top: 2rem;">
+        <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+        <a href="https://youtube.com/yourchannel" target="_blank">YouTube</a>
+        <a href="https://tiktok.com/@yourhandle" target="_blank">TikTok</a>
       </div>
     </div>
   </section>
 
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.3;
-      document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
-    });
-  </script>
 </body>
 </html>
