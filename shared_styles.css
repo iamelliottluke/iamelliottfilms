@@ -23,6 +23,9 @@ header {
 header h1 {
   margin: 0;
   font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
 }
 
 .nav-links a {
@@ -30,6 +33,7 @@ header h1 {
   text-decoration: none;
   margin-left: 1.5rem;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 768px) {
@@ -53,12 +57,14 @@ header h1 {
 .section {
   padding: 6rem 2rem 4rem;
   text-align: center;
+  background: transparent;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .description {
@@ -82,23 +88,34 @@ header h1 {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  background-color: #1c1c1c;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   text-align: center;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.hire-me::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(rgba(0, 0, 0, 0.6), transparent);
+  z-index: -1;
 }
 
 .hire-me-card {
   max-width: 600px;
   margin: auto;
-  background: #2b2b2b;
+  background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .hire-me-card h2 {
   margin-top: 0;
   font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .hire-me-card p {
