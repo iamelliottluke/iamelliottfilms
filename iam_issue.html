@@ -11,7 +11,7 @@
     #flipbook {
       width: 90vw;
       height: 60vh;
-      margin: 2rem auto;
+      margin: 2rem auto 4rem;
     }
 
     #flipbook .page {
@@ -25,6 +25,24 @@
       height: 100%;
       object-fit: contain;
       display: block;
+    }
+
+    .hire-me {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hire-me::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .hire-me-card {
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 768px) {
@@ -47,7 +65,7 @@
 
   <!-- Header -->
   <header>
-    <h1>iamelliottfilms</h1>
+    <h1>IAMELLIOTTFILMS</h1>
     <div class="nav-links">
       <a href="/">FILMS</a>
       <a href="/iam_issue.html">ZINE</a>
@@ -63,7 +81,7 @@
   </section>
 
   <!-- Flipbook Section -->
-  <section class="section">
+  <section class="section" style="padding-bottom: 6rem;">
     <h2 style="font-size: 1.8rem;">IAM_ISSUE ZINE PREVIEW</h2>
     <div id="flipbook">
       <div class="page"><img src="https://raw.githubusercontent.com/iamelliottluke/iamelliottfilms/main/joah1.jpg" alt="Page 1" loading="lazy" /></div>
