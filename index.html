@@ -2,216 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Elliott Luke | Filmmaker & Photographer (aspiring) Moody short films, vintage-styled shoots. Based in Adelaide. If you like bold visuals and weird vibes — let’s make something cool.">
-  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iamelliottfilms</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Playfair Display', serif;
-      overflow-x: hidden;
-      scroll-snap-type: y mandatory;
-    }
-
-    section {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 4rem 1rem;
-      scroll-snap-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-   header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      color: white;
-      font-family: 'Anton', sans-serif;
-      z-index: 10;
-    }
-
-    header h1, header a.button {
-      font-size: 1rem;
-      text-transform: uppercase;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-}
-
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 150vh;
-      object-fit: cover;
-      z-index: -2;
-      transform: translateY(0);
-      transition: transform 0.1s ease-out;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(30px);
-      border-radius: 1rem;
-      padding: 3rem 2rem;
-      width: 100%;
-      max-width: 700px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      color: black;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .card h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 8vw, 5rem);
-      margin-bottom: 1rem;
-    }
-
-    .card p {
-      font-size: 1.15rem;
-      margin-bottom: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    input, textarea {
-      padding: 0.75rem;
-      border: none;
-      border-bottom: 2px solid black;
-      background: transparent;
-      font-size: 1rem;
-      color: black;
-    }
-
-    input[type="submit"] {
-      border: 2px solid black;
-      background: transparent;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-      color: black;
-    }
-
-    input[type="submit"]:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .footer strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .footer p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-    }
-
-    .social-links {
-      margin-top: 1.5rem;
-    }
-
-    .social-links a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        padding: 2rem 1rem;
-      }
-
-      .card p, .footer p {
-        font-size: 1.1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="shared_styles.css" />
 </head>
 <body>
-  <header>
-    <h1>iamelliottfilms</h1>
-    <a class="button" href="iam_issue.html">IAM_ISSUE</a>
-  </header>
 
-  <video autoplay muted loop playsinline class="parallax-bg" id="parallaxVideo">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="background-video">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
-  <section></section>
-
-  <section>
-    <div class="card footer">
-      <strong>ELLIOTT LUKE</strong>
-      <p>I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
+  <!-- Header -->
+  <header>
+    <h1>iamelliottfilms</h1>
+    <div class="nav-links">
+      <a href="/">FILMS</a>
+      <a href="/IAM_ISSUE.html">ZINE</a>
     </div>
+  </header>
+
+  <!-- Bio Section -->
+  <section class="section">
+    <div class="title">I’M ELLIOTT LUKE</div>
+    <p class="description">
+      I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.
+    </p>
   </section>
 
-  <section>
-    <div class="card">
+  <!-- HIRE ME Section -->
+  <section class="hire-me" id="hire-me">
+    <div class="hire-me-card">
       <h2>HIRE ME</h2>
       <p>Look. Mood. Story. Let’s make it happen.</p>
       <form action="https://formspree.io/f/xqapyzld" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <input type="submit" value="Send Message">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
       </form>
-      <div class="social-links">
-        <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
-        <a href="https://www.youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
-        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+      <div class="social-links" style="margin-top: 2rem;">
+        <a href="https://instagram.com/iamelliottfilms" target="_blank">Instagram</a>
+        <a href="https://youtube.com/@iamelliottfilms" target="_blank">YouTube</a>
+        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TikTok</a>
       </div>
     </div>
   </section>
 
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.3;
-      document.getElementById('parallaxVideo').style.transform = `translateY(${offset}px)`;
-    });
-  </script>
 </body>
 </html>
