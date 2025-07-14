@@ -3,51 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IAMELLIOTTFILMS</title>
+  <title>iamelliottfilms</title>
   <link rel="stylesheet" href="shared_styles.css" />
 </head>
 <body>
 
-  <!-- Background Fallback Image -->
-  <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black url('fallback.jpg') center center / cover no-repeat; z-index: -2;"></div>
-
-  <!-- Background Video -->
-  <video autoplay muted loop playsinline id="background-video">
+  <video id="background-video" autoplay muted loop playsinline poster="fallback.jpg">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
   </video>
 
-  <!-- Header -->
   <header>
-    <h1>IAMELLIOTTFILMS</h1>
-    <div class="nav-links">
-      <a href="/">FILMS</a>
-      <a href="/iam_issue.html">ZINE</a>
-    </div>
+    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
+    <nav class="nav-links">
+      <a href="index.html">FILMS</a>
+      <a href="iam_issue.html">ZINE</a>
+    </nav>
   </header>
 
-  <!-- Bio Section -->
   <section class="section">
-    <div class="title">I’M ELLIOTT LUKE</div>
+    <h2 class="title">I’m Elliott Luke</h2>
     <p class="description">
       I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.
     </p>
   </section>
 
-  <!-- HIRE ME Section -->
-  <section class="hire-me" id="hire-me">
+  <section class="hire-me">
     <div class="hire-me-card">
-      <h2>HIRE ME</h2>
+      <h2>Hire Me</h2>
       <p>Look. Mood. Story. Let’s make it happen.</p>
       <form action="https://formspree.io/f/xqapyzld" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
-      <div class="social-links" style="margin-top: 2rem;">
-        <a href="https://instagram.com/iamelliottfilms" target="_blank">Instagram</a>
-        <a href="https://youtube.com/@iamelliottfilms" target="_blank">YouTube</a>
-        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TikTok</a>
+      <div class="social-links" style="margin-top: 1.5rem;">
+        <a href="https://www.instagram.com/iamelliottluke" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@iamelliottluke" target="_blank">YouTube</a>
+        <a href="https://www.tiktok.com/@iamelliottluke" target="_blank">TikTok</a>
       </div>
     </div>
   </section>
