@@ -37,10 +37,12 @@
 </head>
 <body>
 
+  <!-- Background Fallback Image -->
+  <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black url('fallback.jpg') center center / cover no-repeat; z-index: -2;"></div>
+
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="background-video">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
   </video>
 
   <!-- Header -->
@@ -48,7 +50,7 @@
     <h1>iamelliottfilms</h1>
     <div class="nav-links">
       <a href="/">FILMS</a>
-      <a href="/IAM_ISSUE.html">ZINE</a>
+      <a href="/iam_issue.html">ZINE</a>
     </div>
   </header>
 
@@ -84,10 +86,10 @@
     <div class="hire-me-card">
       <h2>HIRE ME</h2>
       <p>Look. Mood. Story. Let’s make it happen.</p>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea rows="4" placeholder="Your Message"></textarea>
+      <form action="https://formspree.io/f/xqapyzld" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
       </form>
       <div class="social-links" style="margin-top: 2rem;">
