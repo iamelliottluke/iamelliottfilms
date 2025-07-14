@@ -4,204 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IAM_ISSUE</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="shared_styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/turn.js@4/turn.min.js"></script>
   <style>
-    /* Reset & basic styles */
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      color: white;
+    #flipbook {
+      width: 90vw;
+      height: 60vh;
+      margin: 2rem auto;
+    }
+
+    #flipbook .page {
+      width: 100%;
+      height: 100%;
       background-color: black;
-      overflow-x: hidden;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      position: relative;
-      z-index: 10;
+    #flipbook img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    #background-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .flipbook-wrapper {
-      position: relative;
-      max-width: 1000px;
-      margin: 2rem auto;
-    }
-
-    .arrow-icon {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      opacity: 0.3;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .arrow-icon:hover {
-      opacity: 0.6;
-    }
-
-    .arrow-left {
-      left: 0;
-    }
-
-    .arrow-right {
-      right: 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      .arrow-icon {
-        display: none !important;
+    @media (max-width: 768px) {
+      #flipbook {
+        width: 95vw;
+        height: 55vh;
       }
-
-      .section {
-        padding: 2rem 1rem;
-      }
-    }
-
-    /* Gumroad button */
-    .gumroad-button {
-      display: inline-block;
-      background: white;
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 6px;
-      margin: 2rem auto;
-      font-size: 1rem;
-    }
-
-    /* HIRE ME section */
-    .hire-me {
-      background-color: #1c1c1c;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .hire-me-card {
-      max-width: 600px;
-      margin: auto;
-      background: #2b2b2b;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-    }
-
-    .hire-me-card h2 {
-      margin-top: 0;
-      font-size: 2rem;
-    }
-
-    .hire-me-card p {
-      margin-bottom: 2rem;
-      color: #ccc;
-    }
-
-    .social-links a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    input, textarea, button {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    button {
-      background: white;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
     }
   </style>
 </head>
 <body>
 
   <!-- Background Video -->
-  <video autoplay muted loop playsinline id="SITE_BACKGROUND.mp4">
-    <source src="your-video.mp4" type="video/mp4" />
+  <video autoplay muted loop playsinline id="background-video">
+    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
   <!-- Header -->
   <header>
     <h1>iamelliottfilms</h1>
-    <a href="/">IAMELLIOTTFILMS</a>
+    <div class="nav-links">
+      <a href="/">FILMS</a>
+      <a href="/IAM_ISSUE.html">ZINE</a>
+    </div>
   </header>
+
+  <!-- Bio Section -->
+  <section class="section">
+    <div class="title">I’M ELLIOTT LUKE</div>
+    <p class="description">
+      I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.
+    </p>
+  </section>
 
   <!-- Flipbook Section -->
   <section class="section">
-    <h2>IAM_ISSUE ZINE</h2>
-    <div class="flipbook-wrapper">
-      <div class="arrow-icon arrow-left">&#10094;</div>
-      <!-- Replace with actual flipbook embed code -->
-      <iframe
-        style="width: 100%; height: 600px; border: none;"
-        allowfullscreen
-        src="https://heyzine.com/flip-book/sample"
-        loading="lazy">
-      </iframe>
-      <div class="arrow-icon arrow-right">&#10095;</div>
+    <h2 style="font-size: 1.8rem;">IAM_ISSUE ZINE PREVIEW</h2>
+    <div id="flipbook">
+      <div class="page"><img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/joah1.jpg" alt="Page 1" loading="lazy" /></div>
+      <div class="page"><img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/joah2.jpg" alt="Page 2" loading="lazy" /></div>
+      <div class="page"><img src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/joah3.jpg" alt="Page 3" loading="lazy" /></div>
     </div>
-
-    <!-- Gumroad Buy Button -->
-    <div>
-      <a class="gumroad-button" href="https://gumroad.com/l/YOUR_PRODUCT_ID">Buy the Zine</a>
-      <script async src="https://gumroad.com/js/gumroad.js"></script>
-    </div>
+    <script>
+      $('#flipbook').turn({
+        width: $('#flipbook').width(),
+        height: $('#flipbook').height(),
+        autoCenter: true,
+        elevation: 50,
+        gradients: true
+      });
+    </script>
   </section>
 
   <!-- HIRE ME Section -->
-  <section class="hire-me">
+  <section class="hire-me" id="hire-me">
     <div class="hire-me-card">
       <h2>HIRE ME</h2>
-      <p>I'm Elliott, a moody director & photographer with vintage vibes. Get in touch to collaborate on films, shoots, or events.</p>
+      <p>Look. Mood. Story. Let’s make it happen.</p>
       <form>
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Your Email" required />
@@ -209,9 +91,9 @@
         <button type="submit">Send</button>
       </form>
       <div class="social-links" style="margin-top: 2rem;">
-        <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
-        <a href="https://youtube.com/yourchannel" target="_blank">YouTube</a>
-        <a href="https://tiktok.com/@yourhandle" target="_blank">TikTok</a>
+        <a href="https://instagram.com/iamelliottfilms" target="_blank">Instagram</a>
+        <a href="https://youtube.com/@iamelliottfilms" target="_blank">YouTube</a>
+        <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TikTok</a>
       </div>
     </div>
   </section>
