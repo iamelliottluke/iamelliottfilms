@@ -1,0 +1,135 @@
+/* ===== SHARED STYLESHEET FOR IAMELLIOTTFILMS & IAM_ISSUE ===== */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* ===== MAIN SECTIONS ===== */
+.section {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+
+/* ===== HIRE ME SECTION ===== */
+.hire-me {
+  background-color: #1c1c1c;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hire-me-card {
+  max-width: 600px;
+  margin: auto;
+  background: #2b2b2b;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.hire-me-card h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.hire-me-card p {
+  margin-bottom: 2rem;
+  color: #ccc;
+  font-style: normal;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea, button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.social-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
