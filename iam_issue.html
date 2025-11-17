@@ -3,56 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IAM_ISSUE</title>
-  <link rel="stylesheet" href="shared_styles.css" />
+  <title>IAM_ISSUE Zine</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
+  <!-- Background Video -->
   <video id="background-video" autoplay muted loop playsinline poster="fallback.jpg">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
   </video>
   <div id="grain-overlay"></div>
 
+  <!-- Sticky Header -->
   <header>
     <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
-    <nav class="nav-links">
-  <a href="films.html">FILMS</a>
-  <a href="iam_issue.html">ZINE</a>
-</nav>
+    <div class="nav-links">
+      <a href="index.html">Films</a>
+      <a href="zine.html">Zine</a>
+    </div>
   </header>
 
-  <section class="section">
+  <!-- First Text Block (IAM_ISSUE Description) -->
+  <section class="section fullscreen-center">
     <h2 class="title">IAM_ISSUE</h2>
     <p class="description">
-      A photo zine series that puts regular people in the spotlight.<br />
-      No pro models, no big production...just real people.<br />
-      <em>An evolving archive.</em>
+      A photo zine series that puts regular people in the spotlight. No pro models, no big production... just real people. An evolving archive.
     </p>
   </section>
 
-  <section class="section">
-    <h2 class="title">IAM_ISSUE Zine Preview</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;">
-      <img src="joah1.jpg" style="max-width: 300px; width: 100%;" alt="Page 1" />
-      <img src="joah2.jpg" style="max-width: 300px; width: 100%;" alt="Page 2" />
-      <img src="joah3.jpg" style="max-width: 300px; width: 100%;" alt="Page 3" />
+  <!-- Zine Preview + Purchase Link -->
+  <section class="section fullscreen-stacked">
+    <div class="reels">
+      <img src="https://raw.githubusercontent.com/iamelliottluke/iamelliottfilms/main/joah1.jpg" alt="Zine Preview 1" style="width:100%; max-width:400px;" />
+      <img src="https://raw.githubusercontent.com/iamelliottluke/iamelliottfilms/main/joah2.jpg" alt="Zine Preview 2" style="width:100%; max-width:400px;" />
+      <img src="https://raw.githubusercontent.com/iamelliottluke/iamelliottfilms/main/joah3.jpg" alt="Zine Preview 3" style="width:100%; max-width:400px;" />
     </div>
 
-    <div style="margin-top: 2rem;">
-      <a href="https://elliottfilms.gumroad.com/l/iamissue" target="_blank" style="
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        background: white;
-        color: black;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-      ">Buy Digital Zine</a>
-    </div>
+    <a class="youtube-button" href="https://elliottfilms.gumroad.com/l/iamissue" target="_blank">
+      Buy Digital Zine
+    </a>
   </section>
-
 </body>
 </html>
