@@ -111,7 +111,7 @@ header h1 a {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  padding: 6rem 2rem;
+  padding: 20rem 2rem 6rem;
   text-align: center;
   background: transparent;
   position: relative;
@@ -163,4 +163,52 @@ button {
   text-decoration: none;
   color: white;
   font-weight: bold;
+}
+
+/* ===== REEL OVERLAYS ===== */
+.reel-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  transition: transform 0.3s ease;
+}
+
+.reel-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.reel-container:hover video {
+  transform: scale(1.03);
+}
+
+.reel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.reel-container:hover .reel-overlay {
+  opacity: 1;
+}
+
+.reel-overlay span {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  pointer-events: none;
 }
