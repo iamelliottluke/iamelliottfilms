@@ -82,12 +82,12 @@ header h1 a {
 
 /* ===== MAIN SECTIONS ===== */
 .section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 6rem 2rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: start;
@@ -107,9 +107,26 @@ header h1 a {
 
 .description {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   font-size: 1.1rem;
   color: #ccc;
+}
+
+.button-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.button-link:hover {
+  background: white;
+  color: black;
 }
 
 @media screen and (max-width: 768px) {
@@ -129,7 +146,7 @@ header h1 a {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  height: 100vh;
+  min-height: 100vh;
   padding: 2rem;
   text-align: center;
   background: transparent;
@@ -209,6 +226,7 @@ button:hover {
   overflow: hidden;
   aspect-ratio: 3 / 4;
   transition: transform 0.3s ease;
+  margin-bottom: 2rem;
 }
 
 .reel-container video {
