@@ -61,7 +61,7 @@ header h1 a, .nav-links a {
 }
 
 .section {
-  padding: 6rem 1rem;
+  padding: 6rem 2rem;
   text-align: center;
 }
 
@@ -80,7 +80,7 @@ header h1 a, .nav-links a {
 }
 
 .hire-me {
-  padding: 10rem 2rem 4rem;
+  padding: 6rem 2rem 4rem;
   text-align: center;
 }
 
