@@ -82,12 +82,12 @@ header h1 a {
 
 /* ===== MAIN SECTIONS ===== */
 .section {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 4rem 2rem;
+  padding: 2rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: start;
@@ -129,8 +129,8 @@ header h1 a {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  min-height: 100vh;
-  padding: 4rem 2rem;
+  height: 100vh;
+  padding: 2rem;
   text-align: center;
   background: transparent;
   position: relative;
