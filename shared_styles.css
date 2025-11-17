@@ -52,9 +52,28 @@ header h1 a {
 }
 
 @media screen and (max-width: 768px) {
-  .nav-links {
-    font-size: 0.9rem;
+  .section {
+    padding: 3rem 1rem;
   }
+  .section:first-of-type {
+  padding-top: 100vh;
+  padding-bottom: 30vh;
+  scroll-snap-align: start;
+}
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .hire-me {
+    align-items: center;
+    text-align: center;
+  }
+  .hire-me-card {
+    text-align: center;
+  }
+}
 }
 
 /* ===== VIDEO BACKGROUND ===== */
@@ -87,11 +106,14 @@ header h1 a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 6rem 2rem;
+  padding: 4rem 1rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: center;
   box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
 .section:first-of-type {
