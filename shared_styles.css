@@ -81,18 +81,21 @@ header h1 a {
 }
 
 /* ===== MAIN SECTIONS ===== */
-.section:first-of-type {
-  padding: 100vh 2rem 4rem;
-  text-align: center;
-  background: transparent;
-  scroll-snap-align: start;
-}
-
-.section:not(:first-of-type) {
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 4rem 2rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
+.section:first-of-type {
+  padding-top: 100vh;
 }
 
 .title {
@@ -110,14 +113,12 @@ header h1 a {
 }
 
 @media screen and (max-width: 768px) {
-  .section:first-of-type {
-    padding: 100vh 1rem 3rem;
-  }
-
-  .section:not(:first-of-type) {
+  .section {
     padding: 3rem 1rem;
   }
-
+  .section:first-of-type {
+    padding-top: 100vh;
+  }
   .title {
     font-size: 2rem;
   }
@@ -125,14 +126,11 @@ header h1 a {
     font-size: 1rem;
   }
 }
-  .description {
-    font-size: 1rem;
-  }
-}
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  padding: 20rem 2rem 6rem;
+  min-height: 100vh;
+  padding: 4rem 2rem;
   text-align: center;
   background: transparent;
   position: relative;
@@ -142,6 +140,7 @@ header h1 a {
   align-items: center;
   flex-direction: column;
   scroll-snap-align: start;
+  box-sizing: border-box;
 }
 
 .hire-me-card {
