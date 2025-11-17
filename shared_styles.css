@@ -81,8 +81,15 @@ header h1 a {
 }
 
 /* ===== MAIN SECTIONS ===== */
-.section {
+.section:first-of-type {
   padding: 100vh 2rem 4rem;
+  text-align: center;
+  background: transparent;
+  scroll-snap-align: start;
+}
+
+.section:not(:first-of-type) {
+  padding: 4rem 2rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: start;
@@ -103,12 +110,21 @@ header h1 a {
 }
 
 @media screen and (max-width: 768px) {
-  .section {
+  .section:first-of-type {
     padding: 100vh 1rem 3rem;
   }
+
+  .section:not(:first-of-type) {
+    padding: 3rem 1rem;
+  }
+
   .title {
     font-size: 2rem;
   }
+  .description {
+    font-size: 1rem;
+  }
+}
   .description {
     font-size: 1rem;
   }
