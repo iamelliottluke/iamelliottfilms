@@ -9,11 +9,6 @@ body, html {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
-  height: 100%;
-}
-
-section {
-  scroll-snap-align: start;
 }
 
 /* ===== HEADER ===== */
@@ -52,28 +47,9 @@ header h1 a {
 }
 
 @media screen and (max-width: 768px) {
-  .section {
-    padding: 3rem 1rem;
+  .nav-links {
+    font-size: 0.9rem;
   }
-  .section:first-of-type {
-  padding-top: 100vh;
-  padding-bottom: 30vh;
-  scroll-snap-align: start;
-}
-  .title {
-    font-size: 2rem;
-  }
-  .description {
-    font-size: 1rem;
-  }
-  .hire-me {
-    align-items: center;
-    text-align: center;
-  }
-  .hire-me-card {
-    text-align: center;
-  }
-}
 }
 
 /* ===== VIDEO BACKGROUND ===== */
@@ -101,24 +77,10 @@ header h1 a {
 
 /* ===== MAIN SECTIONS ===== */
 .section {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 4rem 1rem;
+  padding: 6rem 2rem 4rem;
   text-align: center;
   background: transparent;
-  scroll-snap-align: center;
-  box-sizing: border-box;
-  max-width: 900px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-
-.section:first-of-type {
-  padding-top: 100vh;
-  padding-bottom: 30vh;
+  scroll-snap-align: start;
 }
 
 .title {
@@ -130,34 +92,14 @@ header h1 a {
 
 .description {
   max-width: 700px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   font-size: 1.1rem;
   color: #ccc;
-}
-
-.button-link {
-  display: inline-block;
-  margin-top: 2rem;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  border: 2px solid white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.button-link:hover {
-  background: white;
-  color: black;
 }
 
 @media screen and (max-width: 768px) {
   .section {
     padding: 3rem 1rem;
-  }
-  .section:first-of-type {
-    padding-top: 100vh;
   }
   .title {
     font-size: 2rem;
@@ -169,26 +111,19 @@ header h1 a {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  min-height: 100vh;
-  padding: 2rem;
+  padding: 20rem 2rem 6rem;
   text-align: center;
   background: transparent;
   position: relative;
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   scroll-snap-align: start;
-  box-sizing: border-box;
 }
 
 .hire-me-card {
   max-width: 600px;
-  width: 100%;
+  margin: auto;
   background: none;
   padding: 2rem;
-  text-align: center;
 }
 
 .hire-me-card h2 {
@@ -217,23 +152,10 @@ input, textarea, button {
 }
 
 button {
-  background: none;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  border: 2px solid white;
-  padding: 0.8rem 1.5rem;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-button:hover {
   background: white;
   color: black;
-}
-
-.social-links {
-  text-align: center;
-  margin-top: 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .social-links a {
@@ -249,7 +171,6 @@ button:hover {
   overflow: hidden;
   aspect-ratio: 3 / 4;
   transition: transform 0.3s ease;
-  margin-bottom: 2rem;
 }
 
 .reel-container video {
