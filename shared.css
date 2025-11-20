@@ -1,5 +1,4 @@
-
-/* ===== SHARED STYLESHEET FOR IAMELLIOTTFILMS ===== */
+/* ===== SHARED STYLESHEET FOR IAMELLIOTTFILMS & IAM_ISSUE ===== */
 
 body, html {
   margin: 0;
@@ -9,40 +8,9 @@ body, html {
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 100;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
-header h1 a, .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.nav-links a {
-  margin-left: 1.5rem;
-}
-
-/* Background Video */
+/* ===== VIDEO BACKGROUND ===== */
 #background-video {
   position: fixed;
   top: 0;
@@ -53,6 +21,7 @@ header h1 a, .nav-links a {
   z-index: -2;
 }
 
+/* ===== FILM GRAIN OVERLAY ===== */
 #grain-overlay {
   position: fixed;
   top: 0;
@@ -60,40 +29,62 @@ header h1 a, .nav-links a {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
-  z-index: -1;
   pointer-events: none;
+  z-index: -1;
 }
 
-/* Scroll Hint */
-.scroll-hint {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-  z-index: 10;
 }
 
-.scrolled .scroll-hint {
-  opacity: 0;
-  pointer-events: none;
+@media screen and (max-width: 768px) {
+  .nav-links {
+    font-size: 0.9rem;
+  }
 }
 
-/* Sections */
+/* ===== SPACING ABOVE CONTENT ===== */
+.top-blank-space {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ===== MAIN SECTIONS ===== */
 .section {
   padding: 6rem 2rem;
   text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  scroll-snap-align: start;
+  background: transparent;
 }
 
 .title {
@@ -110,18 +101,50 @@ header h1 a, .nav-links a {
   color: #ccc;
 }
 
-/* Contact Form */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+
+/* ===== HIRE ME SECTION ===== */
+.hire-me {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
 .hire-me-card {
   max-width: 600px;
-  margin: 2rem auto 0;
-  text-align: center;
+  margin: auto;
+  background: none;
+  padding: 2rem;
+}
+
+.hire-me-card h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.hire-me-card p {
+  margin-bottom: 2rem;
+  color: #ccc;
+  font-style: normal;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
 }
 
 input, textarea, button {
@@ -149,11 +172,31 @@ button {
   font-weight: bold;
 }
 
-/* Carousels */
+/* ===== SCROLL HINT ===== */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+
+.scrolled .scroll-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== REEL CAROUSELS ===== */
 .carousel-container {
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -166,20 +209,21 @@ button {
 .carousel-track {
   display: flex;
   gap: 1rem;
+  padding-left: 1rem;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  scroll-snap-align: center;
-  height: 70vh;
   width: auto;
-  max-width: 100vw;
+  height: 70vh;
+  max-height: 80vh;
+  position: relative;
 }
 
 .carousel-item img,
 .carousel-item video {
   height: 100%;
   width: auto;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 10px;
 }
