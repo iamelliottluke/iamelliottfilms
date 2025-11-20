@@ -1,3 +1,5 @@
+/* ===== SHARED STYLESHEET FOR IAMELLIOTTFILMS & IAM_ISSUE ===== */
+
 body, html {
   margin: 0;
   padding: 0;
@@ -6,8 +8,52 @@ body, html {
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100%;
 }
 
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== VIDEO BACKGROUND ===== */
 #background-video {
   position: fixed;
   top: 0;
@@ -18,6 +64,7 @@ body, html {
   z-index: -2;
 }
 
+/* ===== FILM GRAIN OVERLAY ===== */
 #grain-overlay {
   position: fixed;
   top: 0;
@@ -25,43 +72,22 @@ body, html {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
-  z-index: -1;
   pointer-events: none;
+  z-index: -1;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 100;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
-header h1 a, .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.nav-links a {
-  margin-left: 1.5rem;
-}
-
+/* ===== MAIN SECTIONS ===== */
 .section {
   padding: 6rem 2rem;
   text-align: center;
+  background: transparent;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .title {
@@ -78,24 +104,63 @@ header h1 a, .nav-links a {
   color: #ccc;
 }
 
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+}
+
+/* ===== HIRE ME SECTION ===== */
 .hire-me {
-  padding: 2rem 2rem 4rem;
+  padding: 6rem 2rem;
   text-align: center;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hire-me-card {
+  max-width: 600px;
+  margin: auto;
+  background: none;
+  padding: 2rem;
+}
+
+.hire-me-card h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.hire-me-card p {
+  margin-bottom: 2rem;
+  color: #ccc;
+  font-style: normal;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 600px;
-  margin: auto;
 }
 
 input, textarea, button {
   padding: 0.8rem;
+  border: none;
   border-radius: 6px;
   font-size: 1rem;
-  border: none;
 }
 
 button {
@@ -107,6 +172,7 @@ button {
 
 .social-links {
   margin-top: 2rem;
+  text-align: center;
 }
 
 .social-links a {
@@ -116,7 +182,54 @@ button {
   font-weight: bold;
 }
 
-/* Carousel */
+/* ===== REEL OVERLAYS ===== */
+.reel-container {
+  position: relative;
+  overflow: hidden;
+  height: 70vh;
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel-container video {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.reel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.reel-container:hover .reel-overlay {
+  opacity: 1;
+}
+
+.reel-overlay span {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* ===== CAROUSEL ===== */
 .carousel-container {
   overflow-x: auto;
   overflow-y: hidden;
@@ -124,10 +237,11 @@ button {
   display: flex;
   justify-content: center;
   width: 100vw;
-  padding: 1rem 0;
+  padding: 2rem 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  scroll-padding: 0 2rem;
 }
 
 .carousel-track {
@@ -138,7 +252,7 @@ button {
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
-  height: 70vh; /* Keeps height consistent across images/videos */
+  height: 70vh;
   max-height: 600px;
   display: flex;
   align-items: center;
@@ -154,7 +268,7 @@ button {
   border-radius: 10px;
 }
 
-/* Scroll hint */
+/* ===== SCROLL HINT ===== */
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -168,14 +282,11 @@ button {
   opacity: 1;
   transition: opacity 0.5s ease;
   z-index: 10;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .scrolled .scroll-hint {
   opacity: 0;
   pointer-events: none;
-}
-@media screen and (max-width: 600px) {
-  .carousel-item {
-    height: 60vh;
-  }
 }
