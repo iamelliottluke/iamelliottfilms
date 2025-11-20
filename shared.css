@@ -138,17 +138,19 @@ button {
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
-  width: 90vw;
-  max-width: 600px;
-  aspect-ratio: 3 / 4;
-  position: relative;
+  height: 70vh; /* Keeps height consistent across images/videos */
+  max-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-item img,
 .carousel-item video {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: 10px;
 }
 
