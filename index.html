@@ -7,7 +7,17 @@
   <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
+  <div class="scroll-hint">Scroll to the next frame</div>
 <body>
+  <script>
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  });
+</script>
 
 <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
   <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
