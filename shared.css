@@ -78,7 +78,7 @@ header h1 a {
 
 /* ===== MAIN SECTIONS ===== */
 .section {
-  padding: 6rem 2rem;
+  padding: 12rem 2rem 6rem;
   text-align: center;
   background: transparent;
   scroll-snap-align: start;
@@ -106,7 +106,7 @@ header h1 a {
 
 @media screen and (max-width: 768px) {
   .section {
-    padding: 3rem 1rem;
+    padding: 10rem 1rem 4rem;
   }
   .title {
     font-size: 2rem;
@@ -118,17 +118,17 @@ header h1 a {
 
 /* ===== HIRE ME SECTION ===== */
 .hire-me {
-  padding: 6rem 2rem;
+  padding: 0 2rem 6rem;
   text-align: center;
   background: transparent;
   position: relative;
   z-index: 1;
   scroll-snap-align: start;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 .hire-me-card {
@@ -200,35 +200,6 @@ button {
   transition: transform 0.3s ease;
 }
 
-.reel-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-  color: white;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.reel-container:hover .reel-overlay {
-  opacity: 1;
-}
-
-.reel-overlay span {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  pointer-events: none;
-}
-
 /* ===== CAROUSEL ===== */
 .carousel-container {
   overflow-x: auto;
@@ -270,7 +241,7 @@ button {
 
 /* ===== SCROLL HINT ===== */
 .scroll-hint {
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
@@ -284,9 +255,9 @@ button {
   z-index: 10;
   text-align: center;
   white-space: nowrap;
+  pointer-events: none;
 }
 
-.scrolled .scroll-hint {
+body.scrolled .scroll-hint {
   opacity: 0;
-  pointer-events: none;
 }
