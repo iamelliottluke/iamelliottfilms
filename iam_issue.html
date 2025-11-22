@@ -27,16 +27,16 @@
     </nav>
   </header>
 
+   <section class="page">
+    <div class="scroll-indicator">Scroll to the next frame ↓</div>
+
   <section class="section">
     <h2 class="title">IAM_ISSUE</h2>
     <p class="description">A photo zine series that puts regular people in the spotlight. No pro models, no big production... just real people. An evolving archive.</p>
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="joah1.jpg" /></div>
-        <div class="carousel-item"><img src="joah2.jpg" /></div>
-        <div class="carousel-item"><img src="joah3.jpg" /></div>
-        <div class="carousel-item"><video src="joah4.mp4" autoplay muted loop playsinline></video></div>
-      </div>
+     <div class="carousel">
+      <img src="joah1.jpg" />
+      <img src="joah2.jpg" />
+      <img src="joah3.jpg" />
     </div>
     <div class="social-links">
       <a href="https://elliottfilms.gumroad.com/l/iamissue" target="_blank">BUY DIGITAL ZINE</a>
@@ -46,14 +46,19 @@
   <section class="section">
     <h2 class="title">PHOTOS</h2>
     <p class="description">Hit and Run – Captured on 35mm.</p>
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <div class="carousel-item"><img src="img1.jpeg" /></div>
-        <div class="carousel-item"><img src="img2.jpeg" /></div>
-        <div class="carousel-item"><img src="img3.jpeg" /></div>
-        <div class="carousel-item"><img src="img4.jpeg" /></div>
-      </div>
+ <div class="carousel">
+      <img src="img1.jpeg" />
+      <img src="img2.jpeg" />
+      <img src="img3.jpeg" />
+      <img src="img4.jpeg" />
+    </div>
     </div>
   </section>
+      <script>
+    const indicator = document.querySelector('.scroll-indicator');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) indicator.style.opacity = '0';
+    });
+  </script>
 </body>
 </html>
