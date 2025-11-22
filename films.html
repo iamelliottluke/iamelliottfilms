@@ -3,35 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FILMS – iamelliottfilms</title>
-  <link rel="stylesheet" href="shared.css"/>
-  <link rel="icon" href="favicon.png"/>
+  <title>FILMS – IAMELLIOTTFILMS</title>
+  <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
+  <div class="scroll-hint">Scroll to the next frame</div>
+
+  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
+    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+  </video>
+
+  <div id="grain-overlay"></div>
+
   <header>
-    <div class="header-left"><a href="index.html">IAMELLIOTTFILMS</a></div>
-    <div class="header-right">
+    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
+    <nav class="nav-links">
       <a href="films.html">FILMS</a>
       <a href="iam_issue.html">PHOTOS</a>
-    </div>
+    </nav>
   </header>
 
-  <section class="page">
-    <div class="scroll-indicator">Scroll to the next frame ↓</div>
+  <div style="height: 100vh;"></div>
 
-    <h1>FILMS</h1>
-    <div class="carousel">
-      <video src="reel1.mp4" controls></video>
-      <video src="reel2.mp4" controls></video>
-      <video src="reel3.mp4" controls></video>
-      <video src="reel4.mp4" controls></video>
+  <section class="section">
+    <h2 class="title">FILM PREVIEWS</h2>
+    <p class="description">Full films available via YouTube below.</p>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="carousel-item"><video src="reel2.mp4" autoplay muted loop playsinline></video></div>
+        <div class="carousel-item"><video src="reel4.mp4" autoplay muted loop playsinline></video></div>
+        <div class="carousel-item"><video src="reel3.mp4" autoplay muted loop playsinline></video></div>
+        <div class="carousel-item"><video src="reel1.mp4" autoplay muted loop playsinline></video></div>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="https://youtube.com/@iamelliottfilms" target="_blank">WATCH FULL VIDEOS ON YOUTUBE</a>
     </div>
   </section>
 
   <script>
-    const indicator = document.querySelector('.scroll-indicator');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) indicator.style.opacity = '0';
+    window.addEventListener('scroll', function () {
+      document.body.classList.toggle('scrolled', window.scrollY > 10);
     });
   </script>
 </body>

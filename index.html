@@ -2,42 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iamelliottfilms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
-  <link rel="icon" href="favicon.png" />
 </head>
 <body>
-  <video autoplay muted loop playsinline id="bg-video">
+  <div class="scroll-hint">Scroll to the next frame</div>
+
+  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
     <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
   </video>
 
+  <div id="grain-overlay"></div>
+
   <header>
-    <div class="header-left">IAMELLIOTTFILMS</div>
-    <div class="header-right">
+    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
+    <nav class="nav-links">
       <a href="films.html">FILMS</a>
       <a href="iam_issue.html">PHOTOS</a>
-    </div>
+    </nav>
   </header>
 
-  <section class="page">
-    <div class="scroll-indicator">Scroll to the next frame ↓</div>
-    <div class="content-center">
-      <h1>ELLIOTT LUKE</h1>
-      <p>I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
-      
+  <div style="height: 100vh;"></div>
+
+  <section class="section">
+    <h2 class="title">ELLIOTT LUKE</h2>
+    <p class="description">I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
+  </section>
+
+  <section class="hire-me">
+    <div class="hire-me-card">
       <h2>CONTACT ME</h2>
       <p>Look. Mood. Story. Let’s make it happen.</p>
-      
-      <form action="https://formspree.io/f/xnqkgeqa" method="POST">
+      <form action="https://formspree.io/f/xqapyzld" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
         <button type="submit">Send</button>
       </form>
-
-      <div class="socials">
-        <a href="https://instagram.com/elliottluke.jpg" target="_blank">Instagram</a>
+      <div class="social-links">
+        <a href="https://instagram.com/iamelliottfilms" target="_blank">Instagram</a>
         <a href="https://youtube.com/@iamelliottfilms" target="_blank">YouTube</a>
         <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TikTok</a>
       </div>
@@ -45,13 +49,8 @@
   </section>
 
   <script>
-    // Fade out scroll indicator on scroll
-    const indicator = document.querySelector('.scroll-indicator');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        indicator.style.opacity = '0';
-        indicator.style.pointerEvents = 'none';
-      }
+    window.addEventListener('scroll', function () {
+      document.body.classList.toggle('scrolled', window.scrollY > 10);
     });
   </script>
 </body>
