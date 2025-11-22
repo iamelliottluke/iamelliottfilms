@@ -1,124 +1,115 @@
-/* shared.css */
-body, html {
+/* Global styles */
+body {
   margin: 0;
-  padding: 0;
-  font-family: 'Helvetica Neue', sans-serif;
-  background: transparent;
+  font-family: Helvetica, sans-serif;
   color: white;
+  background: black;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
-
-#background-video {
+#bg-video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -2;
-}
-
-#grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
   z-index: -1;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 header {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
   z-index: 100;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-}
-
-header h1 a, .nav-links a {
+.header-left, .header-right a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
+  padding: 0 15px;
 }
-
-.nav-links a {
-  margin-left: 1.5rem;
-}
-
-.section {
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
-.description {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: #ccc;
-}
-
-.hire-me {
-  padding: 10rem 2rem 4rem;
-  text-align: center;
-}
-
-form {
+.page {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
+  padding-top: 150px;
+  text-align: center;
+}
+.scroll-indicator {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.content-center {
   max-width: 600px;
   margin: auto;
 }
-
-input, textarea, button {
-  padding: 0.8rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  border: none;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
 }
-
+input, textarea, button {
+  padding: 12px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1em;
+}
 button {
   background: white;
   color: black;
   font-weight: bold;
   cursor: pointer;
 }
-
-.social-links {
-  margin-top: 2rem;
+.socials {
+  margin-top: 15px;
 }
-
-.social-links a {
-  margin: 0 0.5rem;
-  text-decoration: none;
+.socials a {
+  margin: 0 10px;
   color: white;
   font-weight: bold;
+  text-decoration: none;
 }
-
-.reel-container video {
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+}
+.carousel img,
+.carousel video {
+  height: 80vh;
+  scroll-snap-align: center;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.zine-button {
+  margin-top: 20px;
+}
+.zine-button a {
+  padding: 10px 20px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .carousel img,
+  .carousel video {
+    height: 60vh;
+  }
+  .page {
+    padding-top: 100px;
+  }
 }
