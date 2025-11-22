@@ -138,7 +138,7 @@ button {
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
-  height: auto;
+  height: 50vh;
   width: auto;
 }
 
