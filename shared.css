@@ -165,6 +165,10 @@ button {
   opacity: 1;
   transition: opacity 0.5s ease;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .scrolled .scroll-hint {
