@@ -13,7 +13,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* Background video (restored behaviour + mobile fixes) */
+/* === BACKGROUND VIDEO (RESTORED + MOBILE FIX) === */
 #background-video {
   position: fixed;
   top: 0;
@@ -27,6 +27,18 @@ html, body {
   z-index: -2;
 }
 
+/* iPhone / small mobile correction */
+@media (max-width: 600px) {
+  #background-video {
+    width: 100vw;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* === GRAIN OVERLAY === */
 #grain-overlay {
   position: fixed;
   inset: 0;
@@ -37,7 +49,7 @@ html, body {
   z-index: -1;
 }
 
-/* === HEADER === */
+/* === HEADER (KEEPING YOUR WORKING VERSION) === */
 header {
   position: fixed;
   top: 0;
@@ -58,7 +70,8 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 a, .nav-links a {
+header h1 a,
+.nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -70,14 +83,15 @@ header h1 a, .nav-links a {
   font-size: 0.95rem;
 }
 
-/* === LAYOUT SECTIONS === */
-.section, .centered-section, .hire-me {
+/* === GLOBAL PAGE LAYOUT === */
+.section,
+.centered-section,
+.hire-me {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 6rem 1.5rem;
   text-align: center;
-  position: relative;
 }
 
 .title {
@@ -106,7 +120,9 @@ form {
   gap: 1rem;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
   padding: 0.9rem;
   border-radius: 6px;
   border: none;
@@ -120,7 +136,7 @@ button {
   cursor: pointer;
 }
 
-/* === CAROUSEL === */
+/* === CAROUSEL (UNIFORM ACROSS ALL PAGES) === */
 .carousel-container {
   width: 100%;
   overflow-x: auto;
@@ -140,9 +156,16 @@ button {
 
 .carousel-item {
   flex: 0 0 auto;
-  width: 80vw;
-  max-width: 480px;
+  width: 75vw;
+  max-width: 420px;
   scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    width: 40vw;
+    max-width: 480px;
+  }
 }
 
 .carousel-item img,
@@ -153,12 +176,14 @@ button {
   object-fit: cover;
 }
 
-/* === SCROLL HINT === */
-.scroll-hhint, .scroll-hint {
-  position: absolute;
+/* === SCROLL HINT (FIXED + PERFECTLY CENTERED) === */
+.scroll-hint {
+  position: fixed;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  width: max-content;
+  text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -173,7 +198,15 @@ button {
   pointer-events: none;
 }
 
-/* === MOBILE FIXES === */
+/* === SOCIAL-LINK STYLING (FIX BLUE UNDERLINE) === */
+.social-links a {
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* === MOBILE TYPOGRAPHY + SPACING === */
 @media (max-width: 768px) {
   header {
     padding: 0.7rem 1rem;
@@ -200,14 +233,4 @@ button {
     width: 85vw;
     max-width: none;
   }
-  /* Scroll hint fix (mobile + desktop centered) */
-.scroll-hint {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  text-align: center;
-}
-
 }
