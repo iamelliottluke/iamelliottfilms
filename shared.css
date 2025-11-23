@@ -1,3 +1,4 @@
+/* shared.css */
 body, html {
   margin: 0;
   padding: 0;
@@ -6,10 +7,6 @@ body, html {
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
-}
-body {
-  overscroll-behavior-y: none;
-  -webkit-overflow-scrolling: touch;
 }
 
 #background-video {
@@ -33,22 +30,6 @@ body {
   pointer-events: none;
 }
 
-.video-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -2;
-}
-
-#background-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 header {
   position: fixed;
   top: 0;
@@ -64,12 +45,8 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 60vw;
 }
 
 header h1 a, .nav-links a {
@@ -80,15 +57,12 @@ header h1 a, .nav-links a {
 }
 
 .nav-links a {
-  margin-left: 1rem;
-  font-size: 0.9rem;
+  margin-left: 1.5rem;
 }
 
 .section {
-  padding: 5rem 1rem;
+  padding: 6rem 2rem;
   text-align: center;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .title {
@@ -114,10 +88,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
+  max-width: 600px;
+  margin: auto;
 }
 
 input, textarea, button {
@@ -145,184 +117,8 @@ button {
   font-weight: bold;
 }
 
-/* Carousel */
-.carousel-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 1rem;
-  padding: 0 1rem;
-  width: 100vw;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  height: 50vh;
-  width: auto;
-}
-
-.carousel-item img,
-.carousel-item video {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  border-radius: 10px;
-  object-fit: contain;
-}
-
-/* Scroll hint */
-.scroll-hint {
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
+.reel-container video {
   width: 100%;
-  text-align: center;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.scrolled .scroll-hint {
-  opacity: 0;
-  pointer-events: none;
-}
-@media screen and (max-width: 480px) {
-  .carousel-item {
-    height: 40vh; /* Reduce carousel height slightly */
-  }
-
-  .section,
-  .hire-me {
-    padding: 3rem 1rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-
-  .reel-container video {
-    width: 100%;
-    height: auto;
-  }
-
-  .scroll-hint {
-    font-size: 0.8rem;
-    bottom: 1.5rem;
-  }
-}
-@media screen and (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  header h1 {
-    font-size: 1rem;
-  }
-
-  .nav-links a {
-    margin-left: 0;
-    font-size: 0.9rem;
-    
-}
-@media screen and (max-width: 600px) {
-  .section {
-    padding: 4rem 1rem;
-  }
-
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-
-  .hire-me form {
-    width: 100%;
-  }
-
-  .hire-me input,
-  .hire-me textarea,
-  .hire-me button {
-    font-size: 0.9rem;
-  }
-  /* Ensure video wrapper fits all screens */
-.video-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -2;
-}
-
-#background-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Fix scroll hint on mobile */
-.scroll-hint {
-  font-size: 0.8rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-/* Make header flex properly on small screens */
-header {
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-/* Responsive title and form layout */
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .description {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-
-  form {
-    padding: 0 1rem;
-    width: 100%;
-  }
-
-  input, textarea, button {
-    font-size: 0.9rem;
-  }
-
-  .social-links {
-    font-size: 0.85rem;
-  }
+  height: auto;
+  border-radius: 0.5rem;
 }
