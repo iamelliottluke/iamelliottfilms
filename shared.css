@@ -1,24 +1,13 @@
-/* === GLOBAL RESET === */
-* {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
   font-family: 'Helvetica Neue', sans-serif;
+  background: transparent;
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: transparent !important;
 }
 
-/* GLOBAL VARS */
-:root {
-  --carousel-height: 65vh;
-}
-
-/* === BACKGROUND VIDEO === */
 #background-video {
   position: fixed;
   top: 0;
@@ -26,120 +15,87 @@ html, body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  object-position: center;
-  z-index: -3;
-  background: black !important;
-}
-
-/* iPhone fix */
-@supports (-webkit-touch-callout: none) {
-  #background-video {
-    width: 100vw;
-    height: 100vh;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    position: fixed;
-  }
-}
-
-/* Hide iOS controls */
-video::-webkit-media-controls {
-  display: none !important;
-}
-
-/* === GRAIN OVERLAY === */
-#grain-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.15);
-  pointer-events: none;
   z-index: -2;
 }
 
-/* === HEADER === */
+#grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  pointer-events: none;
+}
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.55);
-  z-index: 1000;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
 }
 
-/* Bigger responsive header title */
-header h1 a {
-  font-size: clamp(1.1rem, 2vw, 1.7rem);
-  text-decoration: none;
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+header h1 a, .nav-links a {
   color: white;
-  font-weight: 900;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* Bigger responsive nav links */
 .nav-links a {
   margin-left: 1.5rem;
-  font-size: clamp(1rem, 1.6vw, 1.4rem);
-  text-decoration: none;
-  color: white;
-  font-weight: 700;
-  white-space: nowrap;
-  cursor: pointer;
-  z-index: 2000;
-  position: relative;
 }
 
-/* === SECTIONS === */
-.section,
-.hire-me {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 6rem 1.5rem;
+.section {
+  padding: 0;
   text-align: center;
 }
 
 .title {
-  font-size: 2.6rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
 
 .description {
   max-width: 700px;
-  margin: 0.5rem auto 2rem;
+  margin: 0 auto;
   font-size: 1.1rem;
   color: #ccc;
 }
 
-/* === HIRE ME === */
-.hire-me-card {
-  max-width: 650px;
-  margin: auto;
-  padding: 2rem;
+.hire-me {
+  padding: 0;
+  text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 600px;
+  margin: auto;
 }
 
-input,
-textarea,
-button {
-  padding: 0.9rem;
+input, textarea, button {
+  padding: 0;
   border-radius: 6px;
-  border: none;
   font-size: 1rem;
+  border: none;
 }
 
 button {
@@ -149,64 +105,71 @@ button {
   cursor: pointer;
 }
 
-/* === CAROUSEL CONTAINER (FULL-WIDTH) === */
+.social-links {
+  margin-top: 2rem;
+}
+
+.social-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Carousel */
 .carousel-container {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   display: flex;
-  padding: 1.5rem 0;
+  justify-content: center;
+  padding: 0;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Track */
 .carousel-track {
   display: flex;
-  gap: 1.25rem;
-  padding: 0 1rem;
+  gap: 4px;
+  padding: 0;
+  width: 100vw;
 }
 
-/* === CAROUSEL ITEM (CONSISTENT HEIGHT) === */
 .carousel-item {
+  margin: 0 !important;
   flex: 0 0 auto;
-  width: 90vw;
-  max-width: 1000px;
-  height: var(--carousel-height);
-  background: transparent;
   scroll-snap-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 50vh;
+  width: auto;
 }
 
-/* === MEDIA INSIDE CAROUSEL — UNIVERSAL FIX (NO BLACK BARS) === */
 .carousel-item img,
 .carousel-item video {
   height: 100%;
   width: auto;
   max-width: 100%;
+  border-radius: 10px;
   object-fit: contain;
-  background: transparent;
 }
 
-/* === SCROLL HINT === */
+/* Scroll hint */
 .scroll-hint {
-  position: fixed;
+  position: absolute;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  width: max-content;
-  text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: white;
-  transition: opacity 0.4s ease;
-  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .scrolled .scroll-hint {
@@ -214,29 +177,17 @@ button {
   pointer-events: none;
 }
 
-/* SOCIAL LINKS */
-.social-links a {
-  color: white !important;
-  text-decoration: none !important;
-  font-weight: bold;
-  text-transform: uppercase;
+
+/* Contact form breathing + alignment */
+.section { padding-top: 3rem; padding-bottom: 3rem; }
+.hire-me { padding-top: 2rem; padding-bottom: 4rem; }
+.hire-me-card { margin-top: 1rem; }
+
+/* Header mobile centering */
+@media (max-width: 480px) {
+  header { padding: 0.7rem 0.8rem; }
+  .nav-links { display: flex; gap: 1rem; align-items: center; }
 }
 
-/* === MOBILE TUNING === */
-@media (max-width: 768px) {
-  header {
-    padding: 0.7rem 1rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-
-  .carousel-item {
-    width: 90vw;
-  }
-}
+/* Ensure header links clickable */
+header, .nav-links a { position: relative; z-index: 2000; }
