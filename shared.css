@@ -182,6 +182,10 @@ button {
 
 /* Scroll hint */
 .scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
