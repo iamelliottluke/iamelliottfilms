@@ -44,10 +44,9 @@ html, body {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.15)
   pointer-events: none;
-  z-index: -1;
-}
+  z-index: -2 }
 
 /* === HEADER (KEEPING YOUR WORKING VERSION) === */
 header {
@@ -233,4 +232,30 @@ button {
     width: 85vw;
     max-width: none;
   }
+  #background-video {
+    z-index: -3 !important;
+}
+  body, html {
+    background: transparent !important;
+}
+@supports (-webkit-touch-callout: none) {
+    #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        background: transparent !important;
+    }
+}
+video::-webkit-media-controls {
+    display:none !important;
+}
+
+video {
+    background-color: transparent !important;
+}
+
+
 }
