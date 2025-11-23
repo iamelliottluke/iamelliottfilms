@@ -6,19 +6,21 @@
   <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
+
 <body>
-  <!-- Scroll hint -->
+
+  <!-- SCROLL HINT OVER VIDEO -->
   <div class="scroll-hint">Scroll to the next frame</div>
 
-  <!-- Background video -->
+  <!-- BACKGROUND VIDEO -->
   <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+    <source src="SITE_BACKGROUND.mp4" type="video/mp4"/>
   </video>
 
-  <!-- Grain / dark overlay -->
+  <!-- GRAIN OVERLAY -->
   <div id="grain-overlay"></div>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
     <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
     <nav class="nav-links">
@@ -27,40 +29,33 @@
     </nav>
   </header>
 
-  <main>
-    <!-- HERO FRAME -->
-    <section class="hero">
-      <h2 class="title">ELLIOTT LUKE</h2>
-      <p class="description">I’m a filmmaker and photographer from Adelaide...</p>
-    </section>
+  <!-- EVERYTHING TOGETHER IN ONE BLOCK -->
+  <section class="content-block">
+    <h2 class="title">ELLIOTT LUKE</h2>
+    <p class="description">I’m a filmmaker and photographer from Adelaide...</p>
 
-    <!-- CONTACT / HIRE ME FRAME -->
-    <section class="hire-me">
-      <div class="hire-me-card">
-        <h2>CONTACT ME</h2>
-        <p>Look. Mood. Story. Let’s make it happen.</p>
+    <h2>CONTACT ME</h2>
+    <p>Look. Mood. Story. Let’s make it happen.</p>
 
-        <form action="https://formspree.io/f/xqapyzld" method="POST">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
+    <form action="https://formspree.io/f/xqapyzld" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required/>
+      <input type="email" name="email" placeholder="Your Email" required/>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
 
-        <div class="social-links">
-          <a href="https://instagram.com/iamelliottfilms">Instagram</a>
-          <a href="https://youtube.com/@iamelliottfilms">YouTube</a>
-          <a href="https://tiktok.com/@iamelliottfilms">TikTok</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="social-links">
+      <a href="https://instagram.com/iamelliottfilms">Instagram</a>
+      <a href="https://youtube.com/@iamelliottfilms">YouTube</a>
+      <a href="https://tiktok.com/@iamelliottfilms">TikTok</a>
+    </div>
+  </section>
 
   <script>
-    // Hide scroll hint after scrolling a little
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll',()=> {
       document.body.classList.toggle('scrolled', window.scrollY > 10);
     });
   </script>
+
 </body>
 </html>
