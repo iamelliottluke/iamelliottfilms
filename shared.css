@@ -106,10 +106,12 @@ header h1 a, .nav-links a {
 }
 
 .hire-me {
-  padding: 2rem 2rem 4rem;
+  padding: 2rem 1rem 4rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 form {
   display: flex;
   flex-direction: column;
@@ -118,6 +120,39 @@ form {
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
+}
+@media screen and (max-width: 600px) {
+  form {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .section {
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
 }
 
 input, textarea, button {
