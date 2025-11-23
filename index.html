@@ -6,65 +6,26 @@
   <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
-
 <body>
-  <!-- Scroll Hint -->
-  <div class="scroll-hint">Scroll to the next frame</div>
-
-  <!-- Background Video -->
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
-  </video>
-
-  <!-- Grain Overlay -->
-  <div id="grain-overlay"></div>
-
-  <!-- Header -->
-  <header>
-    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
-    <nav class="nav-links">
-      <a href="films.html">FILMS</a>
-      <a href="iam_issue.html">PHOTOS</a>
-    </nav>
-  </header>
-
-  <!-- Spacer (hero section uses background video height) -->
-  <div style="height: 100vh;"></div>
-
-  <!-- About Section -->
-  <section class="section">
-    <h2 class="title">ELLIOTT LUKE</h2>
-    <p class="description">
-      I’m a filmmaker and photographer from Adelaide, working across film and digital.
-      I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge.
-    </p>
-  </section>
-
-  <!-- Hire Me Section -->
-  <section class="hire-me">
-    <div class="hire-me-card">
-      <h2>CONTACT ME</h2>
-      <p>Look. Mood. Story. Let’s make it happen.</p>
-
-      <form action="https://formspree.io/f/xqapyzld" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-
-      <div class="social-links">
-        <a href="https://instagram.com/iamelliottfilms">Instagram</a>
-        <a href="https://youtube.com/@iamelliottfilms">YouTube</a>
-        <a href="https://tiktok.com/@iamelliottfilms">TikTok</a>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    window.addEventListener("scroll", () => {
-      document.body.classList.toggle("scrolled", window.scrollY > 10);
-    });
-  </script>
-</body>
-</html>
+<div class="scroll-hint">Scroll to the next frame</div>
+<video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
+<source src="SITE_BACKGROUND.mp4" type="video/mp4"/>
+</video>
+<div id="grain-overlay"></div>
+<header><h1><a href="index.html">IAMELLIOTTFILMS</a></h1><nav class="nav-links">
+<a href="films.html">FILMS</a><a href="iam_issue.html">PHOTOS</a></nav></header>
+<div style="height:100vh;"></div>
+<section class="section"><h2 class="title">ELLIOTT LUKE</h2>
+<p class="description">I’m a filmmaker and photographer from Adelaide...</p></section>
+<section class="hire-me"><div class="hire-me-card"><h2>CONTACT ME</h2>
+<p>Look. Mood. Story. Let’s make it happen.</p>
+<form action="https://formspree.io/f/xqapyzld" method="POST">
+<input type="text" name="name" placeholder="Your Name" required/>
+<input type="email" name="email" placeholder="Your Email" required/>
+<textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+<button type="submit">Send</button></form>
+<div class="social-links"><a href="https://instagram.com/iamelliottfilms">Instagram</a>
+<a href="https://youtube.com/@iamelliottfilms">YouTube</a>
+<a href="https://tiktok.com/@iamelliottfilms">TikTok</a></div></div></section>
+<script>window.addEventListener('scroll',()=>{document.body.classList.toggle('scrolled',window.scrollY>10);});</script>
+</body></html>

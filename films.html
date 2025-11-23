@@ -1,75 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>FILMS – IAMELLIOTTFILMS</title>
-  <link rel="stylesheet" href="shared.css" />
-</head>
-
+<html lang='en'>
+<head><meta charset='UTF-8'/><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'/>
+<title>FILMS – IAMELLIOTTFILMS</title><link rel='stylesheet' href='shared.css'/></head>
 <body>
-  <!-- Scroll Hint -->
-  <div class="scroll-hint">Scroll to the next frame</div>
-
-  <!-- Background Video -->
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
-  </video>
-
-  <!-- Grain Overlay -->
-  <div id="grain-overlay"></div>
-
-  <!-- Header -->
-  <header>
-    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
-    <nav class="nav-links">
-      <a href="films.html">FILMS</a>
-      <a href="iam_issue.html">PHOTOS</a>
-    </nav>
-  </header>
-
-  <!-- Spacer (full hero height video) -->
-  <div style="height: 100vh;"></div>
-
-  <!-- Films Section -->
-  <section class="section">
-    <h2 class="title">FILM PREVIEWS</h2>
-    <p class="description">Full films available via YouTube below.</p>
-
-    <!-- Full Bleed Video Carousel -->
-    <div class="carousel-container">
-      <div class="carousel-track">
-
-        <div class="carousel-item">
-          <video src="reel2.mp4" autoplay muted loop playsinline></video>
-        </div>
-
-        <div class="carousel-item">
-          <video src="reel4.mp4" autoplay muted loop playsinline></video>
-        </div>
-
-        <div class="carousel-item">
-          <video src="reel3.mp4" autoplay muted loop playsinline></video>
-        </div>
-
-        <div class="carousel-item">
-          <video src="reel1.mp4" autoplay muted loop playsinline></video>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- YouTube Link -->
-    <div class="social-links">
-      <a href="https://youtube.com/@iamelliottfilms" target="_blank">WATCH FULL VIDEOS ON YOUTUBE</a>
-    </div>
-
-  </section>
-
-  <script>
-    window.addEventListener("scroll", () => {
-      document.body.classList.toggle("scrolled", window.scrollY > 10);
-    });
-  </script>
-</body>
-</html>
+<div class='scroll-hint'>Scroll to the next frame</div>
+<video id='background-video' autoplay muted loop playsinline preload='auto' poster='fallback.jpg'>
+<source src='SITE_BACKGROUND.mp4' type='video/mp4'/></video>
+<div id='grain-overlay'></div>
+<header><h1><a href='index.html'>IAMELLIOTTFILMS</a></h1><nav class='nav-links'>
+<a href='films.html'>FILMS</a><a href='iam_issue.html'>PHOTOS</a></nav></header>
+<div style='height:100vh;'></div>
+<section class='section'><h2 class='title'>FILM PREVIEWS</h2>
+<p class='description'>Full films available via YouTube below.</p>
+<div class='carousel-container'><div class='carousel-track'>
+<div class='carousel-item'><video src='reel2.mp4' autoplay muted loop playsinline></video></div>
+<div class='carousel-item'><video src='reel4.mp4' autoplay muted loop playsinline></video></div>
+<div class='carousel-item'><video src='reel3.mp4' autoplay muted loop playsinline></video></div>
+<div class='carousel-item'><video src='reel1.mp4' autoplay muted loop playsinline></video></div>
+</div></div>
+<div class='social-links'><a href='https://youtube.com/@iamelliottfilms' target='_blank'>WATCH FULL VIDEOS ON YOUTUBE</a></div>
+</section>
+<script>window.addEventListener('scroll',()=>{document.body.classList.toggle('scrolled',window.scrollY>10);});</script>
+</body></html>
