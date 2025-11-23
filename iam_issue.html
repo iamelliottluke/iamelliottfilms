@@ -8,15 +8,12 @@
 </head>
 <body>
   <div class="scroll-hint">Scroll to the next frame</div>
-
 <div class="video-wrapper">
   <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="zine_teaser.mp4" type="video/mp4" />
+    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
   </video>
 </div>
-
   <div id="grain-overlay"></div>
-
   <header>
     <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
     <nav class="nav-links">
@@ -24,9 +21,7 @@
       <a href="iam_issue.html">PHOTOS</a>
     </nav>
   </header>
-
   <div style="height: 100vh;"></div>
-
   <section class="section">
     <h2 class="title">IAM_ISSUE</h2>
     <p class="description">A photo zine series that puts regular people in the spotlight. No pro models, no big production... just real people. An evolving archive.</p>
@@ -44,8 +39,6 @@
       <a href="https://elliottfilms.gumroad.com/l/iamissue" target="_blank">BUY DIGITAL ZINE</a>
     </div>
   </section>
-
-  <!-- Hit and Run Photos -->
   <section class="section centered-section">
     <h2 class="title">PHOTOS</h2>
     <p class="description">Hit and Run – Captured on 35mm.</p>
@@ -58,7 +51,6 @@
       </div>
     </div>
   </section>
-
 <script>
   window.addEventListener('scroll', function () {
     document.body.classList.toggle('scrolled', window.scrollY > 10);
