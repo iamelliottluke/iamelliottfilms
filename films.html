@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>FILMS – IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
+
 <body>
   <div class="scroll-hint">Scroll to the next frame</div>
 
@@ -28,6 +29,7 @@
   <section class="section">
     <h2 class="title">FILM PREVIEWS</h2>
     <p class="description">Full films available via YouTube below.</p>
+
     <div class="carousel-container">
       <div class="carousel-track">
         <div class="carousel-item"><video src="reel2.mp4" autoplay muted loop playsinline></video></div>
@@ -36,15 +38,16 @@
         <div class="carousel-item"><video src="reel1.mp4" autoplay muted loop playsinline></video></div>
       </div>
     </div>
+
     <div class="social-links">
       <a href="https://youtube.com/@iamelliottfilms" target="_blank">WATCH FULL VIDEOS ON YOUTUBE</a>
     </div>
   </section>
 
   <script>
-  window.addEventListener('scroll', function () {
-    document.body.classList.toggle('scrolled', window.scrollY > 10);
-  });
-</script>
+    window.addEventListener("scroll", () => {
+      document.body.classList.toggle("scrolled", window.scrollY > 10);
+    });
+  </script>
 </body>
 </html>
