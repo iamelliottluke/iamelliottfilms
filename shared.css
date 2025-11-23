@@ -198,4 +198,14 @@ button {
     width: 85vw;
     max-width: none;
   }
+  /* Scroll hint fix (mobile + desktop centered) */
+.scroll-hint {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  text-align: center;
+}
+
 }
