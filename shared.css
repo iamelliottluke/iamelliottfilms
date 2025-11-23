@@ -179,3 +179,27 @@ button {
   opacity: 0;
   pointer-events: none;
 }
+@media screen and (max-width: 480px) {
+  .carousel-item {
+    height: 40vh; /* Reduce carousel height slightly */
+  }
+
+  .section,
+  .hire-me {
+    padding: 3rem 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .reel-container video {
+    width: 100%;
+    height: auto;
+  }
+
+  .scroll-hint {
+    font-size: 0.8rem;
+    bottom: 1.5rem;
+  }
+}
