@@ -60,19 +60,18 @@ video {
   z-index: -2 !important;
 }
 
-/* === HEADER (WORKING VERSION) === */
+/* === HEADER === */
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.55);
   z-index: 100;
 }
 
@@ -81,20 +80,15 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 a,
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
 .nav-links a {
   margin-left: 1.5rem;
   font-size: 0.95rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
-/* === MAIN SECTIONS === */
+/* === SECTIONS === */
 .section,
 .centered-section,
 .hire-me {
@@ -147,7 +141,7 @@ button {
   cursor: pointer;
 }
 
-/* === CAROUSEL (UNIFORM SIZING) === */
+/* === FULL BLEED CAROUSEL === */
 .carousel-container {
   width: 100%;
   overflow-x: auto;
@@ -155,39 +149,43 @@ button {
   scroll-snap-type: x mandatory;
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   -webkit-overflow-scrolling: touch;
 }
 
 .carousel-track {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 0 1rem;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  width: 75vw;
-  max-width: 420px;
+  width: 80vw;
+  max-width: 480px;
+  height: 60vh;
+  max-height: 650px;
   scroll-snap-align: center;
-}
-
-@media (min-width: 768px) {
-  .carousel-item {
-    width: 40vw;
-    max-width: 480px;
-  }
 }
 
 .carousel-item img,
 .carousel-item video {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  border-radius: 0;
 }
 
-/* === SCROLL HINT (CENTERED ON ALL DEVICES) === */
+/* Desktop refinement */
+@media (min-width: 768px) {
+  .carousel-item {
+    width: 42vw;
+    max-width: 550px;
+  }
+}
+
+/* === SCROLL HINT === */
 .scroll-hint {
   position: fixed;
   bottom: 2rem;
@@ -209,7 +207,7 @@ button {
   pointer-events: none;
 }
 
-/* === SOCIAL LINK STYLING (FIX BLUE UNDERLINE) === */
+/* === SOCIAL LINKS === */
 .social-links a {
   color: white !important;
   text-decoration: none !important;
@@ -217,7 +215,7 @@ button {
   text-transform: uppercase;
 }
 
-/* === MOBILE RESPONSIVE FIXES === */
+/* === MOBILE === */
 @media (max-width: 768px) {
   header {
     padding: 0.7rem 1rem;
@@ -242,6 +240,5 @@ button {
 
   .carousel-item {
     width: 85vw;
-    max-width: none;
   }
 }
