@@ -128,36 +128,43 @@ button {
   font-weight: bold;
 }
 
-/* === FIXED CAROUSEL (full width & consistent height) === */
+/* === FULL-WIDTH EDGE TO EDGE CAROUSEL === */
 .carousel-container {
+  width: 100vw;               /* Full screen width */
+  margin-left: 50%;
+  transform: translateX(-50%); /* Forces true edge alignment */
   overflow-x: auto;
-  overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  display: flex;
-  padding: 1rem 0;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  padding: 0;                 
 }
 
 .carousel-track {
   display: flex;
-  gap: 1rem;
-  padding: 0 1rem;
+  scroll-behavior: smooth;
+  padding: 0;                 /* REMOVE LEFT/RIGHT PADDING */
+  gap: 0;                     /* No spacing between items unless you want it */
 }
 
+/* === ITEMS STAY UNIFORM HEIGHT BUT MEDIA FITS COMPLETELY === */
 .carousel-item {
-  flex: 0 0 100vw;      /* FULL WIDTH NOW */
-  height: 65vh;         /* CONSISTENT HEIGHT */
+  flex: 0 0 100vw;           /* Full width frame */
+  height: 65vh;              /* Or whatever you want */
+  max-height: 900px;
   scroll-snap-align: center;
-  background: black;
+  background: black;         /* Black behind “contain” images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* === VIDEO / IMG SHOW IN FULL (NO CROPPING) === */
 .carousel-item img,
 .carousel-item video {
   width: 100%;
   height: 100%;
-  object-fit: cover;    /* FIXES ASPECT RATIO */
-  border-radius: 6px;
+  object-fit: contain;        /* << THE IMPORTANT PART */
+  background: black;          /* Fill behind letterboxing */
 }
 
 /* === SCROLL HINT (UNCHANGED) === */
