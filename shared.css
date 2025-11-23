@@ -13,6 +13,12 @@ html, body {
   background: transparent !important;
 }
 
+/* Ensure main content sits above video/overlays */
+main {
+  position: relative;
+  z-index: 1;
+}
+
 /* === BACKGROUND VIDEO (RESTORED + FIXED) === */
 #background-video {
   position: fixed;
@@ -49,7 +55,7 @@ video {
   background-color: transparent !important;
 }
 
-/* === GRAIN OVERLAY === */
+/* === GRAIN / DARK OVERLAY === */
 #grain-overlay {
   position: fixed;
   inset: 0;
@@ -75,9 +81,12 @@ header {
   z-index: 100;
 }
 
-header h1 {
+/* Brand link (no ugly blue underline) */
+header h1 a {
   font-size: 1.3rem;
   text-transform: uppercase;
+  color: white;
+  text-decoration: none;
 }
 
 .nav-links a {
@@ -88,10 +97,23 @@ header h1 {
   font-weight: bold;
 }
 
-/* === SECTIONS === */
+/* === HERO FRAME === */
+.hero {
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* === GENERIC SECTIONS (if you add more later) === */
 .section,
-.centered-section,
-.hire-me {
+.centered-section {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
@@ -99,6 +121,37 @@ header h1 {
   text-align: center;
 }
 
+/* === HIRE ME FRAME === */
+.hire-me {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Slightly darker background behind the contact section
+   to make the text/forms readable on bright frames */
+.hire-me::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
+}
+
+.hire-me-card {
+  max-width: 650px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* === TYPOGRAPHY === */
 .title {
   font-size: 2.6rem;
   margin-bottom: 1rem;
@@ -112,13 +165,7 @@ header h1 {
   color: #ccc;
 }
 
-/* === HIRE ME === */
-.hire-me-card {
-  max-width: 650px;
-  margin: auto;
-  padding: 2rem;
-}
-
+/* === FORM === */
 form {
   display: flex;
   flex-direction: column;
@@ -141,7 +188,7 @@ button {
   cursor: pointer;
 }
 
-/* === FULL BLEED CAROUSEL === */
+/* === FULL BLEED CAROUSEL (for films/photos pages if you use it) === */
 .carousel-container {
   width: 100%;
   overflow-x: auto;
@@ -208,11 +255,20 @@ button {
 }
 
 /* === SOCIAL LINKS === */
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .social-links a {
   color: white !important;
   text-decoration: none !important;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 /* === MOBILE === */
@@ -221,7 +277,7 @@ button {
     padding: 0.7rem 1rem;
   }
 
-  header h1 {
+  header h1 a {
     font-size: 1rem;
   }
 
@@ -236,6 +292,11 @@ button {
 
   .description {
     font-size: 1rem;
+  }
+
+  .hero,
+  .hire-me {
+    padding: 5rem 1rem 3rem;
   }
 
   .carousel-item {
