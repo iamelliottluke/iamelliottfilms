@@ -7,13 +7,13 @@
 
 html, body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: black;
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  background: transparent !important;
 }
 
-/* === BACKGROUND VIDEO (RESTORED + MOBILE FIX) === */
+/* === BACKGROUND VIDEO (RESTORED + FIXED) === */
 #background-video {
   position: fixed;
   top: 0;
@@ -24,18 +24,29 @@ html, body {
   height: auto;
   object-fit: cover;
   object-position: center;
-  z-index: -2;
+  z-index: -3 !important;
+  background: transparent !important;
 }
 
-/* iPhone / small mobile correction */
-@media (max-width: 600px) {
+/* iPhone / iPad fix for black screen issue */
+@supports (-webkit-touch-callout: none) {
   #background-video {
     width: 100vw;
     height: 100vh;
     min-width: 100%;
     min-height: 100%;
+    background: transparent !important;
     object-fit: cover;
+    position: fixed;
   }
+}
+
+/* Remove Safari/Chrome video UI flash */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video {
+  background-color: transparent !important;
 }
 
 /* === GRAIN OVERLAY === */
@@ -44,11 +55,12 @@ html, body {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.15)
+  background: rgba(0,0,0,0.15) !important;
   pointer-events: none;
-  z-index: -2 }
+  z-index: -2 !important;
+}
 
-/* === HEADER (KEEPING YOUR WORKING VERSION) === */
+/* === HEADER (WORKING VERSION) === */
 header {
   position: fixed;
   top: 0;
@@ -82,7 +94,7 @@ header h1 a,
   font-size: 0.95rem;
 }
 
-/* === GLOBAL PAGE LAYOUT === */
+/* === MAIN SECTIONS === */
 .section,
 .centered-section,
 .hire-me {
@@ -101,7 +113,7 @@ header h1 a,
 
 .description {
   max-width: 700px;
-  margin: 0.5rem auto 2rem auto;
+  margin: 0.5rem auto 2rem;
   font-size: 1.1rem;
   color: #ccc;
 }
@@ -135,7 +147,7 @@ button {
   cursor: pointer;
 }
 
-/* === CAROUSEL (UNIFORM ACROSS ALL PAGES) === */
+/* === CAROUSEL (UNIFORM SIZING) === */
 .carousel-container {
   width: 100%;
   overflow-x: auto;
@@ -175,7 +187,7 @@ button {
   object-fit: cover;
 }
 
-/* === SCROLL HINT (FIXED + PERFECTLY CENTERED) === */
+/* === SCROLL HINT (CENTERED ON ALL DEVICES) === */
 .scroll-hint {
   position: fixed;
   bottom: 2rem;
@@ -197,7 +209,7 @@ button {
   pointer-events: none;
 }
 
-/* === SOCIAL-LINK STYLING (FIX BLUE UNDERLINE) === */
+/* === SOCIAL LINK STYLING (FIX BLUE UNDERLINE) === */
 .social-links a {
   color: white !important;
   text-decoration: none !important;
@@ -205,7 +217,7 @@ button {
   text-transform: uppercase;
 }
 
-/* === MOBILE TYPOGRAPHY + SPACING === */
+/* === MOBILE RESPONSIVE FIXES === */
 @media (max-width: 768px) {
   header {
     padding: 0.7rem 1rem;
@@ -232,30 +244,4 @@ button {
     width: 85vw;
     max-width: none;
   }
-  #background-video {
-    z-index: -3 !important;
-}
-  body, html {
-    background: transparent !important;
-}
-@supports (-webkit-touch-callout: none) {
-    #background-video {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        background: transparent !important;
-    }
-}
-video::-webkit-media-controls {
-    display:none !important;
-}
-
-video {
-    background-color: transparent !important;
-}
-
-
 }
