@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>IAMELLIOTTFILMS — PHOTOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IAM_ISSUE – IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
-
 <body>
   <div class="scroll-hint">Scroll to the next frame</div>
 
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+  <video id="background-video" autoplay muted loop playsinline poster="fallback.jpg">
+    <source src="zine_teaser.mp4" type="video/mp4" />
   </video>
 
   <div id="grain-overlay"></div>
@@ -24,90 +23,44 @@
     </nav>
   </header>
 
-  <!-- Scroll spacer so first screen is just the video -->
-  <div style="height:100vh;"></div>
+  <div style="height: 100vh;"></div>
 
-  <!-- PHOTO PREVIEWS -->
   <section class="section">
-    <h2 class="title">PHOTO PREVIEWS</h2>
-    <p class="description">Selected stills and portrait work.</p>
-
+    <h2 class="title">IAM_ISSUE</h2>
+    <p class="description">A photo zine series that puts regular people in the spotlight. No pro models, no big production... just real people. An evolving archive.</p>
     <div class="carousel-container">
       <div class="carousel-track">
-
-        <div class="carousel-item">
-          <img src="img1.jpeg" alt="Photo 1" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="img2.jpeg" alt="Photo 2" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="img3.jpeg" alt="Photo 3" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="img4.jpeg" alt="Photo 4" />
-        </div>
-
+        <div class="carousel-item"><img src="joah1.jpg" alt="Joah 1" /></div>
+        <div class="carousel-item"><img src="joah2.jpg" alt="Joah 2" /></div>
+        <div class="carousel-item"><img src="joah3.jpg" alt="Joah 3" /></div>
+        <div class="carousel-item"><img src="joah4.jpg" alt="Joah 3" /></div>
+        <div class="carousel-item"><img src="joah5.jpg" alt="Joah 3" /></div>
+        <div class="carousel-item"><img src="joah6.jpg" alt="Joah 3" /></div>
       </div>
     </div>
-
     <div class="social-links">
-      <a href="https://instagram.com/iamelliottfilms" target="_blank">
-        SEE MORE ON INSTAGRAM
-      </a>
+      <a href="https://elliottfilms.gumroad.com/l/iamissue" target="_blank">BUY DIGITAL ZINE</a>
     </div>
   </section>
 
-  <!-- ZINE PAGES: IAM_ISSUE -->
-  <section class="section">
-    <h2 class="title">IAM_ISSUE — ZINE PAGES</h2>
-    <p class="description">Preview pages from the IAM_ISSUE zine.</p>
-
+  <!-- Hit and Run Photos -->
+  <section class="section centered-section">
+    <h2 class="title">PHOTOS</h2>
+    <p class="description">Hit and Run – Captured on 35mm.</p>
     <div class="carousel-container">
       <div class="carousel-track">
-
-        <div class="carousel-item">
-          <img src="joah1.jpg" alt="Zine page 1" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="joah2.jpg" alt="Zine page 2" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="joah3.jpg" alt="Zine page 3" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="joah4.jpg" alt="Zine page 4" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="joah5.jpg" alt="Zine page 5" />
-        </div>
-
-        <div class="carousel-item">
-          <img src="joah6.jpg" alt="Zine page 6" />
-        </div>
-
+        <div class="carousel-item"><img src="img1.jpeg" alt="Photo 1" loading="lazy" /></div>
+        <div class="carousel-item"><img src="img2.jpeg" alt="Photo 2" loading="lazy" /></div>
+        <div class="carousel-item"><img src="img3.jpeg" alt="Photo 3" loading="lazy" /></div>
+        <div class="carousel-item"><img src="img4.jpeg" alt="Photo 4" loading="lazy" /></div>
       </div>
-    </div>
-
-    <!-- You can swap this link for Gumroad / shop when you're ready -->
-    <div class="social-links">
-      <a href="https://instagram.com/iamelliottfilms" target="_blank">
-        MORE ABOUT IAM_ISSUE
-      </a>
     </div>
   </section>
 
-  <script>
-    window.addEventListener('scroll', () => {
-      document.body.classList.toggle('scrolled', window.scrollY > 10);
-    });
-  </script>
+<script>
+  window.addEventListener('scroll', function () {
+    document.body.classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
 </body>
 </html>
