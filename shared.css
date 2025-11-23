@@ -13,10 +13,12 @@ html, body {
   background: transparent !important;
 }
 
-/* =================================================================== */
-/* ============ BACKGROUND VIDEO (FIXED + NO CLICK BLOCKING) ========= */
-/* =================================================================== */
+/* GLOBAL VARS */
+:root {
+  --carousel-height: 65vh;
+}
 
+/* === BACKGROUND VIDEO === */
 #background-video {
   position: fixed;
   top: 0;
@@ -25,12 +27,11 @@ html, body {
   height: 100vh;
   object-fit: cover;
   object-position: center;
-  z-index: -5 !important;
-  pointer-events: none !important;   /* <-- prevents blocking clicks */
-  background: transparent !important;
+  z-index: -3;
+  background: black !important;
 }
 
-/* iPhone / iPad fix */
+/* iPhone fix */
 @supports (-webkit-touch-callout: none) {
   #background-video {
     width: 100vw;
@@ -39,86 +40,65 @@ html, body {
     min-height: 100%;
     object-fit: cover;
     position: fixed;
-    pointer-events: none !important;
   }
 }
 
-/* Remove Safari/Chrome video UI flash */
+/* Hide iOS controls */
 video::-webkit-media-controls {
   display: none !important;
 }
 
-/* =================================================================== */
-/* =========================== GRAIN OVERLAY ========================= */
-/* =================================================================== */
-
+/* === GRAIN OVERLAY === */
 #grain-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.15);
-  pointer-events: none !important;  /* <-- avoids blocking header */
-  z-index: -4 !important;
+  pointer-events: none;
+  z-index: -2;
 }
 
-/* =================================================================== */
-/* =============================== HEADER ============================ */
-/* =================================================================== */
-
+/* === HEADER === */
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgba(0,0,0,0.55);
-  z-index: 99999 !important;   /* <-- NO MORE CLICK ISSUES */
-  white-space: nowrap;
+  z-index: 1000;
 }
 
+/* Bigger responsive header title */
 header h1 a {
-  font-size: 1rem;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
   text-decoration: none;
   color: white;
-  font-weight: bold;
+  font-weight: 900;
+  letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
-.nav-links {
-  display: flex;
-  gap: 1.2rem;
-  white-space: nowrap;
-}
-
+/* Bigger responsive nav links */
 .nav-links a {
-  font-size: 0.85rem;
+  margin-left: 1.5rem;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
   text-decoration: none;
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   white-space: nowrap;
+  cursor: pointer;
+  z-index: 2000;
+  position: relative;
 }
 
-/* Shrink header on tiny screens */
-@media (max-width: 360px) {
-  header h1 a {
-    font-size: 0.9rem;
-  }
-  .nav-links a {
-    font-size: 0.75rem;
-  }
-}
-
-/* =================================================================== */
-/* ============================== SECTIONS =========================== */
-/* =================================================================== */
-
+/* === SECTIONS === */
 .section,
-.centered-section,
 .hire-me {
   width: 100%;
   max-width: 900px;
@@ -140,10 +120,7 @@ header h1 a {
   color: #ccc;
 }
 
-/* =================================================================== */
-/* ============================= FORMS =============================== */
-/* =================================================================== */
-
+/* === HIRE ME === */
 .hire-me-card {
   max-width: 650px;
   margin: auto;
@@ -172,63 +149,56 @@ button {
   cursor: pointer;
 }
 
-/* =================================================================== */
-/* ========================== CAROUSEL FULL WIDTH ==================== */
-/* =================================================================== */
-
+/* === CAROUSEL CONTAINER (FULL-WIDTH) === */
 .carousel-container {
-  width: 100vw;                   
-  margin-left: calc(50% - 50vw);  
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   display: flex;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   -webkit-overflow-scrolling: touch;
 }
 
+/* Track */
 .carousel-track {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   padding: 0 1rem;
 }
 
+/* === CAROUSEL ITEM (CONSISTENT HEIGHT) === */
 .carousel-item {
   flex: 0 0 auto;
   width: 90vw;
-  max-width: 900px;
-  height: auto;
+  max-width: 1000px;
+  height: var(--carousel-height);
+  background: transparent;
   scroll-snap-align: center;
-  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* === MEDIA INSIDE CAROUSEL — UNIVERSAL FIX (NO BLACK BARS) === */
 .carousel-item img,
 .carousel-item video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;        /* <-- FULLY visible, no cropping */
-  display: block;
-  background: black;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  background: transparent;
 }
 
-/* Desktop refinement */
-@media (min-width: 768px) {
-  .carousel-item {
-    width: 45vw;
-    max-width: 900px;
-  }
-}
-
-/* =================================================================== */
-/* ========================== SCROLL HINT ============================ */
-/* =================================================================== */
-
+/* === SCROLL HINT === */
 .scroll-hint {
   position: fixed;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  width: max-content;
   text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
@@ -237,20 +207,36 @@ button {
   color: white;
   transition: opacity 0.4s ease;
   z-index: 1000;
-  pointer-events: none !important; /* <-- prevents blocking header clicks */
 }
 
 .scrolled .scroll-hint {
   opacity: 0;
+  pointer-events: none;
 }
 
-/* =================================================================== */
-/* ========================== SOCIAL LINKS =========================== */
-/* =================================================================== */
-
+/* SOCIAL LINKS */
 .social-links a {
   color: white !important;
   text-decoration: none !important;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+/* === MOBILE TUNING === */
+@media (max-width: 768px) {
+  header {
+    padding: 0.7rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .carousel-item {
+    width: 90vw;
+  }
 }
