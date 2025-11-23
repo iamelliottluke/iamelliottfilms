@@ -180,7 +180,6 @@ button {
   font-weight: bold;
 }
 
-/* Carousel */
 .carousel-container {
   overflow-x: auto;
   overflow-y: hidden;
@@ -215,7 +214,6 @@ button {
   object-fit: contain;
 }
 
-/* Scroll hint */
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -243,7 +241,7 @@ button {
 }
 @media screen and (max-width: 480px) {
   .carousel-item {
-    height: 40vh; /* Reduce carousel height slightly */
+    height: 40vh;
   }
 
   .section,
@@ -310,7 +308,7 @@ button {
   .hire-me button {
     font-size: 0.9rem;
   }
-  /* Ensure video wrapper fits all screens */
+  
 .video-wrapper {
   position: fixed;
   top: 0;
@@ -327,7 +325,6 @@ button {
   object-fit: cover;
 }
 
-/* Fix scroll hint on mobile */
 .scroll-hint {
   font-size: 0.8rem;
   left: 50%;
@@ -335,13 +332,11 @@ button {
   text-align: center;
 }
 
-/* Make header flex properly on small screens */
 header {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-/* Responsive title and form layout */
 @media (max-width: 480px) {
   .title {
     font-size: 1.8rem;
@@ -363,5 +358,56 @@ header {
 
   .social-links {
     font-size: 0.85rem;
+  }
+  
+.hire-me-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .hire-me-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .hire-me-card p {
+    font-size: 1rem;
   }
 }
