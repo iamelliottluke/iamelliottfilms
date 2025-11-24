@@ -53,5 +53,21 @@
     document.body.classList.toggle('scrolled', window.scrollY > 10);
   });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll('section, .hire-me');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(sec => observer.observe(sec));
+});
+</script>
+
 </body>
 </html>

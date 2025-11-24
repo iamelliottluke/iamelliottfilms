@@ -238,3 +238,13 @@ section, .hire-me {
 section:target, .hire-me:target {
   opacity: 1;
 }
+
+
+/* === Smooth Scroll Fade — IntersectionObserver === */
+section, .hire-me {
+  opacity: 0;
+  transition: opacity 0.9s ease-out;
+}
+section.visible, .hire-me.visible {
+  opacity: 1;
+}
