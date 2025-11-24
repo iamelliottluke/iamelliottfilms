@@ -192,7 +192,7 @@ button {
 .section { padding-bottom: 8rem !important; }
 .hire-me { padding-top: 10rem !important; }
 .carousel-container { padding-top: 2.5rem !important; }
-body { padding-bottom: 2rem !important; }
+body { padding-bottom: 6rem !important; }
 .social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
 
 /* SMALL PHONE FIX */
@@ -204,7 +204,7 @@ body { padding-bottom: 2rem !important; }
     font-size: 0.95rem !important;
   }
   .nav-links {
-    gap: 0.8rem !important;
+    gap: 0.6rem !important;
   }
   .nav-links a {
     font-size: 0.95rem !important;
@@ -216,8 +216,8 @@ body { padding-bottom: 2rem !important; }
 
 /* MAGNETIC SCROLL */
 html, body {
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
+  scroll-snap-type: y proximity;
+  scroll-snap-stop: normal;
 }
 
 .section, .hire-me {
@@ -238,6 +238,9 @@ section.visible, .hire-me.visible {
 
 /* GLOBAL FOOTER LINKS */
 .global-social {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
   text-align: center;
   margin: 2rem 0 3rem;
   font-size: 0.85rem;
@@ -253,11 +256,7 @@ section.visible, .hire-me.visible {
 }
 
 
-/* Footer fade-in */
-.global-social {
-  opacity: 0;
-  transition: opacity 1s ease-out;
-}
-body.scrolled-bottom .global-social {
+.global-social.visible {
   opacity: 1;
+  transform: translateY(0);
 }
