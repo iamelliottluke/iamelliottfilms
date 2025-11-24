@@ -228,3 +228,13 @@ html, body {
 .section, .hire-me {
   min-height: 100vh;
 }
+
+
+/* === Option 1: Lens Fade (Soft Opaque Lift) === */
+section, .hire-me {
+  opacity: 0.85;
+  transition: opacity 0.8s ease-out;
+}
+section:target, .hire-me:target {
+  opacity: 1;
+}
