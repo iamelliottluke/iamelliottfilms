@@ -1,26 +1,13 @@
-/* === GLOBAL RESET === */
-* {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
   font-family: 'Helvetica Neue', sans-serif;
+  background: transparent;
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: transparent !important;
 }
 
-/* GLOBAL VARS */
-:root {
-  --carousel-height: 70vh;   /* UNIFORM height across ALL pages */
-  --text-width: 70%;         /* 15% narrower body text */
-  --header-size-multiplier: 0.85; /* header 15% smaller */
-}
-
-/* === BACKGROUND VIDEO === */
 #background-video {
   position: fixed;
   top: 0;
@@ -28,246 +15,163 @@ html, body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: -3;
-  pointer-events: none;
-}
-
-@supports (-webkit-touch-callout: none) {
-  #background-video {
-    width: 100vw;
-    height: 100vh;
-  }
-}
-
-video::-webkit-media-controls {
-  display: none !important;
-}
-
-/* === GRAIN OVERLAY === */
-#grain-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.15);
-  pointer-events: none;
   z-index: -2;
 }
 
-/* ================================================================= */
-/* ========================= HEADER (FIXED) ======================== */
-/* ================================================================= */
+#grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  pointer-events: none;
+}
 
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  padding: calc(1.2rem * var(--header-size-multiplier))
-           calc(2rem * var(--header-size-multiplier));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(3px);
-  z-index: 99999;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
 }
 
-/* Perfect centering fix */
-header h1, .nav-links {
-  display: flex;
-  align-items: center;
+header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
 
-header h1 a {
-  font-size: clamp(1.1rem, 2.3vw, 1.7rem);
-  text-decoration: none;
+header h1 a, .nav-links a {
   color: white;
-  font-weight: 900;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.3rem;
-  align-items: center;
-  white-space: nowrap;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .nav-links a {
-  font-size: clamp(1rem, 2vw, 1.4rem);
-  text-decoration: none;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
+  margin-left: 1.5rem;
 }
 
-@media (max-width: 480px) {
-  header {
-    padding: 0.8rem 1rem;
-  }
-  .nav-links {
-    gap: 1rem;
-  }
-}
-
-/* ================================================================= */
-/* ============================ SECTIONS =========================== */
-/* ================================================================= */
-
-.section,
-.hire-me {
-  width: var(--text-width);
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 6.5rem 1.5rem;  /* +5% vertical breathing room */
+.section {
+  padding: 6rem 2rem;
   text-align: center;
 }
 
 .title {
-  font-size: 2.4rem;
-  margin-bottom: 1.1rem; /* slight increase */
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
 
 .description {
-  margin: 0.7rem auto 2.2rem; /* increased breathing space */
-  font-size: 1.05rem;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
   color: #ccc;
 }
 
-/* ================================================================= */
-/* ========================= CONTACT FORM ========================== */
-/* ================================================================= */
-
 .hire-me {
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-}
-
-.hire-me-card {
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 2rem 1.4rem;
-  border-radius: 10px;
-  background: rgba(0,0,0,0.32);
-  backdrop-filter: blur(4px);
-}
-
-.hire-me-card h2 {
-  font-size: 1.55rem;
-  margin-bottom: 0.4rem;
-}
-
-.hire-me-card p {
-  font-size: 1rem;
-  color: #ddd;
-  margin-bottom: 1.2rem;
+  padding: 2rem 2rem 4rem;
+  text-align: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1rem;
+  max-width: 600px;
+  margin: auto;
 }
 
-input,
-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: rgba(0,0,0,0.4);
-  color: white;
+input, textarea, button {
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: none;
 }
 
 button {
-  padding: 0.85rem;
-  border-radius: 8px;
   background: white;
   color: black;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 0.4rem;
 }
 
-/* ================================================================= */
-/* ===================== CAROUSEL (UNIFORM) ======================== */
-/* ================================================================= */
+.social-links {
+  margin-top: 2rem;
+}
 
+.social-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Carousel */
 .carousel-container {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   display: flex;
-  padding: 1.2rem 0; /* 5% more breathing room */
+  justify-content: center;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
 .carousel-track {
   display: flex;
-  gap: 4px; /* micro gap */
-  padding: 0;
+  gap: 1rem;
+  padding: 0 1rem;
+  width: 100vw;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  width: auto;           /* lets images be true size */
-  height: var(--carousel-height);
-  margin: 0 !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   scroll-snap-align: center;
+  height: 50vh;
+  width: auto;
 }
 
-/* ALL media perfectly fills height */
 .carousel-item img,
 .carousel-item video {
   height: 100%;
   width: auto;
+  max-width: 100%;
+  border-radius: 10px;
   object-fit: contain;
-  background: transparent;
 }
 
-/* ================================================================= */
-/* =========================== SCROLL HINT ========================= */
-/* ================================================================= */
-
+/* Scroll hint */
 .scroll-hint {
-  position: fixed;
+  position: absolute;
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  width: max-content;
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: white;
-  transition: opacity 0.4s ease;
-  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .scrolled .scroll-hint {
   opacity: 0;
   pointer-events: none;
-}
-
-/* ================================================================= */
-/* ========================== SOCIAL LINKS ========================= */
-/* ================================================================= */
-
-.social-links a {
-  color: white !important;
-  text-decoration: none !important;
-  font-weight: bold;
-  text-transform: uppercase;
 }
