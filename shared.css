@@ -175,3 +175,12 @@ button {
   opacity: 0;
   pointer-events: none;
 }
+
+.nav-links { white-space: nowrap !important; }
+.nav-links a { flex-shrink: 0 !important; }
+input, textarea { background: rgba(255,255,255,0.7) !important; color:black !important; }
+.section { padding-bottom: 8rem !important; }
+.hire-me { padding-top: 6rem !important; }
+.carousel-container { padding-top: 2.5rem !important; }
+body { padding-bottom: 4rem !important; }
+.social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
