@@ -214,43 +214,19 @@ body { padding-bottom: 6rem !important; }
   }
 }
 
-/* === Smooth Proximity Scroll Snap === */
+/* === Magnetic Scroll Snap (Option B) === */
 html, body {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
+  scroll-snap-stop: always;
   scroll-behavior: smooth;
 }
 
 .section, .hire-me {
   scroll-snap-align: start;
-}
-
-/* Full-screen sections */
-.section, .hire-me {
   min-height: 100vh;
 }
 
-
-/* === Option 1: Lens Fade (Soft Opaque Lift) === */
-section, .hire-me {
-  opacity: 0.85;
-  transition: opacity 0.8s ease-out;
-}
-section:target, .hire-me:target {
-  opacity: 1;
-}
-
-
-/* === Smooth Scroll Fade — IntersectionObserver === */
-section, .hire-me {
-  opacity: 0;
-  transition: opacity 0.9s ease-out;
-}
-section.visible, .hire-me.visible {
-  opacity: 1;
-}
-
-
-/* === Directional Fade === */
+/* Directional cinematic fade for sections */
 section, .hire-me {
   opacity: 0;
   transform: translateY(25px);
@@ -261,33 +237,24 @@ section.visible, .hire-me.visible {
   transform: translateY(0);
 }
 
-/* === Strong Magnetic Scroll Snap === */
-html, body {
-  scroll-snap-type: y mandatory;
-  scroll-snap-stop: always;
-}
 
-/* Section Height */
-section, .hire-me {
-  min-height: 100vh;
-}
-
-/* Footer Social */
+/* Global footer social links */
 .global-social {
   text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0 3rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  opacity: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
+
 .global-social a {
   color: white;
   text-decoration: none;
   font-weight: 900;
 }
 
-/* Reduced bottom padding */
-body {
-  padding-bottom: 3rem !important;
+.global-social a + a::before {
+  content: " — ";
+  color: white;
 }
