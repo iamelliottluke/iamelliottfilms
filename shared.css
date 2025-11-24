@@ -60,7 +60,7 @@ header h1 a, .nav-links a {
 }
 
 .section {
-  padding: 6rem 2rem 10rem;
+  padding: 6rem 2rem;
   text-align: center;
 }
 
@@ -79,6 +79,7 @@ header h1 a, .nav-links a {
 }
 
 .hire-me {
+  padding: 2rem 2rem 4rem;
   text-align: center;
 }
 
@@ -95,16 +96,6 @@ input, textarea, button {
   border-radius: 6px;
   font-size: 1rem;
   border: none;
-}
-
-input, textarea {
-  background: rgba(255, 255, 255, 0.35);
-  color: rgba(255,255,255,0.95);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.75);
 }
 
 button {
@@ -129,7 +120,7 @@ button {
 .carousel-container {
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: y mandatory;
   display: flex;
   justify-content: center;
   padding: 1rem 0;
@@ -185,66 +176,25 @@ button {
   pointer-events: none;
 }
 
-.nav-links { white-space: nowrap !important; }
-.nav-links a { flex-shrink: 0 !important; }
 
-/* Override older spacing with new values */
-.section { padding-bottom: 8rem !important; }
-.hire-me { padding-top: 10rem !important; }
-.carousel-container { padding-top: 2.5rem !important; }
-body { padding-bottom: 6rem !important; }
-.social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
-
-/* === SMALL PHONE HEADER FIX (iPhone SE / narrow) === */
-@media (max-width: 360px) {
-  header {
-    padding: 0.6rem 0.8rem;
-  }
-
-  header h1 a {
-    font-size: 1rem;
-  }
-
-  .nav-links {
-    gap: 0.8rem;
-  }
-
-  .nav-links a {
-    font-size: 1rem;
-  }
-}
-
-/* === Smooth Proximity Scroll Snap === */
-html, body {
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-}
-
-.section, .hire-me {
-  scroll-snap-align: start;
-}
-
-/* Full-screen sections */
-.section, .hire-me {
-  min-height: 100vh;
-}
-
-
-/* === Option 1: Lens Fade (Soft Opaque Lift) === */
-section, .hire-me {
-  opacity: 0.85;
-  transition: opacity 0.8s ease-out;
-}
-section:target, .hire-me:target {
-  opacity: 1;
-}
-
-
-/* === Smooth Scroll Fade — IntersectionObserver === */
+/* === Directional Fade Up === */
 section, .hire-me {
   opacity: 0;
-  transition: opacity 0.9s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 section.visible, .hire-me.visible {
   opacity: 1;
+  transform: translateY(0);
+}
+
+/* social links initially hidden */
+.social-links {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+body.show-social .social-links {
+  opacity: 1;
+  transform: translateY(0);
 }
