@@ -79,7 +79,6 @@ header h1 a, .nav-links a {
 }
 
 .hire-me {
-  padding: 2rem 2rem 4rem;
   text-align: center;
 }
 
@@ -188,13 +187,15 @@ button {
 
 .nav-links { white-space: nowrap !important; }
 .nav-links a { flex-shrink: 0 !important; }
+
+/* Override older spacing with new values */
 .section { padding-bottom: 8rem !important; }
-.hire-me { padding-top: 6rem !important; }
+.hire-me { padding-top: 10rem !important; }
 .carousel-container { padding-top: 2.5rem !important; }
-body { padding-bottom: 4rem !important; }
+body { padding-bottom: 6rem !important; }
 .social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
 
-/* === SMALL PHONE HEADER FIX (iPhone SE / narrow screens) === */
+/* === SMALL PHONE HEADER FIX (iPhone SE / narrow) === */
 @media (max-width: 360px) {
   header {
     padding: 0.6rem 0.8rem;
@@ -211,4 +212,19 @@ body { padding-bottom: 4rem !important; }
   .nav-links a {
     font-size: 1rem;
   }
+}
+
+/* === Smooth Proximity Scroll Snap === */
+html, body {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+.section, .hire-me {
+  scroll-snap-align: start;
+}
+
+/* Full-screen sections */
+.section, .hire-me {
+  min-height: 100vh;
 }
