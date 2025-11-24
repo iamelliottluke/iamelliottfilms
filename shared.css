@@ -15,7 +15,9 @@ html, body {
 
 /* GLOBAL VARS */
 :root {
-  --carousel-height: 60vh;   /* 15% shorter */
+  --carousel-height: 70vh;   /* UNIFORM height across ALL pages */
+  --text-width: 70%;         /* 15% narrower body text */
+  --header-size-multiplier: 0.85; /* header 15% smaller */
 }
 
 /* === BACKGROUND VIDEO === */
@@ -30,18 +32,16 @@ html, body {
   pointer-events: none;
 }
 
-/* iPhone fix */
 @supports (-webkit-touch-callout: none) {
   #background-video {
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
-    position: fixed;
   }
 }
 
-/* Hide iOS controls */
-video::-webkit-media-controls { display: none !important; }
+video::-webkit-media-controls {
+  display: none !important;
+}
 
 /* === GRAIN OVERLAY === */
 #grain-overlay {
@@ -54,14 +54,18 @@ video::-webkit-media-controls { display: none !important; }
   z-index: -2;
 }
 
-/* HEADER */
+/* ================================================================= */
+/* ========================= HEADER (FIXED) ======================== */
+/* ================================================================= */
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  padding: 1rem 1.7rem;
+  padding: calc(1.2rem * var(--header-size-multiplier))
+           calc(2rem * var(--header-size-multiplier));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,8 +74,14 @@ header {
   z-index: 99999;
 }
 
+/* Perfect centering fix */
+header h1, .nav-links {
+  display: flex;
+  align-items: center;
+}
+
 header h1 a {
-  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  font-size: clamp(1.1rem, 2.3vw, 1.7rem);
   text-decoration: none;
   color: white;
   font-weight: 900;
@@ -81,76 +91,114 @@ header h1 a {
 
 .nav-links {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.3rem;
   align-items: center;
   white-space: nowrap;
 }
 
 .nav-links a {
-  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   text-decoration: none;
   color: white;
   font-weight: 700;
   cursor: pointer;
 }
 
-/* Mobile header alignment */
 @media (max-width: 480px) {
-  header { padding: 0.85rem 1rem; }
-  header h1 a { font-size: 1.25rem; }
-  .nav-links { gap: 0.9rem; }
-  .nav-links a { font-size: 1rem; }
+  header {
+    padding: 0.8rem 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
 }
 
-/* SECTIONS */
+/* ================================================================= */
+/* ============================ SECTIONS =========================== */
+/* ================================================================= */
+
 .section,
 .hire-me {
-  width: 100%;
+  width: var(--text-width);
   max-width: 900px;
   margin: 0 auto;
-  padding: 5rem 1.5rem;
+  padding: 6.5rem 1.5rem;  /* +5% vertical breathing room */
   text-align: center;
 }
 
-.section h2.title { margin-bottom: 0.5rem; }
-.description { margin: 0.3rem auto 1.2rem; }
+.title {
+  font-size: 2.4rem;
+  margin-bottom: 1.1rem; /* slight increase */
+  text-transform: uppercase;
+}
 
-/* CONTACT FORM */
-.hire-me { padding-top: 0.5rem; padding-bottom: 3rem; }
+.description {
+  margin: 0.7rem auto 2.2rem; /* increased breathing space */
+  font-size: 1.05rem;
+  color: #ccc;
+}
+
+/* ================================================================= */
+/* ========================= CONTACT FORM ========================== */
+/* ================================================================= */
+
+.hire-me {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
 .hire-me-card {
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
-  padding: 1.7rem 1.4rem;
+  padding: 2rem 1.4rem;
   border-radius: 10px;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.32);
   backdrop-filter: blur(4px);
 }
-.hire-me-card h2 { font-size: 1.4rem; margin-bottom: 0.3rem; }
-.hire-me-card p { font-size: 0.95rem; margin-bottom: 1.2rem; }
-form { display: flex; flex-direction: column; gap: 0.7rem; }
-input, textarea {
-  width: 100%;
-  padding: 0.7rem 1rem;
+
+.hire-me-card h2 {
+  font-size: 1.55rem;
+  margin-bottom: 0.4rem;
+}
+
+.hire-me-card p {
   font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 1.2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
   border-radius: 8px;
   border: 1px solid #444;
   background: rgba(0,0,0,0.4);
   color: white;
 }
+
 button {
-  padding: 0.75rem;
+  padding: 0.85rem;
   border-radius: 8px;
   background: white;
   color: black;
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
+  margin-top: 0.4rem;
 }
-.section + .hire-me { margin-top: -1.4rem; }
 
-.social-links { margin-top: 1.6rem; }
+/* ================================================================= */
+/* ===================== CAROUSEL (UNIFORM) ======================== */
+/* ================================================================= */
 
-/* CAROUSEL */
 .carousel-container {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -159,39 +207,40 @@ button {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   display: flex;
-  padding: 1.2rem 0;
+  padding: 1.2rem 0; /* 5% more breathing room */
   -webkit-overflow-scrolling: touch;
 }
 
 .carousel-track {
   display: flex;
-  gap: 4px;
+  gap: 4px; /* micro gap */
   padding: 0;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  width: 90vw;
-  max-width: 1000px;
+  width: auto;           /* lets images be true size */
   height: var(--carousel-height);
-  background: transparent;
-  scroll-snap-align: center;
   margin: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: center;
 }
 
+/* ALL media perfectly fills height */
 .carousel-item img,
 .carousel-item video {
   height: 100%;
   width: auto;
-  max-width: 100%;
   object-fit: contain;
   background: transparent;
 }
 
-/* SCROLL HINT */
+/* ================================================================= */
+/* =========================== SCROLL HINT ========================= */
+/* ================================================================= */
+
 .scroll-hint {
   position: fixed;
   bottom: 2rem;
@@ -206,9 +255,16 @@ button {
   transition: opacity 0.4s ease;
   z-index: 1000;
 }
-.scrolled .scroll-hint { opacity: 0; pointer-events: none; }
 
-/* SOCIAL LINKS */
+.scrolled .scroll-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================================================================= */
+/* ========================== SOCIAL LINKS ========================= */
+/* ================================================================= */
+
 .social-links a {
   color: white !important;
   text-decoration: none !important;
