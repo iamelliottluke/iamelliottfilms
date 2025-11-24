@@ -60,7 +60,7 @@ header h1 a, .nav-links a {
 }
 
 .section {
-  padding: 6rem 2rem;
+  padding: 6rem 2rem 10rem;
   text-align: center;
 }
 
@@ -96,6 +96,16 @@ input, textarea, button {
   border-radius: 6px;
   font-size: 1rem;
   border: none;
+}
+
+input, textarea {
+  background: rgba(255, 255, 255, 0.35);
+  color: rgba(255,255,255,0.95);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 button {
@@ -178,9 +188,27 @@ button {
 
 .nav-links { white-space: nowrap !important; }
 .nav-links a { flex-shrink: 0 !important; }
-input, textarea { background: rgba(255,255,255,0.7) !important; color:black !important; }
 .section { padding-bottom: 8rem !important; }
 .hire-me { padding-top: 6rem !important; }
 .carousel-container { padding-top: 2.5rem !important; }
 body { padding-bottom: 4rem !important; }
 .social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
+
+/* === SMALL PHONE HEADER FIX (iPhone SE / narrow screens) === */
+@media (max-width: 360px) {
+  header {
+    padding: 0.6rem 0.8rem;
+  }
+
+  header h1 a {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
