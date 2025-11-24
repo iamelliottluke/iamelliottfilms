@@ -45,8 +45,8 @@
 
   <!-- Hit and Run Photos -->
   <section class="section centered-section">
-    <h2 class="title">PHOTOS</h2>
-    <p class="description">Hit and Run – Captured on 35mm.</p>
+    <h2 class="title">HIT AND RUN</h2>
+    <p class="description">Captured on 35mm.</p>
     <div class="carousel-container">
       <div class="carousel-track">
         <div class="carousel-item"><img src="img1.jpeg" alt="Photo 1" loading="lazy" /></div>
@@ -68,17 +68,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll('section, .hire-me');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(sec => observer.observe(sec));
+});
+</script>
+
+
+<div class="global-social">
+  <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a> —
+  <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a> —
+  <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll('section, .hire-me');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.25 });
   sections.forEach(sec => observer.observe(sec));
-});
-
-document.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const doc = document.documentElement;
-  const atBottom = scrollY + window.innerHeight >= doc.scrollHeight - 20;
-  document.body.classList.toggle("show-social", atBottom);
 });
 </script>
 
