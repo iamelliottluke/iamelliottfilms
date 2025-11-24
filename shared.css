@@ -195,30 +195,29 @@ button {
 body { padding-bottom: 6rem !important; }
 .social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
 
-/* === SMALL PHONE HEADER FIX (iPhone SE / narrow) === */
-@media (max-width: 360px) {
+/* SMALL PHONE FIX */
+@media (max-width: 400px) {
   header {
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.6rem !important;
   }
-
   header h1 a {
-    font-size: 1rem;
+    font-size: 0.95rem !important;
   }
-
   .nav-links {
-    gap: 0.8rem;
+    gap: 0.6rem !important;
   }
-
   .nav-links a {
-    font-size: 1rem;
+    font-size: 0.95rem !important;
+  }
+  .hire-me form {
+    max-width: 75% !important;
   }
 }
 
-/* === Magnetic Scroll Snap (Option B) === */
+/* MAGNETIC SCROLL */
 html, body {
   scroll-snap-type: y mandatory;
   scroll-snap-stop: always;
-  scroll-behavior: smooth;
 }
 
 .section, .hire-me {
@@ -226,7 +225,7 @@ html, body {
   min-height: 100vh;
 }
 
-/* Directional cinematic fade for sections */
+/* FADE UP */
 section, .hire-me {
   opacity: 0;
   transform: translateY(25px);
@@ -237,8 +236,7 @@ section.visible, .hire-me.visible {
   transform: translateY(0);
 }
 
-
-/* Global footer social links */
+/* GLOBAL FOOTER LINKS */
 .global-social {
   text-align: center;
   margin: 2rem 0 3rem;
@@ -252,9 +250,4 @@ section.visible, .hire-me.visible {
   color: white;
   text-decoration: none;
   font-weight: 900;
-}
-
-.global-social a + a::before {
-  content: " — ";
-  color: white;
 }
