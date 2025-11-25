@@ -3,14 +3,14 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', sans-serif;
-  background: black !important; /* prevents iOS white flash */
+  background: black !important; 
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
   height: 100%;
   width: 100%;
   max-width: 100%;
-  overscroll-behavior: none !important; /* stop bounce */
+  overscroll-behavior: none !important;
 }
 
 /* Background Video */
@@ -71,7 +71,7 @@ header h1 a, .nav-links a {
 
 /* SECTIONS */
 .section {
-  padding: 6rem 2rem 2.5rem !important; /* reduced bottom spacing */
+  padding: 6rem 2rem 2.5rem !important;
   text-align: center;
 }
 
@@ -94,10 +94,19 @@ header h1 a, .nav-links a {
   color: #ccc;
 }
 
-/* HIRE ME — UPDATED */
+/* UNIVERSAL FIX — breathing room before ALL carousels */
+.section .description {
+  margin-bottom: 2.5rem !important;
+}
+
+.section .carousel-container {
+  margin-top: 0.5rem !important;
+}
+
+/* HIRE ME */
 .hire-me {
   text-align: center;
-  padding: 2.5rem 1.5rem 6rem !important; /* reduced top gap */
+  padding: 2.5rem 1.5rem 6rem !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,7 +136,7 @@ header h1 a, .nav-links a {
   color: #ddd;
 }
 
-/* FORM — 65% TRANSPARENT FIELDS */
+/* FORM — transparent inputs */
 form {
   display: flex;
   flex-direction: column;
@@ -174,32 +183,31 @@ button {
   text-transform: uppercase;
 }
 
-/* CAROUSEL — EDGE TO EDGE */
+/* TRUE FULL-WIDTH CAROUSELS — Safari + Chrome */
 .carousel-container {
+  width: 100vw !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
+  -webkit-padding-start: 0 !important;
+  -webkit-padding-end: 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  display: flex;
-  justify-content: center;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
 .carousel-track {
+  width: 100vw !important;
   display: flex;
   gap: 1rem;
   padding: 0 !important;
   margin: 0 !important;
-  width: 100vw;
 }
 
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
-  height: 50vh;
-  width: auto;
 }
 
 .carousel-item img,
@@ -208,6 +216,7 @@ button {
   width: auto;
   max-width: 100%;
   border-radius: 0 !important;
+  display: block;
   object-fit: contain;
 }
 
@@ -239,7 +248,7 @@ button {
 .nav-links { white-space: nowrap !important; }
 .nav-links a { flex-shrink: 0 !important; }
 
-/* === STRONGER MAGNETIC SCROLL (20%) === */
+/* STRONGER MAGNETIC SCROLL */
 html, body {
   scroll-snap-type: y proximity;
   scroll-padding-top: 6vh;
