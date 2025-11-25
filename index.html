@@ -6,14 +6,13 @@
   <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
-<body class="index-page">
+<body>
+ <div class="scroll-hint">Scroll to the next frame</div>
 
-  <div class="scroll-hint">Scroll to the next frame</div>
-
-  <!-- Background video (parallax-enabled on this page only) -->
   <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
     <source src="INDEX_BACKGROUND.mp4" type="video/mp4" />
   </video>
+
 
   <header>
     <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
@@ -23,31 +22,25 @@
     </nav>
   </header>
 
-  <!-- Blank intro so the video is unobstructed on load -->
   <div style="height: 100vh;"></div>
 
   <section class="section index-about">
     <h2 class="title">ELLIOTT LUKE</h2>
-    <p class="description">
-      I’m a filmmaker and photographer from Adelaide, working across film and digital.
-      I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge.
-      Still developing...but I love capturing people and moments through a perspective
-      that feels honest, styled, and just a little different.
-    </p>
+    <p class="description">I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
   </section>
 
   <section class="hire-me">
-    <div class="hire-me-card">
-      <h2>CONTACT ME</h2>
-      <p>Look. Mood. Story. Let’s make it happen.</p>
+  <div class="hire-me-card">
+    <h2>CONTACT ME</h2>
+    <p>Look. Mood. Story. Let’s make it happen.</p>
 
-      <form action="https://formspree.io/f/xqapyzld" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <form action="https://formspree.io/f/xqapyzld" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
   </section>
 
   <div class="global-social">
@@ -56,38 +49,28 @@
     <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
   </div>
 
+
   <script>
-    // Fade-in + scroll hint
-    document.addEventListener('DOMContentLoaded', function () {
-      function handleScroll() {
-        document.body.classList.toggle('scrolled', window.scrollY > 10);
-      }
-      window.addEventListener('scroll', handleScroll);
-      handleScroll();
+  document.addEventListener('DOMContentLoaded', function () {
+    // Scroll hint toggling
+    function handleScroll() {
+      document.body.classList.toggle('scrolled', window.scrollY > 10);
+    }
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
-      const sections = document.querySelectorAll('section, .hire-me, .global-social');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.3 });
+    // Directional fade for sections
+    const sections = document.querySelectorAll('section, .hire-me, .global-social');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
 
-      sections.forEach(sec => observer.observe(sec));
-    });
-
-    // Parallax ONLY on home page
-    document.addEventListener("scroll", () => {
-      if (!document.body.classList.contains("index-page")) return;
-
-      const video = document.getElementById("background-video");
-      const scrollY = window.scrollY;
-
-      // Subtle parallax factor – safe, no gaps
-      const parallaxSpeed = 0.18;
-      video.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
-    });
+    sections.forEach(sec => observer.observe(sec));
+  });
   </script>
 
 </body>

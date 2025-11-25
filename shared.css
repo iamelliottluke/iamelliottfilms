@@ -9,8 +9,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* ---------- BACKGROUND VIDEO ---------- */
-/* Default behaviour: fixed full-screen video on all pages */
+/* ---------- BACKGROUND VIDEO + GRAIN ---------- */
 #background-video {
   position: fixed;
   top: 0;
@@ -18,12 +17,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: 0; /* behind everything */
-}
-
-/* Home page (index) only: hint that we'll animate this with transform */
-.index-page #background-video {
-  will-change: transform;
+  z-index: 0; /* video visible */
 }
 
 /* ---------- HEADER ---------- */
@@ -46,8 +40,7 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 a,
-.nav-links a {
+header h1 a, .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -102,7 +95,7 @@ header h1 a,
 }
 
 .hire-me-card {
-  background: none !important;    /* no dark box */
+  background: none !important;    /* remove black box */
   padding: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -228,30 +221,19 @@ body {
   scroll-snap-stop: always;
 }
 
-.section,
-.hire-me {
+.section, .hire-me {
   scroll-snap-align: start;
   min-height: 100vh;
 }
 
-/* ---------- HOME: ABOUT SECTION OVERRIDE ---------- */
-/* Remove forced full-screen height + tighten spacing */
-.index-about {
-  padding-top: 2rem !important;      /* tighten space ABOVE */
-  padding-bottom: 0rem !important;   /* tighten space BELOW */
-  min-height: auto !important;       /* remove 100vh so gap feels natural */
-}
-
 /* ---------- FADE-IN ANIMATION ---------- */
-section,
-.hire-me {
+section, .hire-me {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
 
-section.visible,
-.hire-me.visible {
+section.visible, .hire-me.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -300,12 +282,12 @@ section.visible,
   .nav-links {
     gap: 0.6rem;
   }
-  .nav-links a {
+ .nav-links a {
     font-size: 0.95rem;
   }
 }
 
-/* ---------- INLINE SECTION LINKS (YouTube + Buy Zine) ---------- */
+/* Inline links in section (YouTube + Buy Zine) */
 .section a {
   color: white !important;
   text-decoration: none !important;
@@ -316,4 +298,11 @@ section.visible,
   margin-bottom: 1rem !important;
   text-align: center !important;
   letter-spacing: 0.05em;
+}
+
+/* Final ABOUT section spacing + FIX min-height issue */
+.index-about {
+  padding-top: 2rem !important;      /* tighten space ABOVE */
+  padding-bottom: 0rem !important;   /* tighten space BELOW */
+  min-height: auto !important;       /* remove forced 100vh */
 }
