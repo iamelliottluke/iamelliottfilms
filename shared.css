@@ -300,9 +300,9 @@ section.visible, .hire-me.visible {
   letter-spacing: 0.05em;
 }
 
-/* Fix after-ELL IOTT LUKE gap to match carousel spacing */
+/* Final ABOUT section spacing + FIX min-height issue */
 .index-about {
-  padding-top: 2rem !important;     /* matches your requested spacing */
-  padding-bottom: 0rem !important;  /* override .section's 3rem bottom padding */
+  padding-top: 2rem !important;      /* tighten space ABOVE */
+  padding-bottom: 0rem !important;   /* tighten space BELOW */
+  min-height: auto !important;       /* remove forced 100vh */
 }
-
