@@ -9,16 +9,30 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* ---------- BACKGROUND VIDEO + GRAIN ---------- */
-#background-video {
-  position: fixed;
+/* ---------- PARALLAX BACKGROUND VIDEO ---------- */
+#video-wrapper {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 0; /* video visible */
+  width: 100%;
+  height: 300vh; /* controls how long the video scrolls for */
+  z-index: 0;
 }
+
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+/* (Removed grain overlay — user requested no grain) */
 
 /* ---------- HEADER ---------- */
 header {
@@ -40,7 +54,8 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 a, .nav-links a {
+header h1 a,
+.nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -81,10 +96,6 @@ header h1 a, .nav-links a {
   margin-bottom: 2.5rem;
 }
 
-.section .carousel-container {
-  margin-top: 0.5rem;
-}
-
 /* ---------- CONTACT FORM SECTION ---------- */
 .hire-me {
   text-align: center;
@@ -95,7 +106,7 @@ header h1 a, .nav-links a {
 }
 
 .hire-me-card {
-  background: none !important;    /* remove black box */
+  background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -127,7 +138,6 @@ form {
   margin: auto;
 }
 
-/* SAME TRANSPARENCY FOR ALL FIELDS */
 input,
 textarea,
 button {
@@ -147,42 +157,6 @@ textarea::placeholder {
 button {
   font-weight: bold;
   cursor: pointer;
-}
-
-/* ---------- CAROUSELS (FULL EDGE-TO-EDGE) ---------- */
-.carousel-container {
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel-track {
-  width: 100vw;
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-  margin: 0;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  height: 50vh;
-}
-
-.carousel-item img,
-.carousel-item video {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  border-radius: 0;
-  display: block;
-  object-fit: contain;
 }
 
 /* ---------- SCROLL HINT ---------- */
@@ -221,9 +195,17 @@ body {
   scroll-snap-stop: always;
 }
 
-.section, .hire-me {
+.section,
+.hire-me {
   scroll-snap-align: start;
   min-height: 100vh;
+}
+
+/* ---------- REMOVE 100vh FROM ABOUT SECTION (for natural spacing) ---------- */
+.index-about {
+  padding-top: 2rem !important;
+  padding-bottom: 0rem !important;
+  min-height: auto !important;
 }
 
 /* ---------- FADE-IN ANIMATION ---------- */
@@ -233,7 +215,8 @@ section, .hire-me {
   transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
 
-section.visible, .hire-me.visible {
+section.visible,
+.hire-me.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -263,7 +246,6 @@ section.visible, .hire-me.visible {
   transform: translateY(0);
 }
 
-/* desktop footer spacing */
 @media (min-width: 900px) {
   .global-social a {
     margin: 0 2.5rem;
@@ -273,21 +255,13 @@ section.visible, .hire-me.visible {
 
 /* small phone fixes */
 @media (max-width: 400px) {
-  header {
-    padding: 0.5rem 0.6rem;
-  }
-  header h1 a {
-    font-size: 0.95rem;
-  }
-  .nav-links {
-    gap: 0.6rem;
-  }
- .nav-links a {
-    font-size: 0.95rem;
-  }
+  header { padding: 0.5rem 0.6rem; }
+  header h1 a { font-size: 0.95rem; }
+  .nav-links { gap: 0.6rem; }
+  .nav-links a { font-size: 0.95rem; }
 }
 
-/* Inline links in section (YouTube + Buy Zine) */
+/* Inline links inside sections (YouTube + Buy Zine) */
 .section a {
   color: white !important;
   text-decoration: none !important;
@@ -298,11 +272,4 @@ section.visible, .hire-me.visible {
   margin-bottom: 1rem !important;
   text-align: center !important;
   letter-spacing: 0.05em;
-}
-
-/* Final ABOUT section spacing + FIX min-height issue */
-.index-about {
-  padding-top: 2rem !important;      /* tighten space ABOVE */
-  padding-bottom: 0rem !important;   /* tighten space BELOW */
-  min-height: auto !important;       /* remove forced 100vh */
 }
