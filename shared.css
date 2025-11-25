@@ -298,21 +298,24 @@ section.visible, .hire-me.visible {
   }
 }
 
+/* Inline links in section (YouTube + Buy Zine) */
 .section a {
   color: white !important;
   text-decoration: none !important;
   font-weight: 800;
   text-transform: uppercase;
-}
-/* Fix spacing + alignment for inline section links (YouTube + Buy Zine) */
-.section a {
-  display: block;                   /* makes centering consistent */
-  margin-top: 2rem !important;      /* space above */
-  margin-bottom: 1rem !important;   /* space below */
-  text-align: center !important;    /* matches the "WATCH FULL VIDEOS" look */
+  display: block;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
   letter-spacing: 0.05em;
 }
 /* Correct spacing between ABOUT and CONTACT ME */
 .section + .hire-me {
   padding-top: 2rem !important;
+}
+/* Condense ELLIOTT LUKE section to match carousel spacing */
+.index-about {
+  padding-top: 4rem !important;    /* reduce space above */
+  padding-bottom: 2rem !important; /* reduce space below */
 }
