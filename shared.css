@@ -1,3 +1,4 @@
+/* BASE */
 body, html {
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@ body, html {
   scroll-behavior: smooth;
 }
 
+/* Background Video */
 #background-video {
   position: fixed;
   top: 0;
@@ -29,6 +31,7 @@ body, html {
   pointer-events: none;
 }
 
+/* HEADER */
 header {
   position: fixed;
   top: 0;
@@ -59,8 +62,9 @@ header h1 a, .nav-links a {
   margin-left: 1.5rem;
 }
 
+/* SECTIONS */
 .section {
-  padding: 6rem 2rem 10rem;
+  padding: 6rem 2rem 4rem !important; /* LESS SPACE BEFORE CONTACT ME */
   text-align: center;
 }
 
@@ -78,24 +82,24 @@ header h1 a, .nav-links a {
   color: #ccc;
 }
 
-/* HIRE ME SECTION */
+/* HIRE ME — UPDATED */
 .hire-me {
   text-align: center;
-  padding: 6rem 1.5rem 8rem;
+  padding: 4rem 1.5rem 6rem !important;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .hire-me-card {
-  background: rgba(0, 0, 0, 0.75);
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
+  background: none !important;   /* NO DARK BOX */
+  padding: 0 !important;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
   max-width: 620px;
   width: 100%;
   margin: 0 auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
 }
 
 .hire-me-card h2 {
@@ -107,11 +111,12 @@ header h1 a, .nav-links a {
 
 .hire-me-card p {
   margin-top: 0;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.4rem;
   font-size: 1rem;
   color: #ddd;
 }
 
+/* FORM — 65% TRANSPARENT FIELDS */
 form {
   display: flex;
   flex-direction: column;
@@ -120,30 +125,32 @@ form {
   margin: auto;
 }
 
-input, textarea, button {
+input, textarea {
   padding: 0.8rem;
   border-radius: 6px;
   font-size: 1rem;
   border: none;
-}
-
-input, textarea {
-  background: rgba(255, 255, 255, 0.35);
-  color: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.65) !important;
+  color: black !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 button {
-  background: rgba(255,255,255,0.7);
-  color: black;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.65) !important;
+  color: black !important;
   font-weight: bold;
   cursor: pointer;
 }
 
+/* Social section inside pages */
 .social-links {
   margin-top: 2rem;
 }
@@ -153,16 +160,18 @@ button {
   text-decoration: none;
   color: white;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* Carousel */
+/* CAROUSEL — EDGE TO EDGE */
 .carousel-container {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -170,7 +179,8 @@ button {
 .carousel-track {
   display: flex;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 0 !important;
+  margin: 0 !important;
   width: 100vw;
 }
 
@@ -186,11 +196,11 @@ button {
   height: 100%;
   width: auto;
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 0 !important; /* FULL BLEED */
   object-fit: contain;
 }
 
-/* Scroll hint */
+/* Scroll Hint */
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
@@ -218,14 +228,11 @@ button {
 .nav-links { white-space: nowrap !important; }
 .nav-links a { flex-shrink: 0 !important; }
 
-/* Override older spacing with new values */
+/* OVERRIDES */
 .section { padding-bottom: 8rem !important; }
-.hire-me { padding-top: 10rem !important; }
-.carousel-container { padding-top: 2.5rem !important; }
 body { padding-bottom: 6rem !important; }
 .social-links a { text-transform: uppercase !important; font-weight: 800 !important; }
 
-/* SMALL PHONE FIX */
 @media (max-width: 400px) {
   header {
     padding: 0.5rem 0.6rem !important;
@@ -251,10 +258,16 @@ body { padding-bottom: 6rem !important; }
   }
 }
 
-/* MAGNETIC SCROLL */
+/* STRONGER MAGNETIC SCROLL (20% more aggressive) */
 html, body {
   scroll-snap-type: y proximity;
-  scroll-snap-stop: normal;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;  /* more "weight" */
+  scroll-padding-top: 6vh;         /* stronger alignment pull */
+}
+
+body {
+  scroll-snap-stop: always;        /* stronger magnetic feel */
 }
 
 .section, .hire-me {
@@ -262,18 +275,19 @@ html, body {
   min-height: 100vh;
 }
 
-/* FADE UP */
+/* FADE-IN */
 section, .hire-me {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
+
 section.visible, .hire-me.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* GLOBAL FOOTER LINKS */
+/* FOOTER SOCIAL — stronger presence + wider spacing on desktop */
 .global-social {
   opacity: 0;
   transform: translateY(20px);
@@ -290,9 +304,18 @@ section.visible, .hire-me.visible {
   color: white;
   text-decoration: none;
   font-weight: 900;
+  margin: 0 1.2rem;
 }
 
 .global-social.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* DESKTOP FOOTER WIDE */
+@media (min-width: 900px) {
+  .global-social a {
+    margin: 0 2.5rem !important;
+    font-size: 0.95rem;
+  }
 }
