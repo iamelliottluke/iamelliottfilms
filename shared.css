@@ -312,7 +312,7 @@ section.visible, .hire-me.visible {
   text-align: center !important;    /* matches the "WATCH FULL VIDEOS" look */
   letter-spacing: 0.05em;
 }
-/* Match spacing between sections to carousel spacing */
+/* Correct spacing between ABOUT and CONTACT ME */
 .section + .hire-me {
-  padding-top: 4.5rem !important;   /* match vertical gap between carousels */
+  padding-top: 2rem !important;
 }
