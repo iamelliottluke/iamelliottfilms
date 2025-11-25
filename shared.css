@@ -323,4 +323,18 @@ section.visible, .hire-me.visible {
   .nav-links a {
     font-size: 0.95rem !important;
   }
+  
 }
+/* RESTORE BACKGROUND VIDEO VISIBILITY */
+#background-video {
+  z-index: -1 !important;   /* lift video above body background */
+}
+
+#grain-overlay {
+  z-index: 0 !important;    /* keep grain above video */
+}
+
+body, html {
+  background: transparent !important;  /* do NOT hide the video */
+}
+
