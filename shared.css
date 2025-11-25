@@ -297,3 +297,12 @@ section.visible, .hire-me.visible {
     font-size: 0.95rem;
   }
 }
+
+/* Force all inline links in sections to be white + no underline */
+.section a {
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
