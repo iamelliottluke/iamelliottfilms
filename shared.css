@@ -298,7 +298,6 @@ section.visible, .hire-me.visible {
   }
 }
 
-/* Force all inline links in sections to be white + no underline */
 .section a {
   color: white !important;
   text-decoration: none !important;
