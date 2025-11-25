@@ -282,7 +282,7 @@ section.visible, .hire-me.visible {
   .nav-links {
     gap: 0.6rem;
   }
-  .nav-links a {
+ .nav-links a {
     font-size: 0.95rem;
   }
 }
@@ -300,7 +300,9 @@ section.visible, .hire-me.visible {
   letter-spacing: 0.05em;
 }
 
+/* Fix after-ELL IOTT LUKE gap to match carousel spacing */
 .index-about {
-  padding-top: 2rem !important;
-  padding-bottom: 1rem !important;
+  padding-top: 2rem !important;     /* matches your requested spacing */
+  padding-bottom: 0rem !important;  /* override .section's 3rem bottom padding */
 }
+
