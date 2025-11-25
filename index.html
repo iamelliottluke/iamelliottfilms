@@ -6,18 +6,20 @@
   <title>IAMELLIOTTFILMS</title>
   <link rel="stylesheet" href="shared.css" />
 </head>
-
 <body>
 
+  <!-- Scroll hint -->
   <div class="scroll-hint">Scroll to the next frame</div>
 
-  <!-- PARALLAX WRAPPER -->
-  <div id="video-wrapper">
-    <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-      <source src="INDEX_BACKGROUND.mp4" type="video/mp4" />
-    </video>
-  </div>
+  <!-- Parallax wrapper (MUST be above video) -->
+  <div id="video-wrapper"></div>
 
+  <!-- Parallax background video -->
+  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
+    <source src="INDEX_BACKGROUND.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Header -->
   <header>
     <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
     <nav class="nav-links">
@@ -26,19 +28,21 @@
     </nav>
   </header>
 
-  <!-- Blank intro space to show video fully -->
+  <!-- Blank intro screen for unobstructed video -->
   <div style="height: 100vh;"></div>
 
+  <!-- ABOUT -->
   <section class="section index-about">
     <h2 class="title">ELLIOTT LUKE</h2>
     <p class="description">
-      I’m a filmmaker and photographer from Adelaide, working across film and digital.
-      I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge.
-      Still developing...but I love capturing people and moments through a perspective
+      I’m a filmmaker and photographer from Adelaide, working across film and digital. 
+      I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. 
+      Still developing...but I love capturing people and moments through a perspective 
       that feels honest, styled, and just a little different.
     </p>
   </section>
 
+  <!-- CONTACT -->
   <section class="hire-me">
     <div class="hire-me-card">
       <h2>CONTACT ME</h2>
@@ -53,16 +57,17 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <div class="global-social">
     <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
     <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
     <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
   </div>
 
-  <!-- Fade-in + Scroll Hint + Parallax -->
+  <!-- Fade + Parallax Scripts -->
   <script>
+    // Fade-in on scroll
     document.addEventListener('DOMContentLoaded', function () {
-
       function handleScroll() {
         document.body.classList.toggle('scrolled', window.scrollY > 10);
       }
@@ -79,16 +84,14 @@
       }, { threshold: 0.3 });
 
       sections.forEach(sec => observer.observe(sec));
+    });
 
-      /* ---------- PARALLAX VIDEO ---------- */
+    // Parallax video movement
+    document.addEventListener("scroll", () => {
       const video = document.getElementById("background-video");
-      const speed = 0.35; // adjust this (0.25 = subtle, 0.45 = stronger)
-
-      window.addEventListener("scroll", () => {
-        const y = window.scrollY;
-        video.style.transform = `translateY(${y * speed}px)`;
-      });
-
+      const scrollY = window.scrollY;
+      const parallaxSpeed = 0.22; // tuned to prevent bottom gap
+      video.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
     });
   </script>
 
