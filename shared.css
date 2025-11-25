@@ -304,4 +304,13 @@ section.visible, .hire-me.visible {
   font-weight: 800;
   text-transform: uppercase;
 }
+/* Fix spacing + alignment for inline section links (YouTube + Buy Zine) */
+.section a {
+  display: block;                   /* makes centering consistent */
+  margin-top: 2rem !important;      /* space above */
+  margin-bottom: 1rem !important;   /* space below */
+  text-align: center !important;    /* matches the "WATCH FULL VIDEOS" look */
+  letter-spacing: 0.05em;
+}
+
 
