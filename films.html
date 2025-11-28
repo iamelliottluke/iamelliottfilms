@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FILMS – IAMELLIOTTFILMS</title>
+<link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<div class="scroll-hint">Scroll to the next frame</div>
+
+<script>
+// premium scroll inertia
+let isScrolling;
+window.addEventListener('wheel', (e) => {
+  clearTimeout(isScrolling);
+  const weighted = e.deltaY * 0.65;
+  window.scrollBy({ top: weighted, behavior: 'smooth' });
+  e.preventDefault();
+}, { passive:false });
+</script>
+
+<!-- Intro spacer -->
+<div class="intro-spacer"></div>
+
+<!-- Original content below -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FILMS – IAMELLIOTTFILMS</title>
@@ -71,6 +98,10 @@
     sections.forEach(sec => observer.observe(sec));
   });
   </script>
+
+</body>
+</html>
+
 
 </body>
 </html>
