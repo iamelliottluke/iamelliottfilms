@@ -306,28 +306,39 @@ section.visible, .hire-me.visible {
   padding-bottom: 0rem !important;   /* tighten space BELOW */
   min-height: auto !important;       /* remove forced 100vh */
 }
-/* Stronger horizontal carousel snapping */
-.carousel-container {
-  scroll-snap-type: x mandatory;
+/* ----------------------------------------- */
+/* STRONGER VERTICAL SNAP (30% stronger)     */
+/* ----------------------------------------- */
+
+/* The body is the scroll container */
+html, body {
+  scroll-snap-type: y mandatory;     /* stronger than proximity */
+  scroll-padding-top: 4vh;           /* slightly stronger pull */
+  overscroll-behavior-y: contain;    /* prevents overshoot */
   scroll-behavior: smooth;
-  overscroll-behavior-x: contain;
-  scroll-snap-stop: always;
+}
+
+/* Every top-level section snaps */
+.section,
+.hire-me,
+.global-social {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;          /* stronger magnetic snap */
+  min-height: 100vh;
+}
+
+/* ----------------------------------------- */
+/* STRONGER HORIZONTAL CAROUSEL SNAP (50%)   */
+/* ----------------------------------------- */
+
+.carousel-container {
+  scroll-snap-type: x mandatory !important;
+  scroll-snap-stop: always !important;
+  scroll-behavior: smooth !important;
+  overscroll-behavior-x: contain !important;
 }
 
 .carousel-item {
   scroll-snap-align: center;
-}
-
-/* Stronger vertical snapping (30%) */
-html, body {
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 4vh;
-  overscroll-behavior-y: contain;
-  scroll-behavior: smooth;
-}
-
-.section, .hire-me {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
