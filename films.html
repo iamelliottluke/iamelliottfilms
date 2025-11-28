@@ -7,82 +7,116 @@
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
-  <div class="scroll-hint">Scroll to the next frame</div>
 
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
-  </video>
+<div class="scroll-hint">Scroll to the next frame</div>
 
+<video id="background-video" autoplay muted loop playsinline preload="auto">
+  <source src="SITE_BACKGROUND.mp4" type="video/mp4" />
+</video>
 
-  <header>
-    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
-    <nav class="nav-links">
-      <a href="films.html">FILMS</a>
-      <a href="iam_issue.html">PHOTOS</a>
-    </nav>
-  </header>
+<header>
+  <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
+  <nav class="nav-links">
+    <a href="films.html">FILMS</a>
+    <a href="iam_issue.html">PHOTOS</a>
+  </nav>
+</header>
 
-  <div style="height: 100vh;"></div>
+<div style="height: 100vh;"></div>
 
 <section class="section">
   <h2 class="title">SHORTS</h2>
-  <p class="description">
-    Previews of my short films; Hit and Run!, Allure, Clout, and A Clean Well Lighted Place.
-  </p>
+  <p class="description">Previews of my short films; Hit and Run!, Allure, Clout, and A Clean Well Lighted Place.</p>
 
   <div class="carousel-container">
     <div class="carousel-track">
-
-      <!-- Original Reel Set -->
-      <div class="carousel-item"><video src="reel1.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel2.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel3.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel4.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel1.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel2.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel3.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-      <div class="carousel-item"><video src="reel4.mp4" preload="metadata" autoplay muted loop playsinline></video></div>
-
+      <div class="carousel-item"><img src="outnow.jpg" /></div>
+      <div class="carousel-item"><img src="clout.jpg" /></div>
+      <div class="carousel-item"><img src="allure.jpg" /></div>
+      <div class="carousel-item"><img src="clean.jpg" /></div>
     </div>
   </div>
 
-  <div class="social-links">
-    <a href="https://youtube.com/@iamelliottfilms" target="_blank">
-      WATCH FULL VIDEOS ON YOUTUBE
-    </a>
-  </div>
+  <a href="https://youtube.com/@iamelliottfilms" target="_blank">WATCH FULL VIDEOS ON YOUTUBE</a>
 </section>
-  
 
-  <div class="global-social">
-    <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
-    <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
-    <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
-  </div>
+<div class="global-social">
+  <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
+  <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
+  <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+</div>
 
+<!-- ============== MAGNETIC SCROLL + CAROUSEL ============== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Scroll hint toggling
-    function handleScroll() {
-      document.body.classList.toggle('scrolled', window.scrollY > 10);
-    }
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+  /* Fade-in */
+  const fadeSections = document.querySelectorAll("section, .global-social");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+  }, { threshold: 0.3 });
+  fadeSections.forEach(sec => observer.observe(sec));
 
-    // Directional fade for sections
-    const sections = document.querySelectorAll('section, .hire-me, .global-social');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.3 });
+  /* Vertical magnetic scroll */
+  const snapSections = document.querySelectorAll(".section, .global-social");
+  let scrolling = false;
 
-    sections.forEach(sec => observer.observe(sec));
+  function magneticScroll() {
+    if (scrolling) return;
+    scrolling = true;
+
+    let nearest = null;
+    let nearestDist = Infinity;
+
+    snapSections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      const dist = Math.abs(rect.top);
+      if (dist < nearestDist) { nearestDist = dist; nearest = sec; }
+    });
+
+    if (nearest) nearest.scrollIntoView({ behavior:"smooth", block:"start" });
+
+    setTimeout(() => scrolling = false, 600);
+  }
+
+  let scrollTimeout;
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(magneticScroll, 120);
   });
-  </script>
+
+  window.addEventListener("touchend", () => {
+    setTimeout(magneticScroll, 120);
+  });
+
+  /* Horizontal magnetic carousel */
+  const carousels = document.querySelectorAll(".carousel-container");
+
+  carousels.forEach(container => {
+    let isScrolling;
+
+    container.addEventListener("scroll", () => {
+      clearTimeout(isScrolling);
+
+      isScrolling = setTimeout(() => {
+        const items = container.querySelectorAll(".carousel-item");
+        let nearest = null;
+        let nearestDist = Infinity;
+
+        items.forEach(item => {
+          const box = item.getBoundingClientRect();
+          const dist = Math.abs(box.left + box.width/2 - window.innerWidth/2);
+          if (dist < nearestDist) { nearestDist = dist; nearest = item; }
+        });
+
+        if (nearest) nearest.scrollIntoView({ behavior:"smooth", inline:"center" });
+
+      }, 120);
+    });
+  });
+
+});
+</script>
 
 </body>
 </html>
