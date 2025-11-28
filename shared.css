@@ -52,9 +52,15 @@ header h1 a, .nav-links a {
 }
 
 /* ---------- SECTIONS ---------- */
-.section { padding: 0 2rem; text-align:center; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+.section {
+  padding: 6rem 2rem 3rem;
+  text-align: center;
+}
 
-/* removed first section spacing fix */
+/* first section spacing fix */
+.section:first-of-type {
+  padding-top: 3.5rem;
+}
 
 .title {
   font-size: 2.5rem;
@@ -206,16 +212,18 @@ button {
 .nav-links a { flex-shrink: 0; }
 
 /* ---------- SCROLL SNAP ---------- */
-html, body { scroll-snap-type:y mandatory; scroll-padding-top:0; }
+html, body {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 6vh;
+}
 
-body { scroll-snap-stop:always; }
+body {
+  scroll-snap-stop: always;
+}
 
-.intro-spacer,
-.section,
-.hire-me,
-.global-social {
-  scroll-snap-align:start;
-  scroll-snap-stop:always;
+.section, .hire-me {
+  scroll-snap-align: start;
+  min-height: 100vh;
 }
 
 /* ---------- FADE-IN ANIMATION ---------- */
@@ -298,16 +306,3 @@ section.visible, .hire-me.visible {
   padding-bottom: 0rem !important;   /* tighten space BELOW */
   min-height: auto !important;       /* remove forced 100vh */
 }
-
-
-.intro-spacer { height:100vh; }
-
-.global-social {
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-.index-about { min-height:100vh !important; }
