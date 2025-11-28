@@ -295,4 +295,110 @@ section.visible,
   .nav-links a {
     font-size: 0.95rem;
   }
+  /* =========================================================
+   OPTION B — STRONG BUT GENTLE SNAP SCROLL (VERTICAL)
+   ========================================================= */
+
+html, body {
+  scroll-snap-type: y proximity !important;  /* NOT mandatory — prevents locking */
+  scroll-padding-top: 8vh !important;        /* gentler settling position */
+  overscroll-behavior-y: contain !important;
+  scroll-behavior: smooth !important;
+}
+
+/* All main sections get perfect vertical alignment */
+.section,
+.hire-me {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;  /* centered vertically */
+  align-items: center !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: normal !important;  /* gentle but noticeable */
+}
+
+/* =========================================================
+   SOCIAL LINKS FIX (DESKTOP + MOBILE)
+   ========================================================= */
+
+.global-social {
+  display: flex !important;
+  flex-direction: row !important;      /* ALWAYS horizontal */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 3rem !important;                /* spacing between items */
+  min-height: 25vh !important;         /* sits nicely in bottom quarter */
+  padding-bottom: 5vh !important;
+  margin: 0 !important;
+  text-align: center;
+}
+
+/* On small phones, reduce spacing but keep row layout */
+@media (max-width: 400px) {
+  .global-social {
+    gap: 1.2rem !important;
+    min-height: 20vh !important;
+  }
+}
+
+/* =========================================================
+   CAROUSEL FIX — STRONG SNAPPING (HORIZONTAL)
+   Prevents page snap from hijacking carousel scroll
+   ========================================================= */
+
+.carousel-container {
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  scroll-snap-type: x mandatory !important;  /* strong snap */
+  scroll-snap-stop: always !important;       /* settle into item */
+  
+  overscroll-behavior-x: contain !important; /* prevents vertical snap from triggering */
+}
+
+/* Fix track width + consistency */
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each item snaps cleanly */
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center !important;
+}
+
+/* Images & videos fill correctly */
+.carousel-item img,
+.carousel-item video {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* =========================================================
+   SPECIAL CASE — ELLIOTT LUKE (index page only)
+   Slightly tighter spacing above/below
+   ========================================================= */
+
+.index-about {
+  padding-top: 3rem !important;
+  padding-bottom: 2rem !important;
+  min-height: 100vh !important;
+}
+
+/* =========================================================
+   SPECIAL CASE — SOCIAL LINKS ARE LAST SECTION
+   Should NOT center vertically — stays bottom aligned
+   ========================================================= */
+
+.global-social {
+  justify-content: center !important;
+  align-items: flex-end !important;
 }
