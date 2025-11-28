@@ -214,7 +214,7 @@ button {
 /* ---------- SCROLL SNAP ---------- */
 html, body {
   scroll-snap-type: y mandatory;
-  scroll-padding-top: 6vh;
+  scroll-padding-top: -3vh;
 }
 
 body {
@@ -222,7 +222,7 @@ body {
 }
 
 .section, .hire-me {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   min-height: 100vh;
 }
 
