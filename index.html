@@ -10,21 +10,9 @@
 
 <div class="scroll-hint">Scroll to the next frame</div>
 
-<script>
-// premium scroll inertia
-let isScrolling;
-window.addEventListener('wheel', (e) => {
-  clearTimeout(isScrolling);
-  const weighted = e.deltaY * 0.65;
-  window.scrollBy({ top: weighted, behavior: 'smooth' });
-  e.preventDefault();
-}, { passive:false });
-</script>
-
-<!-- Intro spacer -->
+<!-- Intro spacer snaps cleanly -->
 <div class="intro-spacer"></div>
 
-<!-- Original content below -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

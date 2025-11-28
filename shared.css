@@ -1,5 +1,54 @@
-/* premium snap + centering */
-html, body {margin:0; padding:0; scroll-snap-type:y mandatory; scroll-behavior:smooth; overscroll-behavior:none; height:100%; background:black; color:white; font-family:Helvetica;}
-.intro-spacer {height:100vh; scroll-snap-align:start; scroll-snap-stop:always;}
-.section, .hire-me {min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; scroll-snap-align:start; scroll-snap-stop:always;}
-.global-social {min-height:100vh; display:flex; justify-content:center; align-items:center; scroll-snap-align:start; scroll-snap-stop:always;}
+
+html, body {
+  margin:0; padding:0;
+  font-family: "Helvetica Neue", sans-serif;
+  background:black; color:white;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  height:100%;
+  scroll-snap-type:y mandatory;
+  overscroll-behavior:none;
+}
+
+/* Intro spacer becomes a snap section */
+.intro-spacer {
+  height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+/* Sections centred vertically */
+.section, .hire-me {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+/* Footer also snaps */
+.global-social {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+}
+
+/* Keep carousels functional */
+.carousel-container { width:100vw; overflow-x:auto; scroll-snap-type:x mandatory; }
+.carousel-track { display:flex; gap:1rem; }
+.carousel-item { flex:0 0 auto; scroll-snap-align:center; height:50vh; }
+.carousel-item img, .carousel-item video { height:100%; width:auto; object-fit:contain; }
+
+/* Keep background video fixed */
+#background-video {
+  position:fixed;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  object-fit:cover;
+  z-index:0;
+}
