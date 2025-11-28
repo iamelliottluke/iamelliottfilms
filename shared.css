@@ -149,40 +149,29 @@ button {
   cursor: pointer;
 }
 
-/* ---------- CAROUSELS (INFINITE MANUAL SCROLL) ---------- */
+/* ---------- CAROUSELS (FULL EDGE-TO-EDGE) ---------- */
 .carousel-container {
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
   padding: 0;
-
-  /* smooth manual scrolling */
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
-  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-
-  /* remove mandatory snap so loops feel clean */
-  scroll-snap-type: none;
 }
 
 .carousel-track {
+  width: 100vw;
   display: flex;
   gap: 1rem;
   padding: 0;
   margin: 0;
-
-  /* width allowed to grow infinitely */
-  width: auto;
-  position: relative;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-
-  /* center each item visually without locking scroll */
-  scroll-snap-align: none;
-
+  scroll-snap-align: center;
   height: 50vh;
 }
 
