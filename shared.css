@@ -306,3 +306,28 @@ section.visible, .hire-me.visible {
   padding-bottom: 0rem !important;   /* tighten space BELOW */
   min-height: auto !important;       /* remove forced 100vh */
 }
+/* Stronger horizontal carousel snapping */
+.carousel-container {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scroll-snap-stop: always;
+}
+
+.carousel-item {
+  scroll-snap-align: center;
+}
+
+/* Stronger vertical snapping (30%) */
+html, body {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 4vh;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+}
+
+.section, .hire-me {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
