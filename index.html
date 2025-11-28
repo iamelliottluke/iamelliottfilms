@@ -22,6 +22,7 @@
   </nav>
 </header>
 
+<!-- Blank intro section for video -->
 <div style="height: 100vh;"></div>
 
 <section class="section index-about">
@@ -54,18 +55,20 @@
   <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
 </div>
 
-<!-- ================= MAGNETIC SCROLL SYSTEM ================= -->
+<!-- ================= MAGNETIC SCROLL ================= -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* Fade-in */
+  /* Fade-in animation */
   const fadeSections = document.querySelectorAll("section, .hire-me, .global-social");
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
   }, { threshold: 0.3 });
   fadeSections.forEach(sec => observer.observe(sec));
 
-  /* Vertical magnetic scroll */
+  /* Vertical magnetic snapping */
   const snapSections = document.querySelectorAll(".section, .hire-me, .global-social");
   let scrolling = false;
 
@@ -79,10 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     snapSections.forEach(sec => {
       const rect = sec.getBoundingClientRect();
       const dist = Math.abs(rect.top);
-      if (dist < nearestDist) { nearestDist = dist; nearest = sec; }
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearest = sec;
+      }
     });
 
-    if (nearest) nearest.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (nearest) {
+      nearest.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     setTimeout(() => scrolling = false, 600);
   }
