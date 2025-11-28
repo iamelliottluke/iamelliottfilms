@@ -57,6 +57,9 @@ header h1 a,
   padding: 6rem 2rem 3rem;
   text-align: center;
   min-height: 100vh;   /* required for magnetic snapping */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically centre content */
 }
 
 /* first section spacing fix */
@@ -88,9 +91,9 @@ header h1 a,
   text-align: center;
   padding: 2.5rem 1.5rem 6rem;
   display: flex;
-  justify-content: center;
+  justify-content: center;   /* vertical centre contact card */
   align-items: center;
-  min-height: 100vh;  /* for magnetic snap */
+  min-height: 100vh;         /* for magnetic snap */
 }
 
 .hire-me-card {
@@ -225,12 +228,17 @@ section.visible,
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
   text-align: center;
-  margin: 2rem 0 3rem;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  min-height: 100vh; /* for final section snap */
+  min-height: 100vh;          /* snap target */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* push links toward bottom */
+  align-items: center;
+  padding-bottom: 10vh;       /* bottom quarter-ish */
+  margin: 0;
 }
 
 .global-social a {
@@ -271,4 +279,20 @@ section.visible,
   padding-top: 2rem !important;
   padding-bottom: 0rem !important;
   min-height: 100vh !important;
+}
+
+/* ---------- SMALL PHONE FIXES ---------- */
+@media (max-width: 400px) {
+  header {
+    padding: 0.5rem 0.6rem;
+  }
+  header h1 a {
+    font-size: 0.95rem;
+  }
+  .nav-links {
+    gap: 0.6rem;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+  }
 }
