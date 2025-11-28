@@ -17,7 +17,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: 0; /* video visible */
+  z-index: 0;
 }
 
 /* ---------- HEADER ---------- */
@@ -57,7 +57,6 @@ header h1 a, .nav-links a {
   text-align: center;
 }
 
-/* first section spacing fix */
 .section:first-of-type {
   padding-top: 3.5rem;
 }
@@ -76,7 +75,6 @@ header h1 a, .nav-links a {
   color: #ccc;
 }
 
-/* breathing room before ALL carousels */
 .section .description {
   margin-bottom: 2.5rem;
 }
@@ -95,7 +93,7 @@ header h1 a, .nav-links a {
 }
 
 .hire-me-card {
-  background: none !important;    /* remove black box */
+  background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -127,7 +125,6 @@ form {
   margin: auto;
 }
 
-/* SAME TRANSPARENCY FOR ALL FIELDS */
 input,
 textarea,
 button {
@@ -159,6 +156,10 @@ button {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+
+  /* FIX — isolate horizontal scrolling so vertical snapping stays perfect */
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
 }
 
 .carousel-track {
@@ -211,20 +212,32 @@ button {
 .nav-links { white-space: nowrap; }
 .nav-links a { flex-shrink: 0; }
 
-/* ---------- SCROLL SNAP ---------- */
+/* ---------- SCROLL SNAP (FIXED) ---------- */
 html, body {
-  scroll-snap-type: y proximity;
-  scroll-padding-top: 6vh;
+  scroll-snap-type: y mandatory;    /* FIX — magnetic snap */
+  scroll-padding-top: 0;
 }
 
 body {
   scroll-snap-stop: always;
 }
 
-.section, .hire-me {
-  scroll-snap-align: start;
-  min-height: 100vh;
+.section,
+.hire-me,
+.global-social {
+  scroll-snap-align: start;         /* FIX — every block snaps cleanly */
+  scroll-snap-stop: always;
+  min-height: 100vh;                /* FIX — footer becomes full snap frame */
 }
+
+/* Optional if you rename your first spacer: */
+/*
+.intro-spacer {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+*/
 
 /* ---------- FADE-IN ANIMATION ---------- */
 section, .hire-me {
@@ -244,11 +257,15 @@ section.visible, .hire-me.visible {
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
   text-align: center;
-  margin: 2rem 0 3rem;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.global-social.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .global-social a {
@@ -258,12 +275,6 @@ section.visible, .hire-me.visible {
   margin: 0 1.2rem;
 }
 
-.global-social.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* desktop footer spacing */
 @media (min-width: 900px) {
   .global-social a {
     margin: 0 2.5rem;
@@ -271,23 +282,7 @@ section.visible, .hire-me.visible {
   }
 }
 
-/* small phone fixes */
-@media (max-width: 400px) {
-  header {
-    padding: 0.5rem 0.6rem;
-  }
-  header h1 a {
-    font-size: 0.95rem;
-  }
-  .nav-links {
-    gap: 0.6rem;
-  }
- .nav-links a {
-    font-size: 0.95rem;
-  }
-}
-
-/* Inline links in section (YouTube + Buy Zine) */
+/* ---------- CONTENT LINK STYLING ---------- */
 .section a {
   color: white !important;
   text-decoration: none !important;
@@ -300,9 +295,9 @@ section.visible, .hire-me.visible {
   letter-spacing: 0.05em;
 }
 
-/* Final ABOUT section spacing + FIX min-height issue */
+/* ---------- ABOUT SECTION ---------- */
 .index-about {
-  padding-top: 2rem !important;      /* tighten space ABOVE */
-  padding-bottom: 0rem !important;   /* tighten space BELOW */
-  min-height: auto !important;       /* remove forced 100vh */
+  padding-top: 2rem !important;
+  padding-bottom: 0rem !important;
+  min-height: auto !important;
 }
