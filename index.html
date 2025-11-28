@@ -7,71 +7,98 @@
   <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
- <div class="scroll-hint">Scroll to the next frame</div>
 
-  <video id="background-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
-    <source src="INDEX_BACKGROUND.mp4" type="video/mp4" />
-  </video>
+<div class="scroll-hint">Scroll to the next frame</div>
 
+<video id="background-video" autoplay muted loop playsinline preload="auto">
+  <source src="INDEX_BACKGROUND.mp4" type="video/mp4" />
+</video>
 
-  <header>
-    <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
-    <nav class="nav-links">
-      <a href="films.html">FILMS</a>
-      <a href="iam_issue.html">PHOTOS</a>
-    </nav>
-  </header>
+<header>
+  <h1><a href="index.html">IAMELLIOTTFILMS</a></h1>
+  <nav class="nav-links">
+    <a href="films.html">FILMS</a>
+    <a href="iam_issue.html">PHOTOS</a>
+  </nav>
+</header>
 
-  <div style="height: 100vh;"></div>
+<div style="height: 100vh;"></div>
 
-  <section class="section index-about">
-    <h2 class="title">ELLIOTT LUKE</h2>
-    <p class="description">I’m a filmmaker and photographer from Adelaide, working across film and digital. I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge. Still developing...but I love capturing people and moments through a perspective that feels honest, styled, and just a little different.</p>
-  </section>
+<section class="section index-about">
+  <h2 class="title">ELLIOTT LUKE</h2>
+  <p class="description">
+    I’m a filmmaker and photographer from Adelaide, working across film and digital.
+    I’m drawn to vintage aesthetics, moody tones, and anything with a bit of edge.
+    Still developing...but I love capturing people and moments through a perspective
+    that feels honest, styled, and just a little different.
+  </p>
+</section>
 
-  <section class="hire-me">
+<section class="hire-me">
   <div class="hire-me-card">
     <h2>CONTACT ME</h2>
     <p>Look. Mood. Story. Let’s make it happen.</p>
 
     <form action="https://formspree.io/f/xqapyzld" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="name" placeholder="Your Name" required/>
+      <input type="email" name="email" placeholder="Your Email" required/>
       <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
       <button type="submit">Send</button>
     </form>
   </div>
-  </section>
+</section>
 
-  <div class="global-social">
-    <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
-    <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
-    <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
-  </div>
+<div class="global-social">
+  <a href="https://instagram.com/iamelliottfilms" target="_blank">INSTAGRAM</a>
+  <a href="https://youtube.com/@iamelliottfilms" target="_blank">YOUTUBE</a>
+  <a href="https://tiktok.com/@iamelliottfilms" target="_blank">TIKTOK</a>
+</div>
 
+<!-- ================= MAGNETIC SCROLL SYSTEM ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Scroll hint toggling
-    function handleScroll() {
-      document.body.classList.toggle('scrolled', window.scrollY > 10);
-    }
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+  /* Fade-in */
+  const fadeSections = document.querySelectorAll("section, .hire-me, .global-social");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+  }, { threshold: 0.3 });
+  fadeSections.forEach(sec => observer.observe(sec));
 
-    // Directional fade for sections
-    const sections = document.querySelectorAll('section, .hire-me, .global-social');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.3 });
+  /* Vertical magnetic scroll */
+  const snapSections = document.querySelectorAll(".section, .hire-me, .global-social");
+  let scrolling = false;
 
-    sections.forEach(sec => observer.observe(sec));
+  function magneticScroll() {
+    if (scrolling) return;
+    scrolling = true;
+
+    let nearest = null;
+    let nearestDist = Infinity;
+
+    snapSections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      const dist = Math.abs(rect.top);
+      if (dist < nearestDist) { nearestDist = dist; nearest = sec; }
+    });
+
+    if (nearest) nearest.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    setTimeout(() => scrolling = false, 600);
+  }
+
+  let scrollTimeout;
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(magneticScroll, 120);
   });
-  </script>
+
+  window.addEventListener("touchend", () => {
+    setTimeout(magneticScroll, 120);
+  });
+
+});
+</script>
 
 </body>
 </html>
