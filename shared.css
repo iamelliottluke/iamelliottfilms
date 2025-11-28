@@ -9,7 +9,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* ---------- BACKGROUND VIDEO + GRAIN ---------- */
+/* ---------- BACKGROUND VIDEO ---------- */
 #background-video {
   position: fixed;
   top: 0;
@@ -17,7 +17,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: 0; /* video visible */
+  z-index: 0;
 }
 
 /* ---------- HEADER ---------- */
@@ -40,7 +40,8 @@ header h1 {
   text-transform: uppercase;
 }
 
-header h1 a, .nav-links a {
+header h1 a,
+.nav-links a {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -55,6 +56,7 @@ header h1 a, .nav-links a {
 .section {
   padding: 6rem 2rem 3rem;
   text-align: center;
+  min-height: 100vh;   /* required for magnetic snapping */
 }
 
 /* first section spacing fix */
@@ -74,10 +76,6 @@ header h1 a, .nav-links a {
   margin: 0 auto;
   font-size: 1.1rem;
   color: #ccc;
-}
-
-/* breathing room before ALL carousels */
-.section .description {
   margin-bottom: 2.5rem;
 }
 
@@ -92,10 +90,11 @@ header h1 a, .nav-links a {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;  /* for magnetic snap */
 }
 
 .hire-me-card {
-  background: none !important;    /* remove black box */
+  background: none !important;
   padding: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -127,7 +126,6 @@ form {
   margin: auto;
 }
 
-/* SAME TRANSPARENCY FOR ALL FIELDS */
 input,
 textarea,
 button {
@@ -149,7 +147,7 @@ button {
   cursor: pointer;
 }
 
-/* ---------- CAROUSELS (FULL EDGE-TO-EDGE) ---------- */
+/* ---------- CAROUSELS ---------- */
 .carousel-container {
   width: 100vw;
   margin-left: 50%;
@@ -157,7 +155,6 @@ button {
   padding: 0;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -171,7 +168,6 @@ button {
 
 .carousel-item {
   flex: 0 0 auto;
-  scroll-snap-align: center;
   height: 50vh;
 }
 
@@ -208,32 +204,17 @@ button {
   pointer-events: none;
 }
 
-.nav-links { white-space: nowrap; }
-.nav-links a { flex-shrink: 0; }
-
-/* ---------- SCROLL SNAP ---------- */
-html, body {
-  scroll-snap-type: y proximity;
-  scroll-padding-top: 6vh;
-}
-
-body {
-  scroll-snap-stop: always;
-}
-
-.section, .hire-me {
-  scroll-snap-align: start;
-  min-height: 100vh;
-}
-
 /* ---------- FADE-IN ANIMATION ---------- */
-section, .hire-me {
+section,
+.hire-me {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 1.1s ease-out, transform 1.1s ease-out;
 }
 
-section.visible, .hire-me.visible {
+section.visible,
+.hire-me.visible,
+.global-social.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -249,6 +230,7 @@ section.visible, .hire-me.visible {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  min-height: 100vh; /* for final section snap */
 }
 
 .global-social a {
@@ -271,23 +253,7 @@ section.visible, .hire-me.visible {
   }
 }
 
-/* small phone fixes */
-@media (max-width: 400px) {
-  header {
-    padding: 0.5rem 0.6rem;
-  }
-  header h1 a {
-    font-size: 0.95rem;
-  }
-  .nav-links {
-    gap: 0.6rem;
-  }
- .nav-links a {
-    font-size: 0.95rem;
-  }
-}
-
-/* Inline links in section (YouTube + Buy Zine) */
+/* ---------- INLINE LINKS ---------- */
 .section a {
   color: white !important;
   text-decoration: none !important;
@@ -300,45 +266,9 @@ section.visible, .hire-me.visible {
   letter-spacing: 0.05em;
 }
 
-/* Final ABOUT section spacing + FIX min-height issue */
+/* ---------- ELLIOTT SECTION SPACING ---------- */
 .index-about {
-  padding-top: 2rem !important;      /* tighten space ABOVE */
-  padding-bottom: 0rem !important;   /* tighten space BELOW */
-  min-height: auto !important;       /* remove forced 100vh */
+  padding-top: 2rem !important;
+  padding-bottom: 0rem !important;
+  min-height: 100vh !important;
 }
-/* ----------------------------------------- */
-/* STRONGER VERTICAL SNAP (30% stronger)     */
-/* ----------------------------------------- */
-
-/* The body is the scroll container */
-html, body {
-  scroll-snap-type: y mandatory;     /* stronger than proximity */
-  scroll-padding-top: 4vh;           /* slightly stronger pull */
-  overscroll-behavior-y: contain;    /* prevents overshoot */
-  scroll-behavior: smooth;
-}
-
-/* Every top-level section snaps */
-.section,
-.hire-me,
-.global-social {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;          /* stronger magnetic snap */
-  min-height: 100vh;
-}
-
-/* ----------------------------------------- */
-/* STRONGER HORIZONTAL CAROUSEL SNAP (50%)   */
-/* ----------------------------------------- */
-
-.carousel-container {
-  scroll-snap-type: x mandatory !important;
-  scroll-snap-stop: always !important;
-  scroll-behavior: smooth !important;
-  overscroll-behavior-x: contain !important;
-}
-
-.carousel-item {
-  scroll-snap-align: center;
-}
-
