@@ -52,19 +52,32 @@ header h1 a,
   margin-left: 1.5rem;
 }
 
-/* ---------- SECTIONS ---------- */
-.section {
-  padding: 6rem 2rem 3rem;
-  text-align: center;
-  min-height: 100vh;   /* required for magnetic snapping */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertically centre content */
+.nav-links { 
+  white-space: nowrap;
 }
 
-/* first section spacing fix */
+.nav-links a { 
+  flex-shrink: 0;
+}
+
+/* ---------- GENERIC SECTIONS ---------- */
+/* Used on IAM_ISSUE, FILMS, and CONTACT sections */
+.section,
+.hire-me {
+  min-height: 100vh;
+  padding: 6rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical centering */
+  align-items: center;
+}
+
+/* first content section on each page – make sure header doesn't overlap */
 .section:first-of-type {
-  padding-top: 3.5rem;
+  padding-top: 4.5rem;
 }
 
 .title {
@@ -79,6 +92,10 @@ header h1 a,
   margin: 0 auto;
   font-size: 1.1rem;
   color: #ccc;
+}
+
+/* breathing room before carousels */
+.section .description {
   margin-bottom: 2.5rem;
 }
 
@@ -86,14 +103,15 @@ header h1 a,
   margin-top: 0.5rem;
 }
 
+/* ---------- INDEX: ABOUT BLOCK ---------- */
+.index-about {
+  padding-top: 2.5rem !important;    /* tighter above */
+  padding-bottom: 0rem !important;   /* tighter below */
+}
+
 /* ---------- CONTACT FORM SECTION ---------- */
 .hire-me {
-  text-align: center;
   padding: 2.5rem 1.5rem 6rem;
-  display: flex;
-  justify-content: center;   /* vertical centre contact card */
-  align-items: center;
-  min-height: 100vh;         /* for magnetic snap */
 }
 
 .hire-me-card {
@@ -129,6 +147,7 @@ form {
   margin: auto;
 }
 
+/* SAME TRANSPARENCY FOR ALL FIELDS */
 input,
 textarea,
 button {
@@ -150,7 +169,7 @@ button {
   cursor: pointer;
 }
 
-/* ---------- CAROUSELS ---------- */
+/* ---------- CAROUSELS (FULL EDGE-TO-EDGE) ---------- */
 .carousel-container {
   width: 100vw;
   margin-left: 50%;
@@ -158,7 +177,10 @@ button {
   padding: 0;
   overflow-x: auto;
   overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 .carousel-track {
@@ -171,6 +193,7 @@ button {
 
 .carousel-item {
   flex: 0 0 auto;
+  scroll-snap-align: center;
   height: 50vh;
 }
 
@@ -209,7 +232,8 @@ button {
 
 /* ---------- FADE-IN ANIMATION ---------- */
 section,
-.hire-me {
+.hire-me,
+.global-social {
   opacity: 0;
   transform: translateY(25px);
   transition: opacity 1.1s ease-out, transform 1.1s ease-out;
@@ -222,46 +246,35 @@ section.visible,
   transform: translateY(0);
 }
 
-/* ---------- FOOTER SOCIAL ---------- */
+/* ---------- GLOBAL FOOTER LINKS ---------- */
 .global-social {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
   text-align: center;
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  min-height: 100vh;          /* snap target */
+
+  min-height: 60vh;                 /* gives space for background */
+  padding: 2rem 2rem 10vh;
+
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;  /* push links toward bottom */
-  align-items: center;
-  padding-bottom: 10vh;       /* bottom quarter-ish */
-  margin: 0;
+  flex-direction: row;               /* horizontal row on desktop & mobile */
+  justify-content: center;
+  align-items: flex-end;             /* push toward bottom quarter */
+  gap: 3rem;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .global-social a {
   color: white;
   text-decoration: none;
   font-weight: 900;
-  margin: 0 1.2rem;
 }
 
-.global-social.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* desktop footer spacing */
-@media (min-width: 900px) {
-  .global-social a {
-    margin: 0 2.5rem;
-    font-size: 0.95rem;
-  }
-}
-
-/* ---------- INLINE LINKS ---------- */
+/* ---------- INLINE CTA LINKS (BUY / WATCH FULL VIDEOS) ---------- */
 .section a {
   color: white !important;
   text-decoration: none !important;
@@ -274,131 +287,43 @@ section.visible,
   letter-spacing: 0.05em;
 }
 
-/* ---------- ELLIOTT SECTION SPACING ---------- */
-.index-about {
-  padding-top: 2rem !important;
-  padding-bottom: 0rem !important;
-  min-height: 100vh !important;
-}
-
 /* ---------- SMALL PHONE FIXES ---------- */
 @media (max-width: 400px) {
   header {
     padding: 0.5rem 0.6rem;
   }
+
   header h1 a {
     font-size: 0.95rem;
   }
+
   .nav-links {
     gap: 0.6rem;
   }
+
   .nav-links a {
     font-size: 0.95rem;
   }
-  /* =========================================================
-   OPTION B — STRONG BUT GENTLE SNAP SCROLL (VERTICAL)
-   ========================================================= */
-
-html, body {
-  scroll-snap-type: y proximity !important;  /* NOT mandatory — prevents locking */
-  scroll-padding-top: 8vh !important;        /* gentler settling position */
-  overscroll-behavior-y: contain !important;
-  scroll-behavior: smooth !important;
 }
 
-/* All main sections get perfect vertical alignment */
-.section,
-.hire-me {
-  min-height: 100vh !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;  /* centered vertically */
-  align-items: center !important;
-  scroll-snap-align: start !important;
-  scroll-snap-stop: normal !important;  /* gentle but noticeable */
-}
-
-/* =========================================================
-   SOCIAL LINKS FIX (DESKTOP + MOBILE)
-   ========================================================= */
-
-.global-social {
-  display: flex !important;
-  flex-direction: row !important;      /* ALWAYS horizontal */
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 3rem !important;                /* spacing between items */
-  min-height: 25vh !important;         /* sits nicely in bottom quarter */
-  padding-bottom: 5vh !important;
-  margin: 0 !important;
-  text-align: center;
-}
-
-/* On small phones, reduce spacing but keep row layout */
-@media (max-width: 400px) {
-  .global-social {
-    gap: 1.2rem !important;
-    min-height: 20vh !important;
+/* ---------- MOBILE VERTICAL SNAP ONLY (OPTION B) ---------- */
+/* Gentle “frame to frame” snapping on phones, disabled on desktop */
+@media (max-width: 480px) {
+  html, body {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 8vh;
+    overscroll-behavior-y: contain;
   }
-}
 
-/* =========================================================
-   CAROUSEL FIX — STRONG SNAPPING (HORIZONTAL)
-   Prevents page snap from hijacking carousel scroll
-   ========================================================= */
+  .section,
+  .hire-me,
+  .global-social {
+    scroll-snap-align: start;
+  }
 
-.carousel-container {
-  width: 100vw;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  scroll-snap-type: x mandatory !important;  /* strong snap */
-  scroll-snap-stop: always !important;       /* settle into item */
-  
-  overscroll-behavior-x: contain !important; /* prevents vertical snap from triggering */
-}
-
-/* Fix track width + consistency */
-.carousel-track {
-  display: flex;
-  gap: 1rem;
-  width: max-content !important;
-  padding: 0;
-  margin: 0;
-}
-
-/* Each item snaps cleanly */
-.carousel-item {
-  flex: 0 0 auto;
-  scroll-snap-align: center !important;
-}
-
-/* Images & videos fill correctly */
-.carousel-item img,
-.carousel-item video {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-}
-
-/* =========================================================
-   SPECIAL CASE — ELLIOTT LUKE (index page only)
-   Slightly tighter spacing above/below
-   ========================================================= */
-
-.index-about {
-  padding-top: 3rem !important;
-  padding-bottom: 2rem !important;
-  min-height: 100vh !important;
-}
-
-/* =========================================================
-   SPECIAL CASE — SOCIAL LINKS ARE LAST SECTION
-   Should NOT center vertically — stays bottom aligned
-   ========================================================= */
-
-.global-social {
-  justify-content: center !important;
-  align-items: flex-end !important;
+  /* keep footer links still in a row but slightly tighter */
+  .global-social {
+    gap: 2rem;
+    padding-bottom: 8vh;
+  }
 }
