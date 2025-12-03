@@ -159,8 +159,6 @@ button {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  
-    /* minor improvements */
   overscroll-behavior-x: contain;
   overscroll-behavior-y: none;
   scroll-behavior: smooth;
