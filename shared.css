@@ -162,6 +162,7 @@ button {
   overscroll-behavior-x: contain;
   overscroll-behavior-y: none;
   scroll-behavior: smooth;
+}
 
 .carousel-track {
   width: 100vw;
