@@ -221,10 +221,8 @@ body {
   scroll-snap-stop: always;
 }
 
-.section,
-.hire-me,
-.global-social {
-  scroll-snap-align: center;  /* 👈 THIS makes it VERY magnetic */
+.section, .hire-me {
+  scroll-snap-align: center;
   min-height: 100vh;
 }
 
