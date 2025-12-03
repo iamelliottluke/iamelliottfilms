@@ -159,9 +159,6 @@ button {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  overscroll-behavior-y: none;
-  scroll-behavior: smooth;
 }
 
 .carousel-track {
@@ -175,7 +172,6 @@ button {
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
-  scroll-snap-stop: always;
   height: 50vh;
 }
 
