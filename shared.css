@@ -69,6 +69,26 @@ header h1 a, .nav-links a {
   text-transform: uppercase;
 }
 
+/* ---------- TYPOGRAPHY POLISH (EDITORIAL) ---------- */
+
+/* Titles */
+.title {
+  letter-spacing: 0.03em;
+  margin-bottom: 1.2rem; /* balanced spacing */
+}
+
+/* Body text */
+.description {
+  line-height: 1.6;      /* already added */
+  letter-spacing: 0.01em;
+  max-width: 42ch;       /* cleaner editorial column width */
+}
+
+/* (Optional) Section links – small polish */
+.section a {
+  letter-spacing: 0.02em;
+}
+
 /* text readability enhancements (minimal, invisible improvements) */
 .title,
 .description,
@@ -82,7 +102,7 @@ header h1 a, .nav-links a {
   max-width: 700px;
   margin: 0 auto;
   font-size: 1.1rem;
-  color: #ccc;
+  color: white;
 }
 
 /* breathing room before ALL carousels */
