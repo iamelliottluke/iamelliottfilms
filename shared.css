@@ -438,7 +438,7 @@ section.visible, .hire-me.visible {
   line-height: 1.6;            /* readable but tight */
   letter-spacing: 0.01em;
   max-width: 42ch;             /* ideal editorial line length */
-  text-align: left;            /* huge readability improvement */
+  text-align: center;            /* huge readability improvement */
   margin-left: auto;
   margin-right: auto;
   padding: 0 1.5rem;           /* breathing room on mobile */
