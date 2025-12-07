@@ -69,33 +69,119 @@ header h1 a, .nav-links a {
   text-transform: uppercase;
 }
 
-/* ---------- TYPOGRAPHY POLISH (EDITORIAL) ---------- */
+/* ----------------------------------------------------------
+   IAMELLIOTTFILMS — FINAL POLISHED TYPOGRAPHY & SPACING PATCH
+   Premium editorial feel, improved readability, mobile-safe
+----------------------------------------------------------- */
 
-/* Titles */
+/* -------------------------
+   1. TITLES — premium feel
+-------------------------- */
 .title {
-  letter-spacing: 0.03em;
-  margin-bottom: 1.2rem; /* balanced spacing */
+  text-align: center;
+  letter-spacing: 0.03em;     /* subtle editorial spacing */
+  margin-bottom: 1.2rem;      /* clean title → body rhythm */
+  line-height: 1.15;          /* tighter, cinematic */
+  color: white;
 }
 
-/* Body text */
+
+/* ----------------------------------------
+   2. BODY TEXT (.description) — readability
+----------------------------------------- */
 .description {
-  line-height: 1.6;      /* already added */
-  letter-spacing: 0.01em;
-  max-width: 42ch;       /* cleaner editorial column width */
+  color: white;
+  text-align: center;         /* restored cinematic balance */
+  line-height: 1.6;           /* perfect readability */
+  letter-spacing: 0.01em;     /* soft editorial kerning */
+  max-width: 42ch;            /* ideal reading measure */
+  padding: 0 1.2rem;          /* side breathing room */
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.98;              /* slightly softer, more filmic */
 }
 
-/* (Optional) Section links – small polish */
+/* Title → Body spacing */
+.title + .description {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+/* ----------------------------------------
+   3. LINKS WITHIN SECTIONS
+----------------------------------------- */
 .section a {
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 800;
   letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-align: center;
+  display: inline-block;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-/* text readability enhancements (minimal, invisible improvements) */
+
+/* ----------------------------------------
+   4. GLOBAL TEXT LEGIBILITY IMPROVEMENT
+   (Invisible, premium readability)
+----------------------------------------- */
 .title,
 .description,
 .section a,
 .global-social a {
   text-shadow: 0 0 8px rgba(0,0,0,0.35);
   -webkit-text-stroke: 0.2px rgba(0,0,0,0.25);
+}
+
+
+/* ----------------------------------------
+   5. SPACING RHYTHM (clean editorial flow)
+----------------------------------------- */
+
+/* Add breathing room after description before carousels */
+.description + .carousel-container {
+  margin-top: 2rem;
+}
+
+.carousel-container {
+  margin-bottom: 2.5rem;  /* separates content cleanly */
+}
+
+.global-social {
+  margin-top: 2rem;
+}
+
+
+/* ----------------------------------------
+   6. MOBILE REFINEMENTS (Narrow devices)
+----------------------------------------- */
+@media (max-width: 480px) {
+
+  /* Slightly tighter but readable on small screens */
+  .description {
+    line-height: 1.55;
+    font-size: 1rem;
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+
+  .title {
+    margin-bottom: 1.1rem;
+    font-size: 1.8rem;
+  }
+
+  .title + .description {
+    margin-top: 1.3rem;
+    margin-bottom: 2.1rem;
+  }
+
+  .section a {
+    font-size: 0.95rem;
+    margin-bottom: 1.4rem;
+  }
 }
 
 .description {
