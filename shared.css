@@ -9,7 +9,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* ---------- BACKGROUND VIDEO + GRAIN ---------- */
+/* ---------- BACKGROUND VIDEO ---------- */
 #background-video {
   position: fixed;
   top: 0;
@@ -18,6 +18,11 @@ html, body {
   height: 100vh;
   object-fit: cover;
   z-index: 0; /* video visible */
+  transition: transform 10s ease-out; /* subtle cinematic drift */
+}
+
+body.scrolled #background-video {
+  transform: scale(1.03);
 }
 
 /* ---------- HEADER ---------- */
@@ -49,6 +54,14 @@ header h1 a, .nav-links a {
 
 .nav-links a {
   margin-left: 1.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 /* ---------- SECTIONS ---------- */
@@ -62,133 +75,27 @@ header h1 a, .nav-links a {
   padding-top: 3.5rem;
 }
 
+/* TITLES – premium editorial feel */
 .title {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;      /* tightened a bit from 1.5rem */
   text-transform: uppercase;
-}
-
-/* ----------------------------------------------------------
-   IAMELLIOTTFILMS — FINAL POLISHED TYPOGRAPHY & SPACING PATCH
-   Premium editorial feel, improved readability, mobile-safe
------------------------------------------------------------ */
-
-/* -------------------------
-   1. TITLES — premium feel
--------------------------- */
-.title {
-  text-align: center;
   letter-spacing: 0.03em;     /* subtle editorial spacing */
-  margin-bottom: 1.2rem;      /* clean title → body rhythm */
-  line-height: 1.15;          /* tighter, cinematic */
+  line-height: 1.15;
   color: white;
 }
 
-
-/* ----------------------------------------
-   2. BODY TEXT (.description) — readability
------------------------------------------ */
+/* BODY TEXT – readability & editorial column */
 .description {
-  color: white;
-  text-align: center;         /* restored cinematic balance */
-  line-height: 1.6;           /* perfect readability */
-  letter-spacing: 0.01em;     /* soft editorial kerning */
   max-width: 42ch;            /* ideal reading measure */
-  padding: 0 1.2rem;          /* side breathing room */
-  margin-left: auto;
-  margin-right: auto;
-  opacity: 0.98;              /* slightly softer, more filmic */
-}
-
-/* Title → Body spacing */
-.title + .description {
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-}
-
-
-/* ----------------------------------------
-   3. LINKS WITHIN SECTIONS
------------------------------------------ */
-.section a {
-  color: white !important;
-  text-decoration: none !important;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  text-align: center;
-  display: inline-block;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-
-/* ----------------------------------------
-   4. GLOBAL TEXT LEGIBILITY IMPROVEMENT
-   (Invisible, premium readability)
------------------------------------------ */
-.title,
-.description,
-.section a,
-.global-social a {
-  text-shadow: 0 0 8px rgba(0,0,0,0.35);
-  -webkit-text-stroke: 0.2px rgba(0,0,0,0.25);
-}
-
-
-/* ----------------------------------------
-   5. SPACING RHYTHM (clean editorial flow)
------------------------------------------ */
-
-/* Add breathing room after description before carousels */
-.description + .carousel-container {
-  margin-top: 2rem;
-}
-
-.carousel-container {
-  margin-bottom: 2.5rem;  /* separates content cleanly */
-}
-
-.global-social {
-  margin-top: 2rem;
-}
-
-
-/* ----------------------------------------
-   6. MOBILE REFINEMENTS (Narrow devices)
------------------------------------------ */
-@media (max-width: 480px) {
-
-  /* Slightly tighter but readable on small screens */
-  .description {
-    line-height: 1.55;
-    font-size: 1rem;
-    max-width: 90%;
-    padding: 0 1rem;
-  }
-
-  .title {
-    margin-bottom: 1.1rem;
-    font-size: 1.8rem;
-  }
-
-  .title + .description {
-    margin-top: 1.3rem;
-    margin-bottom: 2.1rem;
-  }
-
-  .section a {
-    font-size: 0.95rem;
-    margin-bottom: 1.4rem;
-  }
-}
-
-.description {
-  max-width: 700px;
   margin: 0 auto;
   font-size: 1.1rem;
   color: white;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  padding: 0 1.2rem;          /* side breathing room on mobile/desktop */
 }
 
 /* breathing room before ALL carousels */
@@ -196,6 +103,13 @@ header h1 a, .nav-links a {
   margin-bottom: 2.5rem;
 }
 
+/* title → body spacing */
+.title + .description {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* spacing for carousels after text */
 .section .carousel-container {
   margin-top: 0.5rem;
 }
@@ -274,6 +188,11 @@ button {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+
+  /* minor improvements – keep vertical scroll safe */
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
 }
 
 .carousel-track {
@@ -287,6 +206,7 @@ button {
 .carousel-item {
   flex: 0 0 auto;
   scroll-snap-align: center;
+  scroll-snap-stop: always;   /* more “magnetic” inside carousel */
   height: 50vh;
 }
 
@@ -298,6 +218,13 @@ button {
   border-radius: 0;
   display: block;
   object-fit: contain;
+  transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+}
+
+.carousel-item:hover img,
+.carousel-item:hover video {
+  transform: scale(1.03);
+  opacity: 0.92;
 }
 
 /* ---------- SCROLL HINT ---------- */
@@ -323,13 +250,10 @@ button {
   pointer-events: none;
 }
 
-.nav-links { white-space: nowrap; }
-.nav-links a { flex-shrink: 0; }
-
-/* ---------- SCROLL SNAP ---------- */
+/* ---------- SCROLL SNAP (VERTICAL) ---------- */
 html, body {
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: -3vh;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 6vh;
 }
 
 body {
@@ -337,11 +261,11 @@ body {
 }
 
 .section, .hire-me {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   min-height: 100vh;
 }
 
-/* ---------- FADE-IN ANIMATION ---------- */
+/* ---------- FADE-IN ANIMATION (SECTIONS) ---------- */
 section, .hire-me {
   opacity: 0;
   transform: translateY(25px);
@@ -371,11 +295,17 @@ section.visible, .hire-me.visible {
   text-decoration: none;
   font-weight: 900;
   margin: 0 1.2rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .global-social.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.global-social a:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 /* desktop footer spacing */
@@ -397,7 +327,7 @@ section.visible, .hire-me.visible {
   .nav-links {
     gap: 0.6rem;
   }
- .nav-links a {
+  .nav-links a {
     font-size: 0.95rem;
   }
 }
@@ -422,112 +352,36 @@ section.visible, .hire-me.visible {
   min-height: auto !important;       /* remove forced 100vh */
 }
 
-/* ---------------------------------------------------------
-   EDITORIAL POLISH PATCH — IAMELLIOTTFILMS
-   Clean, premium readability + spacing + rhythm
-   Non-destructive, safe on all layouts & snapping
----------------------------------------------------------- */
-
-
-/* ----------------------------
-   1. GLOBAL TYPOGRAPHY TUNING
------------------------------*/
-
-/* Slightly smoother, editorial body text */
-.description {
-  line-height: 1.6;            /* readable but tight */
-  letter-spacing: 0.01em;
-  max-width: 42ch;             /* ideal editorial line length */
-  text-align: left;            /* huge readability improvement */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1.5rem;           /* breathing room on mobile */
-}
-
-/* Titles — cleaner, premium uppercase look */
-.title {
-  letter-spacing: 0.03em;
-  margin-bottom: 1.2rem;       /* tighter, more editorial spacing */
-  text-align: center;
-}
-
-/* Section links (BUY DIGITAL ZINE, WATCH VIDEOS, etc.) */
-.section a {
-  letter-spacing: 0.02em;
-  line-height: 1.4;
-  display: inline-block;
-}
-
-
-/* ----------------------------
-   2. SPACING & VISUAL RHYTHM
------------------------------*/
-
-/* Add breathing room beneath titles */
-.title + .description {
-  margin-top: 0.6rem;
-  margin-bottom: 1.6rem;
-}
-
-/* Space paragraphs or blocks consistently */
-.description + .carousel-container,
-.description + p,
-.description + .global-social {
-  margin-top: 2rem;
-}
-
-/* Space between carousels and following content */
-.carousel-container {
-  margin-bottom: 2.5rem;
-}
-
-/* Ensure footer feels like a clean final frame */
-.global-social {
-  margin-top: 2rem;
-}
-
-
-/* ----------------------------
-   3. TEXT LEGIBILITY ENHANCEMENTS
------------------------------*/
-
-/* Your existing subtle shadow + stroke, tuned */
+/* ---------- TEXT READABILITY ENHANCEMENTS ---------- */
 .title,
 .description,
 .section a,
 .global-social a {
   text-shadow: 0 0 8px rgba(0,0,0,0.35);
   -webkit-text-stroke: 0.2px rgba(0,0,0,0.25);
-  color: white !important;          /* consistent text visibility */
 }
 
-/* Optional (but recommended):
-   Make very long paragraphs slightly softer */
-p.description {
-  opacity: 0.97;
-}
-
-
-/* ----------------------------
-   4. MOBILE TYPOGRAPHY BOOSTS
------------------------------*/
+/* ---------- MOBILE TYPOGRAPHY TWEAKS ---------- */
 @media (max-width: 480px) {
-
-  /* Body text slightly looser for small screens */
   .description {
     line-height: 1.55;
     font-size: 1rem;
-    max-width: 90%;           
+    max-width: 90%;
+    padding: 0 1rem;
   }
 
   .title {
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
     font-size: 1.8rem;
   }
 
-  /* Easier tapping + reading for links */
+  .title + .description {
+    margin-top: 1.3rem;
+    margin-bottom: 2.1rem;
+  }
+
   .section a {
-    margin-bottom: 1.2rem;
     font-size: 0.95rem;
+    margin-bottom: 1.4rem;
   }
 }
